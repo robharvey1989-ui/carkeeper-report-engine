@@ -35,74 +35,29 @@ const OPENAI_MODEL = process.env.OPENAI_MODEL || "gpt-4.1-mini";
 const SYSTEM_PROMPT = `
 You are Car History Finder, a UK-focused investigative vehicle history system.
 
-Your job is to generate the most useful, factual, and transparent vehicle history insight report possible from the data supplied.
+Your task is to write a practical, detailed, and transparent vehicle history report.
 
-Core rules:
-- Never fabricate details.
-- Never pretend to have checked a source that is not actually included in the input.
-- Clearly distinguish between:
-  1. verified facts
-  2. reasonable model-level context
-  3. unknown or unavailable information
-- If verified MOT data is included in the input, you MUST use it in section 3.
-- Never say MOT history is unavailable if verified MOT data has been provided.
-- Do not advise the user to go elsewhere for MOT history if MOT history is already supplied in the input.
-- Do not claim access to private keeper identities, insurance data, finance data, or accident databases unless such information is explicitly provided.
-- Use a precise, investigative, helpful tone.
-- Be specific. Avoid vague filler.
-- Focus on practical value for a buyer, owner, or enthusiast.
+Rules:
+- Never fabricate facts.
+- Use only the supplied data.
+- If something is unknown, say so clearly.
+- Do not claim the user needs to check MOT history elsewhere if a completed MOT section is already provided.
+- Treat the supplied MOT section as verified factual content and preserve its substance.
+- The report should be helpful to a buyer, owner, or enthusiast.
+- Avoid generic filler and empty disclaimers.
 
-Output style rules:
-- Write in clean markdown.
-- Use the exact section headings below.
-- Use bullet points where helpful.
-- When analysing MOT history, identify:
-  - earliest and latest visible test records
-  - mileage progression
-  - repeated advisories
-  - failures and what they suggest
-  - any obvious anomaly or inconsistency
-- If no anomaly is visible, say so clearly.
-- If data is incomplete, say so clearly.
-
-Use this exact structure:
+Return the report in clean markdown using these exact headings:
 
 # UK Vehicle History Insight Report
 
 ## 1) Summary
-A concise overview of what is known about the vehicle and the most important findings.
-
 ## 2) Identity & Production
-Use the supplied registration, VIN, make, model, year, and safe model-level context only.
-
 ## 3) Service & Maintenance History
-This section MUST use the verified MOT history summary if provided.
-Summarise:
-- MOT record span
-- mileage development
-- notable advisories
-- failures
-- repeated themes
-- maintenance implications
-
 ## 4) Features & Technical Specs
-Only include safe and reasonable model-level information unless exact trim/spec is verified.
-
 ## 5) Recalls & Safety
-Only discuss known model-level recall context if exact recall data is not supplied.
-Be clear about that limitation.
-
 ## 6) Rarity & Historical Value
-Explain whether the car is common, uncommon, or potentially collectible in broad terms.
-
 ## 7) Notable Mentions & Public Presence
-Only use actual supplied public mention data. If none is supplied, say none was identified from the data provided.
-
 ## 8) Confidence & Limitations
-Be explicit about what this report can and cannot confirm.
-
-Final instruction:
-The report should feel genuinely helpful to someone researching a real car, not like a generic AI answer.
 `;
 
 app.get("/", (req, res) => {
@@ -132,31 +87,21 @@ async function getDvsaAccessToken() {
 
 function normaliseMotVehicle(motData) {
   if (!motData) return null;
-
-  if (Array.isArray(motData)) {
-    return motData[0] || null;
-  }
-
-  if (Array.isArray(motData?.vehicles)) {
-    return motData.vehicles[0] || null;
-  }
-
+  if (Array.isArray(motData)) return motData[0] || null;
+  if (Array.isArray(motData?.vehicles)) return motData.vehicles[0] || null;
   return motData;
 }
 
 function normaliseMotTests(vehicle) {
   if (!vehicle) return [];
-
   if (Array.isArray(vehicle.motTests)) return vehicle.motTests;
   if (Array.isArray(vehicle.tests)) return vehicle.tests;
   if (Array.isArray(vehicle.motTestResult)) return vehicle.motTestResult;
-
   return [];
 }
 
 function extractMotCommentText(comment) {
   if (!comment) return "";
-
   if (typeof comment === "string") return comment.trim();
 
   const text = comment.text || comment.comment || "";
@@ -166,28 +111,36 @@ function extractMotCommentText(comment) {
   return text || type || "";
 }
 
-function summariseMotData(motData) {
+function buildMotSection(motData) {
   if (!motData) {
-    return "No MOT data returned.";
+    return `## 3) Service & Maintenance History
+
+No MOT data was returned for this lookup.`;
   }
 
   if (motData.error) {
-    return `MOT lookup error: ${motData.error}`;
+    return `## 3) Service & Maintenance History
+
+MOT data could not be retrieved for this lookup.
+
+Reason: ${motData.error}`;
   }
 
   const vehicle = normaliseMotVehicle(motData);
-
   if (!vehicle) {
-    return "No MOT vehicle record found.";
+    return `## 3) Service & Maintenance History
+
+No MOT vehicle record was found.`;
   }
 
   const testsRaw = normaliseMotTests(vehicle);
-
   if (!testsRaw.length) {
-    return "No MOT test records found.";
+    return `## 3) Service & Maintenance History
+
+No visible MOT test records were found in the returned DVSA data.`;
   }
 
-  const tests = testsRaw.map((test, index) => {
+  const tests = testsRaw.map((test) => {
     const date =
       test.completedDate ||
       test.testDate ||
@@ -199,13 +152,18 @@ function summariseMotData(motData) {
       test.result ||
       "Unknown result";
 
-    const odometerValue =
+    const mileageRaw =
       test.odometerValue ||
       test.odometerReading ||
       test.mileage ||
       "Unknown mileage";
 
-    const odometerUnit =
+    const mileage = Number(String(mileageRaw).replace(/[^0-9.]/g, ""));
+    const mileageDisplay = Number.isFinite(mileage)
+      ? mileage.toLocaleString()
+      : String(mileageRaw);
+
+    const unit =
       test.odometerUnit ||
       test.odometerResultType ||
       "mi";
@@ -217,97 +175,91 @@ function summariseMotData(motData) {
       [];
 
     const comments = Array.isArray(commentsArray)
-      ? commentsArray
-          .map(extractMotCommentText)
-          .filter(Boolean)
+      ? commentsArray.map(extractMotCommentText).filter(Boolean)
       : [];
 
     return {
-      index: index + 1,
       date,
       result,
-      odometerValue,
-      odometerUnit,
+      mileage: Number.isFinite(mileage) ? mileage : null,
+      mileageDisplay,
+      unit,
       comments
     };
   });
 
-  const mileagePoints = tests
-    .map(t => {
-      const numeric = Number(String(t.odometerValue).replace(/[^0-9.]/g, ""));
-      return Number.isFinite(numeric) ? numeric : null;
-    })
+  const firstVisible = tests[tests.length - 1];
+  const latestVisible = tests[0];
+
+  const mileageValues = tests
+    .map(t => t.mileage)
     .filter(v => v !== null);
 
-  const firstTest = tests[tests.length - 1] || tests[0];
-  const latestTest = tests[0];
+  let mileageLine = "- Mileage trend could not be confidently established from the returned data.";
+  if (mileageValues.length >= 2) {
+    const firstMileage = mileageValues[mileageValues.length - 1];
+    const latestMileage = mileageValues[0];
 
-  const allComments = tests.flatMap(t => t.comments);
-
-  const repeatedThemes = {
-    tyres: allComments.filter(c => /tyre|tire/i.test(c)).length,
-    brakes: allComments.filter(c => /brake|disc|pad|binding/i.test(c)).length,
-    suspension: allComments.filter(c => /suspension|shock|strut|spring|arm|bush/i.test(c)).length,
-    corrosion: allComments.filter(c => /corrosion|rust|corroded/i.test(c)).length,
-    lights: allComments.filter(c => /lamp|light|indicator|headlamp|bulb/i.test(c)).length,
-    emissions: allComments.filter(c => /emission|smoke|exhaust|catalytic|dpf/i.test(c)).length,
-    steering: allComments.filter(c => /steering|track rod|rack|alignment/i.test(c)).length
-  };
-
-  const trendNotes = [];
-
-  if (mileagePoints.length >= 2) {
-    const firstMileage = mileagePoints[mileagePoints.length - 1];
-    const latestMileage = mileagePoints[0];
-
-    if (latestMileage < firstMileage) {
-      trendNotes.push("Possible mileage inconsistency detected: a later test appears to show lower mileage than an earlier test.");
+    if (latestMileage >= firstMileage) {
+      mileageLine = `- Visible mileage rises from approximately ${firstMileage.toLocaleString()} to ${latestMileage.toLocaleString()}.`;
     } else {
-      trendNotes.push(`Visible MOT mileage rises from approximately ${firstMileage.toLocaleString()} to ${latestMileage.toLocaleString()}.`);
+      mileageLine = `- Possible mileage inconsistency: a later visible MOT entry appears lower than an earlier one (${latestMileage.toLocaleString()} vs ${firstMileage.toLocaleString()}).`;
     }
   }
 
-  const repeatedThemeNotes = Object.entries(repeatedThemes)
-    .filter(([, count]) => count >= 2)
-    .map(([theme, count]) => `Repeated ${theme}-related items appear ${count} times across the visible MOT history.`);
+  const allComments = tests.flatMap(t => t.comments);
 
-  const testLines = tests.map(t => {
+  const themeCounts = {
+    tyres: allComments.filter(c => /tyre|tire/i.test(c)).length,
+    brakes: allComments.filter(c => /brake|pad|disc/i.test(c)).length,
+    suspension: allComments.filter(c => /suspension|spring|shock|strut|bush|arm/i.test(c)).length,
+    corrosion: allComments.filter(c => /corrosion|rust|corroded/i.test(c)).length,
+    lights: allComments.filter(c => /lamp|light|bulb|indicator|headlamp/i.test(c)).length,
+    emissions: allComments.filter(c => /emission|smoke|exhaust|dpf|catalytic/i.test(c)).length,
+    steering: allComments.filter(c => /steering|track rod|rack/i.test(c)).length
+  };
+
+  const repeatedThemes = Object.entries(themeCounts)
+    .filter(([, count]) => count >= 2)
+    .map(([theme, count]) => `- Repeated ${theme}-related observations appear ${count} times across the visible MOT history.`);
+
+  const failures = tests.filter(t => /fail/i.test(t.result));
+  const advisories = tests.filter(t => t.comments.length > 0);
+
+  const testBreakdown = tests.slice(0, 8).map((t, i) => {
     const commentsText = t.comments.length
       ? t.comments.map(c => `  - ${c}`).join("\n")
       : "  - None recorded";
 
-    return `Test ${t.index}
-Date: ${t.date}
-Result: ${t.result}
-Mileage: ${t.odometerValue} ${t.odometerUnit}
-Comments:
+    return `### MOT Record ${i + 1}
+- Date: ${t.date}
+- Result: ${t.result}
+- Mileage: ${t.mileageDisplay} ${t.unit}
+- Comments:
 ${commentsText}`;
-  });
+  }).join("\n\n");
 
-  return `
-Vehicle identified in MOT dataset.
+  return `## 3) Service & Maintenance History
 
-Visible MOT record count: ${tests.length}
+The following section is based on verified DVSA MOT history returned for this registration.
 
-Earliest visible MOT record:
-- Date: ${firstTest?.date || "Unknown"}
-- Result: ${firstTest?.result || "Unknown"}
-- Mileage: ${firstTest?.odometerValue || "Unknown"} ${firstTest?.odometerUnit || ""}
+- Visible MOT record count: ${tests.length}
+- Earliest visible MOT entry: ${firstVisible.date} (${firstVisible.result}, ${firstVisible.mileageDisplay} ${firstVisible.unit})
+- Latest visible MOT entry: ${latestVisible.date} (${latestVisible.result}, ${latestVisible.mileageDisplay} ${latestVisible.unit})
+${mileageLine}
 
-Latest visible MOT record:
-- Date: ${latestTest?.date || "Unknown"}
-- Result: ${latestTest?.result || "Unknown"}
-- Mileage: ${latestTest?.odometerValue || "Unknown"} ${latestTest?.odometerUnit || ""}
+${failures.length ? `- Visible failed MOT entries: ${failures.length}.` : "- No failed MOT entries are visible in the returned records."}
+${advisories.length ? `- MOT entries containing comments/advisories/failure items: ${advisories.length}.` : "- No advisory or comment items are visible in the returned records."}
 
-Trend notes:
-${trendNotes.length ? trendNotes.map(t => `- ${t}`).join("\n") : "- No clear mileage trend note could be extracted from the available data."}
+${repeatedThemes.length ? repeatedThemes.join("\n") : "- No strongly repeated maintenance theme stood out from the visible MOT comments."}
 
-Repeated theme notes:
-${repeatedThemeNotes.length ? repeatedThemeNotes.map(t => `- ${t}`).join("\n") : "- No repeated advisory/failure theme stood out strongly from the visible MOT comments."}
+### Practical interpretation
+- MOT history is useful for spotting visible wear patterns, recurring issues, and mileage development over time.
+- MOT history does not replace a full service file, but repeated advisories can indicate areas that deserve closer inspection.
+- Where failures or repeated advisories appear, these may point to recurring maintenance needs rather than one-off items.
 
-Detailed visible MOT entries:
-${testLines.join("\n-----------------\n")}
-`.trim();
+### Visible MOT record breakdown
+${testBreakdown}`;
 }
 
 app.post("/generate-report", async (req, res) => {
@@ -315,7 +267,6 @@ app.post("/generate-report", async (req, res) => {
     console.log("REQ BODY:", req.body);
 
     const body = req.body || {};
-
     const registration = cleanString(body.registration);
     const vin = cleanString(body.vin);
     const make = cleanString(body.make);
@@ -330,7 +281,6 @@ app.post("/generate-report", async (req, res) => {
     }
 
     let motData = null;
-    let motSummary = "MOT data was not requested or was unavailable.";
 
     if (
       registration &&
@@ -356,44 +306,49 @@ app.post("/generate-report", async (req, res) => {
 
         motData = motResponse.data;
         console.log("MOT DATA:", JSON.stringify(motData, null, 2));
-
-        motSummary = summariseMotData(motData);
-        console.log("MOT SUMMARY:", motSummary);
       } catch (motError) {
         console.error("MOT lookup failed:", motError.response?.data || motError.message);
         motData = { error: "MOT data unavailable" };
-        motSummary = summariseMotData(motData);
       }
     } else {
       motData = { error: "DVSA credentials incomplete" };
-      motSummary = summariseMotData(motData);
     }
 
-    const userInput = `
-Vehicle investigation request
+    const motSection = buildMotSection(motData);
+    console.log("MOT SECTION:", motSection);
 
-Registration: ${registration || "Not provided"}
-VIN: ${vin || "Not provided"}
-Make: ${make || "Not provided"}
-Model: ${model || "Not provided"}
-Year: ${year || "Not provided"}
+    const userInput = `
+Write a detailed UK vehicle history insight report for this vehicle.
+
+Vehicle details:
+- Registration: ${registration || "Not provided"}
+- VIN: ${vin || "Not provided"}
+- Make: ${make || "Not provided"}
+- Model: ${model || "Not provided"}
+- Year: ${year || "Not provided"}
 
 IMPORTANT:
-Verified MOT history data from the DVSA MOT API is provided below.
-You MUST use this in section 3: Service & Maintenance History.
-Do NOT say MOT history is unavailable if a summary is included below.
-Do NOT tell the user to go elsewhere for MOT history if it is already included below.
+A completed factual section for "## 3) Service & Maintenance History" is provided below.
+You must preserve and use it.
+Do not replace it with generic advice.
+Do not say MOT history is unavailable if this section contains MOT history.
+Do not direct the user elsewhere for MOT history.
 
-VERIFIED MOT HISTORY SUMMARY:
-${motSummary}
+PREBUILT FACTUAL SECTION:
+${motSection}
 
-Additional instructions:
-- Make the report specific to this vehicle where the input allows.
-- If exact trim, engine, or recall status cannot be confirmed from the supplied data, say so clearly.
-- Use the MOT summary as the main evidence base for maintenance commentary.
-- Identify any obvious patterns such as repeated advisories, likely wear items, or gaps in visible testing history.
-- If the vehicle appears ordinary rather than rare, say that plainly.
-- Keep the report practical and useful.
+Requirements for the rest of the report:
+- Section 1 should summarise the most important findings.
+- Section 2 should explain identity and production carefully using only safe information from the supplied vehicle details.
+- Section 4 should give practical model-level technical context without pretending exact trim/engine is confirmed unless it truly is.
+- Section 5 should explain safety/recall context carefully and transparently.
+- Section 6 should be honest about rarity and historical value.
+- Section 7 should say no notable public presence has been identified unless supplied data proves otherwise.
+- Section 8 should be clear and useful, not repetitive.
+
+IMPORTANT:
+Return the full report with all eight sections.
+For section 3, use the prebuilt factual section exactly in substance and do not contradict it.
 `.trim();
 
     const response = await client.responses.create({
@@ -405,7 +360,7 @@ Additional instructions:
     res.json({
       success: true,
       report: response.output_text,
-      motSummary,
+      motSection,
       motData
     });
 
