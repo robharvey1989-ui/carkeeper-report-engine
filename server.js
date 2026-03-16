@@ -7,6 +7,7 @@ const OpenAI = require("openai");
 const { cleanString, normaliseTier } = require("./services/helpers");
 const { fetchDvlaData, buildDvlaSection } = require("./services/dvla");
 const { fetchMotData, buildMotSection } = require("./services/dvsa");
+const { searchVehicleWebPresence, buildWebSection } = require("./services/search");
 const { buildPrompt } = require("./services/reportBuilder");
 
 const app = express();
@@ -55,13 +56,15 @@ app.post("/generate-report", async (req, res) => {
 
     const provided = { registration, vin, make, model, year };
 
-    const [dvlaData, motData] = await Promise.all([
+    const [dvlaData, motData, searchSummary] = await Promise.all([
       fetchDvlaData(registration),
-      fetchMotData(registration)
+      fetchMotData(registration),
+      searchVehicleWebPresence({ registration, make, model, year })
     ]);
 
     const identitySection = buildDvlaSection(dvlaData, provided);
     const motSection = buildMotSection(motData);
+    const webSection = buildWebSection(searchSummary, tier);
 
     const prompt = buildPrompt({
       registration,
@@ -71,7 +74,8 @@ app.post("/generate-report", async (req, res) => {
       year,
       tier,
       identitySection,
-      motSection
+      motSection,
+      webSection
     });
 
     const response = await client.responses.create({
@@ -86,8 +90,10 @@ app.post("/generate-report", async (req, res) => {
       report: response.output_text,
       identitySection,
       motSection,
+      webSection,
       dvlaData,
-      motData
+      motData,
+      searchSummary
     });
 
   } catch (error) {
