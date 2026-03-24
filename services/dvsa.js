@@ -14,9 +14,7 @@ async function getDvsaAccessToken() {
   params.append("scope", DVSA_SCOPE);
 
   const response = await axios.post(DVSA_TOKEN_URL, params.toString(), {
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded"
-    }
+    headers: { "Content-Type": "application/x-www-form-urlencoded" }
   });
 
   return response.data.access_token;
@@ -43,7 +41,6 @@ function extractMotCommentText(comment) {
 
   const text = comment.text || comment.comment || "";
   const type = comment.type || comment.commentType || "";
-
   if (text && type) return `${text} [${type}]`;
   return text || type || "";
 }
@@ -76,48 +73,46 @@ async function fetchMotData(registration) {
 
     return motResponse.data;
   } catch (motError) {
-    console.error("MOT lookup failed:", motError.response?.data || motError.message);
+    console.error("MOT lookup failed:", {
+      message: motError.message,
+      status: motError.response?.status || null,
+      data: motError.response?.data || null
+    });
+
     return { error: "MOT data unavailable" };
   }
 }
 
 function buildMotSection(motData) {
   if (!motData) {
-    return `## 3) Service & Maintenance History
-
+    return `## 3) MOT & Condition Pattern Analysis
 No MOT data was returned for this lookup.`;
   }
 
   if (motData.error) {
-    return `## 3) Service & Maintenance History
-
+    return `## 3) MOT & Condition Pattern Analysis
 MOT data could not be retrieved for this lookup.
-
 Reason: ${motData.error}`;
   }
 
   const vehicle = normaliseMotVehicle(motData);
   if (!vehicle) {
-    return `## 3) Service & Maintenance History
-
+    return `## 3) MOT & Condition Pattern Analysis
 No MOT vehicle record was found.`;
   }
 
   const testsRaw = normaliseMotTests(vehicle);
   if (!testsRaw.length) {
-    return `## 3) Service & Maintenance History
-
+    return `## 3) MOT & Condition Pattern Analysis
 No visible MOT test records were found in the returned DVSA data.`;
   }
 
   const tests = testsRaw.map((test) => {
     const date = test.completedDate || test.testDate || test.expiryDate || "Unknown date";
     const result = test.testResult || test.result || "Unknown result";
-
     const mileageRaw = test.odometerValue || test.odometerReading || test.mileage || "Unknown mileage";
     const mileage = Number(String(mileageRaw).replace(/[^0-9.]/g, ""));
     const mileageDisplay = Number.isFinite(mileage) ? mileage.toLocaleString() : String(mileageRaw);
-
     const unit = test.odometerUnit || test.odometerResultType || "mi";
 
     const commentsArray = test.rfrAndComments || test.comments || test.defects || [];
@@ -125,38 +120,64 @@ No visible MOT test records were found in the returned DVSA data.`;
       ? commentsArray.map(extractMotCommentText).filter(Boolean)
       : [];
 
-    return { date, result, mileage, mileageDisplay, unit, comments };
+    return {
+      date,
+      result,
+      mileage,
+      mileageDisplay,
+      unit,
+      comments
+    };
   });
 
-  const firstVisible = tests[tests.length - 1];
   const latestVisible = tests[0];
+  const earliestVisible = tests[tests.length - 1];
 
-  const testBreakdown = tests.slice(0, 8).map((t, i) => {
-    const commentsText = t.comments.length
-      ? t.comments.map(c => `  - ${c}`).join("\n")
-      : "  - None recorded";
+  const passCount = tests.filter(t => String(t.result).toUpperCase().includes("PASS")).length;
+  const failCount = tests.filter(t => String(t.result).toUpperCase().includes("FAIL")).length;
 
-    return `### MOT Record ${i + 1}
-- Date: ${t.date}
-- Result: ${t.result}
-- Mileage: ${t.mileageDisplay} ${t.unit}
-- Comments:
-${commentsText}`;
-  }).join("\n\n");
+  const recurringCommentMap = {};
+  tests.forEach((t) => {
+    t.comments.forEach((c) => {
+      const key = c.toLowerCase();
+      recurringCommentMap[key] = (recurringCommentMap[key] || 0) + 1;
+    });
+  });
 
-  return `## 3) Service & Maintenance History
+  const recurringIssues = Object.entries(recurringCommentMap)
+    .filter(([, count]) => count >= 2)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 5)
+    .map(([text, count]) => `- ${text} (appears ${count} times)`);
 
+  const latestComments = latestVisible.comments.length
+    ? latestVisible.comments.map(c => `- ${c}`).join("\n")
+    : "- None recorded";
+
+  return `## 3) MOT & Condition Pattern Analysis
 The following section is based on verified DVSA MOT history returned for this registration.
 
 - Visible MOT record count: ${tests.length}
-- Earliest visible MOT entry: ${firstVisible.date} (${firstVisible.result}, ${firstVisible.mileageDisplay} ${firstVisible.unit})
+- Pass count in visible history: ${passCount}
+- Fail count in visible history: ${failCount}
+- Earliest visible MOT entry: ${earliestVisible.date} (${earliestVisible.result}, ${earliestVisible.mileageDisplay} ${earliestVisible.unit})
 - Latest visible MOT entry: ${latestVisible.date} (${latestVisible.result}, ${latestVisible.mileageDisplay} ${latestVisible.unit})
 
-### Visible MOT record breakdown
-${testBreakdown}`;
+### Latest recorded comments
+${latestComments}
+
+### Recurring visible themes
+${recurringIssues.length ? recurringIssues.join("\n") : "- No obvious repeated comment pattern identified in the visible records."}
+
+### Visible MOT history summary
+${tests.slice(0, 8).map((t, i) => {
+  const commentsText = t.comments.length
+    ? t.comments.map(c => `  - ${c}`).join("\n")
+    : "  - None recorded";
+
+  return `${i + 1}. ${t.date} | ${t.result} | ${t.mileageDisplay} ${t.unit}
+${commentsText}`;
+}).join("\n\n")}`;
 }
 
-module.exports = {
-  fetchMotData,
-  buildMotSection
-};
+module.exports = { fetchMotData, buildMotSection };
