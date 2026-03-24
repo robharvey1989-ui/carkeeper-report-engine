@@ -1,10 +1,16 @@
 const axios = require("axios");
 
-const DVLA_API_KEY = process.env.DVLA_API_KEY;
+async function fetchDvlaData(registration, forwardedApiKey = "") {
+  const DVLA_API_KEY = forwardedApiKey || process.env.DVLA_API_KEY || "";
 
-async function fetchDvlaData(registration) {
   if (!registration || !DVLA_API_KEY) {
-    return { error: "DVLA data unavailable" };
+    return {
+      error: "DVLA data unavailable",
+      debug: {
+        hasRegistration: !!registration,
+        hasApiKey: !!DVLA_API_KEY
+      }
+    };
   }
 
   try {
@@ -15,21 +21,33 @@ async function fetchDvlaData(registration) {
         headers: {
           "x-api-key": DVLA_API_KEY,
           "Content-Type": "application/json"
-        }
+        },
+        timeout: 20000
       }
     );
 
     return response.data;
   } catch (error) {
-    console.error("DVLA lookup failed:", error.response?.data || error.message);
-    return { error: "DVLA data unavailable" };
+    console.error("DVLA lookup failed:", {
+      message: error.message,
+      status: error.response?.status || null,
+      data: error.response?.data || null
+    });
+
+    return {
+      error: "DVLA data unavailable",
+      debug: {
+        status: error.response?.status || null,
+        data: error.response?.data || null,
+        message: error.message
+      }
+    };
   }
 }
 
 function buildDvlaSection(dvlaData, provided) {
   if (!dvlaData || dvlaData.error) {
     return `## 2) Identity & Production
-
 - Registration: ${provided.registration || "Not provided"}
 - VIN: ${provided.vin || "Not provided"}
 - Make: ${provided.make || "Not provided"}
@@ -40,7 +58,6 @@ DVLA vehicle enquiry data was not available for this lookup, so this section is 
   }
 
   return `## 2) Identity & Production
-
 - Registration: ${provided.registration || "Not provided"}
 - VIN: ${provided.vin || "Not provided"}
 - Make: ${dvlaData.make || provided.make || "Unknown"}
@@ -57,7 +74,4 @@ DVLA vehicle enquiry data was not available for this lookup, so this section is 
 - Month of first registration: ${dvlaData.monthOfFirstRegistration || "Unknown"}`;
 }
 
-module.exports = {
-  fetchDvlaData,
-  buildDvlaSection
-};
+module.exports = { fetchDvlaData, buildDvlaSection };
