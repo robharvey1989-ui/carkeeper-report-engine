@@ -10,7 +10,7 @@ Your priorities:
 - distinguish clearly between confirmed facts, likely inferences, and unknowns
 - identify inconsistencies, unanswered questions, and due-diligence gaps
 - explain what the evidence suggests in practical terms
-- give strong, specific buyer/viewing/negotiation guidance
+- give strong, specific buyer, viewing, paperwork, and negotiation guidance
 - avoid fluff, repetition, and generic filler
 - do not invent provenance, accidents, finance history, ownership count, rarity, restoration history, or public appearances
 
@@ -80,7 +80,11 @@ function buildPrompt({
   identitySection,
   motSection,
   webSection,
-  imageFindings = "No image analysis findings were provided."
+  imageFindings = "No image analysis findings were provided.",
+  notes = "",
+  goal = "",
+  followup_q1 = "",
+  followup_q2 = ""
 }) {
   return `
 Write a UK vehicle insight report for this vehicle.
@@ -91,6 +95,12 @@ USER-SUPPLIED VEHICLE DETAILS
 - Make: ${make || "Not provided"}
 - Model: ${model || "Not provided"}
 - Year: ${year || "Not provided"}
+
+USER CONTEXT
+- Notes: ${notes || "None provided"}
+- Main goal: ${goal || "None provided"}
+- Follow-up answer 1: ${followup_q1 || "None provided"}
+- Follow-up answer 2: ${followup_q2 || "None provided"}
 
 IMPORTANT EVIDENCE RULES
 - Use only the evidence supplied below.
@@ -135,11 +145,11 @@ A tight overview of what matters most.
 ## 2) Identity & Production
 Use the supplied factual identity section.
 
-## 3) MOT & Maintenance Pattern Analysis
+## 3) MOT & Condition Pattern Analysis
 Use the supplied MOT section, but make the interpretation stronger where appropriate.
 
 ## 4) Features & Technical Context
-Only discuss features/spec context if supported by supplied data or clearly framed as general context rather than vehicle-specific certainty.
+Only discuss features or spec context if supported by supplied data or clearly framed as general context rather than vehicle-specific certainty.
 
 ## 5) Image-Based Observations
 Use only the supplied image findings. If no image findings were provided, explain that clearly.
