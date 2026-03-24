@@ -56,7 +56,8 @@ Rules:
 - Do not guess hidden mechanical condition.
 - Do not invent provenance or restoration history.
 - Be cautious and specific.
-- Mention if the image quality or angle limits certainty.
+- Mention if the image quality, angle, lighting, or distance limits certainty.
+- Do not identify exact trim/version unless it is clearly visible.
 
 Return short structured findings under these headings:
 ## Visible Condition
@@ -82,6 +83,36 @@ Return short structured findings under these headings:
   }
 }
 
+function splitIntoSections(text) {
+  const lines = String(text || "").split("\n");
+  const sections = [];
+  let current = { title: "Overview", content: "" };
+
+  const push = () => {
+    if ((current.title && current.title.trim()) || (current.content && current.content.trim())) {
+      sections.push({
+        title: current.title.trim() || "Section",
+        content: current.content.trim()
+      });
+    }
+  };
+
+  for (const line of lines) {
+    if (line.startsWith("## ")) {
+      push();
+      current = {
+        title: line.replace(/^##\s+/, "").trim(),
+        content: ""
+      };
+    } else {
+      current.content += line + "\n";
+    }
+  }
+
+  push();
+  return sections;
+}
+
 app.post("/generate-report", async (req, res) => {
   try {
     console.log("REQ BODY:", req.body);
@@ -94,6 +125,10 @@ app.post("/generate-report", async (req, res) => {
     const year = cleanString(body.year);
     const tier = normaliseTier(body.tier);
     const imageUrl = cleanString(body.image_url);
+    const notes = cleanString(body.notes);
+    const goal = cleanString(body.goal);
+    const followup_q1 = cleanString(body.followup_q1);
+    const followup_q2 = cleanString(body.followup_q2);
 
     if (!registration && !vin && !(make && model)) {
       return res.status(400).json({
@@ -102,7 +137,26 @@ app.post("/generate-report", async (req, res) => {
       });
     }
 
+    const provided = {
+      registration,
+      vin,
+      make,
+      model,
+      year,
+      notes,
+      goal,
+      followup_q1,
+      followup_q2,
+      image_url: imageUrl
+    };
+
     const forwardedDvlaKey = req.headers["x-dvla-api-key"] || "";
+
+    console.log("DVLA DEBUG:", {
+      hasForwardedDvlaKey: !!forwardedDvlaKey,
+      hasEnvDvlaKey: !!process.env.DVLA_API_KEY,
+      registration
+    });
 
     const [dvlaData, motData, searchSummary, imageFindings] = await Promise.all([
       fetchDvlaData(registration, forwardedDvlaKey),
@@ -111,7 +165,7 @@ app.post("/generate-report", async (req, res) => {
       analyseVehicleImage(imageUrl)
     ]);
 
-    const identitySection = buildDvlaSection(dvlaData, { registration, vin, make, model, year });
+    const identitySection = buildDvlaSection(dvlaData, provided);
     const motSection = buildMotSection(motData);
     const webSection = buildWebSection(searchSummary, tier);
 
@@ -125,7 +179,11 @@ app.post("/generate-report", async (req, res) => {
       identitySection,
       motSection,
       webSection,
-      imageFindings
+      imageFindings,
+      notes,
+      goal,
+      followup_q1,
+      followup_q2
     });
 
     const response = await client.responses.create({
@@ -142,18 +200,26 @@ Write with clarity, discipline, and genuine usefulness.
       input: prompt
     });
 
+    const reportText = response.output_text || "";
+    const sections = splitIntoSections(reportText);
+
     res.json({
       success: true,
       tier,
-      report: response.output_text,
-      sections: [],
+      report: reportText,
+      sections,
       identitySection,
       motSection,
       webSection,
       imageFindings,
       dvlaData,
       motData,
-      searchSummary
+      searchSummary,
+      debug: {
+        dvlaHasForwardedKey: !!forwardedDvlaKey,
+        dvlaHasEnvKey: !!process.env.DVLA_API_KEY,
+        imageUsed: !!imageUrl
+      }
     });
   } catch (error) {
     console.error("FULL ERROR:", error);
