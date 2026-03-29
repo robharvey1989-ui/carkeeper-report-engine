@@ -3,34 +3,43 @@ function getTierInstructions(tier) {
     return `
 TIER: PREMIUM
 
-Write a high-detail, evidence-led vehicle investigation report.
+Write a premium, high-detail, evidence-led UK vehicle investigation report.
 
-Your priorities:
-- go beyond summary and provide interpretation
-- distinguish clearly between confirmed facts, likely inferences, and unknowns
-- identify inconsistencies, unanswered questions, and due-diligence gaps
-- explain what the evidence suggests in practical terms
-- give strong, specific buyer, viewing, paperwork, and negotiation guidance
-- avoid fluff, repetition, and generic filler
-- do not invent provenance, accidents, finance history, ownership count, rarity, restoration history, or public appearances
+Premium behaviour:
+- Think like a careful vehicle investigator and experienced buyer.
+- Interpret the supplied evidence deeply, but never invent facts.
+- Clearly separate VERIFIED facts, REASONABLE INFERENCES, and UNKNOWN / NOT VERIFIED points.
+- Prioritise buyer protection, due diligence, negotiation leverage, and unresolved risk.
+- Highlight inconsistencies, suspicious patterns, usage clues, and anything that deserves closer inspection.
+- Use stronger judgement than lower tiers, but stay within the evidence.
+- Include a clear verdict and a confidence score out of 100.
 
-Style:
-- professional, clear, analytical, and genuinely useful
-- premium in quality, but still direct and readable
-- confident where evidence is strong
-- cautious where evidence is limited
+Premium output expectations:
+- Strong, useful executive summary
+- Practical buyer guidance
+- Red flags prioritised by seriousness
+- More analytical MOT interpretation
+- Stronger condition/risk interpretation from images where supported
+- Clearer market/use-case context
+- More detailed next-step actions
+- Final verdict should be decisive but evidence-based
 
-If evidence is missing:
-- say so plainly
-- explain what cannot be concluded safely
+Do NOT invent:
+- finance status
+- accident history
+- keeper count
+- ownership history
+- auction history
+- rarity claims
+- service history
+- restoration history
+- public fame or provenance
+- exact trim/spec unless supported by evidence
 
-If public web findings are weak:
-- do not pad the section
-- explain the limitation honestly
-
-If image evidence is limited or absent:
-- say that clearly
-- do not pretend condition details are confirmed
+If evidence is weak:
+- say so directly
+- explain what cannot safely be concluded
+- state what should be checked next
 `;
   }
 
@@ -38,35 +47,108 @@ If image evidence is limited or absent:
     return `
 TIER: PRO
 
-Write a detailed vehicle investigation report.
+Write a detailed, practical UK vehicle investigation report.
 
-Your priorities:
-- provide more interpretation than a standard vehicle check
-- identify likely risk patterns, recurring MOT themes, and practical buyer concerns
-- separate confirmed facts from likely suggestions
-- keep the report useful, grounded, and concise
+Pro behaviour:
+- Go beyond a basic summary and provide useful interpretation.
+- Separate confirmed facts from likely suggestions and unanswered questions.
+- Identify practical buyer concerns, recurring MOT themes, condition concerns, and likely risk patterns.
+- Keep the report grounded, useful, and clearly structured.
+- Include a clear verdict and a lighter confidence score.
 
-Style:
-- clear, practical, investigative
-- no fluff
-- no invented facts
+Pro output expectations:
+- Strong summary
+- Good practical interpretation
+- Clear risk section
+- Useful image observations if images were provided
+- Actionable next steps
+
+Do NOT invent:
+- finance status
+- accident history
+- keeper count
+- ownership history
+- public provenance
+- exact trim/spec unless supported
 `;
   }
 
   return `
 TIER: BASIC
 
-Write a concise, useful, buyer-focused report.
+Write a concise, clear, buyer-focused UK vehicle report.
 
-Your priorities:
-- explain the most important findings clearly
-- highlight immediate risks or useful next checks
-- keep it practical and easy to understand
+Basic behaviour:
+- Prioritise the most important known facts.
+- Explain the headline risks and the most useful next checks.
+- Keep it short, practical, and easy to understand.
+- Do not over-analyse or speculate.
+- Do not include a confidence score unless directly supported by evidence.
+- Keep the verdict light and cautious.
 
-Style:
-- plain English
-- no unnecessary detail
-- no invented facts
+Basic output expectations:
+- Simple summary
+- Core identity interpretation
+- Basic MOT pattern summary
+- Basic risk notes
+- Clear next steps
+
+Do NOT invent:
+- finance status
+- accident history
+- keeper count
+- ownership history
+- provenance
+- rarity
+- exact trim/spec unless supported
+`;
+}
+
+function getTierSectionRules(tier) {
+  if (tier === "premium") {
+    return `
+SECTION DEPTH RULES FOR PREMIUM
+- Executive Summary: decisive and high value
+- Identity & Production: interpret identity strength, possible build/spec clues, and any mismatch risk
+- MOT & Condition Pattern Analysis: analyse trend, repeat advisories, neglect clues, usage clues, and mileage confidence
+- Features & Technical Context: add relevant UK buyer context and model-specific ownership considerations where framed as general context
+- Image-Based Observations: include visible condition, panel/paint consistency clues, wear, presentation, and questions raised by the photos
+- Risks, Inconsistencies & Open Questions: prioritise into major / moderate / minor concerns if possible
+- Notable Mentions & Public Presence: summarise clearly and state limitations honestly
+- Recommended Next Steps: give strong viewing, paperwork, inspection, and negotiation actions
+- Confidence & Limitations: include a score out of 100 and explain what is driving confidence up or down
+- Final Verdict: must be present and must be decisive
+`;
+  }
+
+  if (tier === "pro") {
+    return `
+SECTION DEPTH RULES FOR PRO
+- Executive Summary: clear and useful
+- Identity & Production: explain what is solid and what is uncertain
+- MOT & Condition Pattern Analysis: identify practical patterns and buyer concerns
+- Features & Technical Context: useful general context only
+- Image-Based Observations: include practical visible findings if images exist
+- Risks, Inconsistencies & Open Questions: clear and buyer-focused
+- Notable Mentions & Public Presence: useful summary without padding
+- Recommended Next Steps: practical and actionable
+- Confidence & Limitations: include a light confidence view, preferably as Low / Moderate / Good with reasoning
+- Final Verdict: should be present
+`;
+  }
+
+  return `
+SECTION DEPTH RULES FOR BASIC
+- Executive Summary: short and clear
+- Identity & Production: use the supplied facts and explain them simply
+- MOT & Condition Pattern Analysis: brief pattern summary only
+- Features & Technical Context: minimal and only if genuinely useful
+- Image-Based Observations: short and factual if images exist
+- Risks, Inconsistencies & Open Questions: keep concise
+- Notable Mentions & Public Presence: summarise briefly
+- Recommended Next Steps: practical checklist
+- Confidence & Limitations: explain limits simply, no complex scoring
+- Final Verdict: optional, light, and cautious
 `;
 }
 
@@ -87,14 +169,15 @@ function buildPrompt({
   followup_q2 = ""
 }) {
   return `
-Write a UK vehicle insight report for this vehicle.
+Write a UK vehicle history and buyer-risk report for this vehicle.
 
-USER-SUPPLIED VEHICLE DETAILS
+VEHICLE DETAILS PROVIDED BY USER
 - Registration: ${registration || "Not provided"}
 - VIN: ${vin || "Not provided"}
 - Make: ${make || "Not provided"}
 - Model: ${model || "Not provided"}
 - Year: ${year || "Not provided"}
+- Tier: ${tier || "basic"}
 
 USER CONTEXT
 - Notes: ${notes || "None provided"}
@@ -102,70 +185,129 @@ USER CONTEXT
 - Follow-up answer 1: ${followup_q1 || "None provided"}
 - Follow-up answer 2: ${followup_q2 || "None provided"}
 
-IMPORTANT EVIDENCE RULES
+CORE RULES
 - Use only the evidence supplied below.
 - Never fabricate facts.
+- Never claim checks were performed if they were not supplied.
 - Unknowns must be stated clearly.
-- Do not claim certainty where the evidence does not support it.
-- Distinguish between:
-  - Confirmed facts
-  - Likely inferences
-  - Unknown / not verified
+- Do not present assumptions as facts.
+- Clearly distinguish:
+  - VERIFIED / CONFIRMED
+  - LIKELY / REASONABLE INFERENCE
+  - UNKNOWN / NOT VERIFIED
+- Be precise, useful, investigative, and buyer-focused.
+- Use UK terminology and context.
+- Do not pad weak sections with filler.
+- If evidence is thin, say so plainly.
 
-PREBUILT FACTUAL SECTION 2
+FORBIDDEN INVENTIONS
+Do not invent or imply the following unless explicitly supported by the supplied material:
+- outstanding finance
+- insurance write-off history
+- accident history
+- ownership count
+- keeper history
+- service book history
+- invoice history
+- restoration history
+- rarity or collector status
+- public media appearances
+- auction appearances
+- exact trim level
+- exact engine/spec details not supported by evidence
+- stolen status unless explicitly provided by a supplied source
+
+SUPPLIED FACTUAL MATERIAL
+
+IDENTITY / DVLA EVIDENCE
 ${identitySection}
 
-PREBUILT FACTUAL SECTION 3
+MOT / CONDITION HISTORY EVIDENCE
 ${motSection}
 
-PREBUILT FACTUAL SECTION 7
+PUBLIC WEB / MENTION EVIDENCE
 ${webSection}
 
-IMAGE ANALYSIS FINDINGS
+IMAGE ANALYSIS EVIDENCE
 ${imageFindings}
 
 ${getTierInstructions(tier)}
 
+${getTierSectionRules(tier)}
+
 OUTPUT RULES
 - Return the report using the exact headings below.
-- Preserve Sections 2, 3, and 7 in substance.
-- Do not tell the user to go elsewhere for DVLA or MOT history if the supplied sections already contain that material.
-- Do not invent finance data, accident data, keeper history, service invoices, restoration history, or public mentions.
-- If Section 7 says public web search is not included, respect that.
-- If image evidence is absent, limited, or unclear, say so plainly.
-- Make the report genuinely useful to a buyer or investigator.
+- Use "## " headings exactly so the report can be split into sections.
+- Preserve the supplied identity, MOT, public presence, and image material in substance.
+- Do not tell the user to check DVLA or MOT elsewhere if that information is already present in the supplied evidence.
+- If a section is limited, state the limitation clearly instead of padding.
+- Make the report genuinely useful to a careful buyer, inspector, or investigator.
+- Keep paragraphs fairly short and readable.
+- Avoid generic filler language.
+- Avoid repeating the same fact in multiple sections unless necessary for interpretation.
 
-REQUIRED HEADINGS
+REQUIRED OUTPUT STRUCTURE
 
-# UK Vehicle History Insight Report
+## Summary
+Provide a tight summary of the vehicle and the most important findings.
+For PRO and PREMIUM, include an overall buyer stance such as:
+- Looks reasonable
+- Proceed with caution
+- Higher-risk example
 
-## 1) Executive Summary
-A tight overview of what matters most.
+## Identity & Production
+Use the supplied identity evidence.
+Explain what appears confirmed about the vehicle's identity.
+Mention any mismatches, gaps, weak points, or unresolved identity questions.
+If build/spec detail is uncertain, say so.
 
-## 2) Identity & Production
-Use the supplied factual identity section.
+## MOT & Condition Pattern Analysis
+Use the supplied MOT evidence.
+Interpret recurring advisories, failure themes, maintenance signals, neglect clues, corrosion clues, tyre/brake/suspension wear patterns, and any mileage confidence issues.
+If MOT evidence is absent or weak, explain that limitation.
 
-## 3) MOT & Condition Pattern Analysis
-Use the supplied MOT section, but make the interpretation stronger where appropriate.
+## Features & Technical Context
+Discuss features, class, technical context, and likely ownership context only if supported by evidence or clearly framed as general model context.
+Do not present generic model knowledge as confirmed vehicle-specific fact.
 
-## 4) Features & Technical Context
-Only discuss features or spec context if supported by supplied data or clearly framed as general context rather than vehicle-specific certainty.
+## Image-Based Observations
+Use only the supplied image findings.
+Summarise visible condition, presentation, wear, damage clues, mismatch concerns, and anything that deserves checking in person.
+If no images were supplied or image quality is limited, say so clearly.
 
-## 5) Image-Based Observations
-Use only the supplied image findings. If no image findings were provided, explain that clearly.
+## Risks, Inconsistencies & Open Questions
+Identify what looks solid, what looks uncertain, and what should be checked further.
+For PRO and PREMIUM, prioritise the most important concerns first.
+For PREMIUM, make this section especially strong and practically useful.
 
-## 6) Risks, Inconsistencies & Open Questions
-Identify what seems solid, what looks uncertain, and what should be checked further.
+## Notable Mentions & Public Presence
+Use the supplied web/public presence evidence only.
+If there are no meaningful public findings, state that honestly.
+Do not pad this section.
 
-## 7) Notable Mentions & Public Presence
-Use the supplied public web section.
+## Recommended Next Steps
+Give practical actions for:
+- viewing the car
+- questions to ask the seller
+- paperwork to inspect
+- inspection priorities
+- negotiation leverage
+For PREMIUM, make this especially specific.
 
-## 8) Recommended Next Steps
-Give practical viewing, questioning, paperwork, and negotiation actions.
+## Confidence & Limitations
+Explain how strong or weak the available evidence is.
+For PREMIUM, include:
+- Confidence Score: X/100
+and explain the score.
+For PRO, you may use a lighter confidence rating if more appropriate.
+For BASIC, keep this simple.
 
-## 9) Confidence & Limitations
-Explain what this report can and cannot safely conclude.
+## Final Verdict
+Give a short final judgement.
+For BASIC, keep it light and cautious.
+For PRO and PREMIUM, be clearer and more decisive, while staying within the evidence.
 `.trim();
 }
 
 module.exports = { buildPrompt };
+
