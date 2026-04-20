@@ -2,117 +2,64 @@ function getTierInstructions() {
   return `
 TIER: PREMIUM SALES ADVERT
 
-Write a premium UK vehicle sales advert based only on the supplied evidence.
+Write a clean, natural UK vehicle sales advert.
 
 PRIMARY OBJECTIVE
-- The advert must read like it was written by a good private seller or specialist car sales team, not by an inspector, analyst, or compliance system.
-- It should feel natural, confident, readable, and appealing.
-- It should help the vehicle sound desirable without becoming exaggerated, artificial, or vague.
-- It must stay accurate and evidence-led.
+- This must read like a real person wrote it.
+- It should feel like a strong private sale or dealer advert.
+- It should be clear, confident, and easy to read.
+- It should present the car in the best possible light WITHOUT exaggeration.
 
-CORE BEHAVIOUR
-- Write like a human who is genuinely trying to present the car properly.
-- The tone should feel natural and polished, not clinical.
-- Use flowing advert language, not report language.
-- Make the car sound attractive through specific, believable details rather than generic praise.
-- The best output should feel like a strong Auto Trader / dealer / enthusiast advert, not a checklist or a technical summary.
-- Keep the tone warm, grounded, and credible.
+CORE RULES
+- Use only the supplied evidence.
+- Do not invent anything.
+- Do not guess spec, history, ownership, or condition.
+- If something isn’t supported, leave it out.
+- Do not explain uncertainty unless it actually matters.
 
-STRICT ACCURACY RULE
-- Every meaningful factual claim must be traceable to supplied evidence.
-- If the evidence does not justify a claim, do not make it.
-- Do not invent ownership stories, emotional backstory, maintenance history, restoration history, rarity, originality, or desirability.
-- Do not imply the seller’s personal experience unless it has been supplied.
-- Do not fabricate “drives superbly”, “starts on the button”, “pulls well”, “wants for nothing”, “well loved”, “cherished”, or similar phrases unless supported by evidence.
+ANTI-AI / ANTI-FLuff RULES
+Do NOT use phrases like:
+- "presents well"
+- "offers a balance"
+- "well suited for"
+- "the kind of car that"
+- "represents"
+- "sensible choice"
+- "documented mileage"
+- "prospective buyers"
+- "it should be noted"
+- "the supplied images"
+- "the photos suggest"
+- "this indicates"
 
-ANTI-REPORT RULE
-Do NOT write like:
-- a buyer-risk report
-- an inspection summary
-- a forensic analysis
-- a cautious consultant memo
-- a vehicle provenance report
+Instead:
+- just say what’s there
+- keep it simple
+- keep it real
 
-Do NOT use language such as:
-- “documented mileage” unless genuinely necessary
-- “prospective buyers”
-- “buyer confidence”
-- “vehicle-specific facts”
-- “general model context”
-- “reasonable inference”
-- “unknown / not verified”
-- “it represents”
-- “roadworthy condition”
-- “continued use”
-- “usage clues”
-- “identity confidence”
-- “evidence suggests” repeatedly
-- “it should be noted”
-- “this indicates”
-- “this may merit”
-- “source reliability”
-- “public traceability”
+WRITING STYLE
+- Shorter sentences
+- Less explanation
+- More direct statements
+- Natural flow
+- Slightly informal but still professional
+- No waffle
 
-Instead, write in a more natural advert voice.
+IMAGE RULE
+- Describe what is visible as if you are standing next to the car
+- Never say “in the images” or “supplied photos”
+- Just describe it naturally
 
-TARGET STYLE
-- Natural, clean UK advert style
-- Specialist but approachable
-- Human rather than robotic
-- Sales-focused without sounding pushy
-- Informative without sounding legalistic
-- Honest without constantly highlighting uncertainty
-- Readable enough that a real seller would happily post it as their advert
+MOT RULE
+- Mention only useful points
+- Keep it short
+- No analysis tone
 
-LANGUAGE STYLE RULES
-- Prefer natural phrasing such as:
-  - "This Astra presents well for its age"
-  - "A tidy, practical five-door hatchback"
-  - "The interior looks smart and well kept in the supplied photos"
-  - "A solid-looking example with sensible mileage"
-  - "A straightforward, usable car"
-  - "The MOT history shows mainly age- and wear-related items"
-- Avoid over-formal phrasing such as:
-  - "documented mileage progression"
-  - "continued roadworthiness"
-  - "well-known engineering"
-  - "private-market presentation"
-  - "mileage credibility"
-  - "vehicle identity strength"
-- Vary sentence length so it feels written, not generated.
-- Let the advert breathe. It should not feel like every sentence is trying to qualify itself.
-
-IMAGE DISCIPLINE
-- Only describe what is actually visible in the supplied images or image findings.
-- You may present visible positives naturally, but do not overclaim.
-- Good example: "The car looks tidy in the supplied photos, with a clean interior and smart overall presentation."
-- Bad example: "The vehicle is in excellent cosmetic and structural condition."
-- Do not claim absence of rust, paintwork issues, prior repairs, corrosion, or structural problems unless clearly evidenced.
-
-MOT DISCIPLINE
-- Use MOT history to support the advert where helpful, but do not turn it into a report section.
-- If the MOT history mainly shows minor wear-related items, that can be summarised naturally.
-- If repeated advisories matter, mention them briefly and honestly.
-- Do not over-explain MOT logic unless necessary.
-
-WEB / PUBLIC EVIDENCE RULES
-- Only use public findings if they genuinely help the advert.
-- If there is no meaningful public trace, usually omit that entirely.
-- Do not talk about source reliability, match confidence, or public traceability in the advert itself.
-
-IF EVIDENCE IS LIMITED
-- Write a shorter, cleaner advert.
-- Do not pad with generic filler.
-- Do not compensate with fake enthusiasm.
-- Keep it believable.
-
-OVERALL RESULT
-The finished advert should feel like:
-- a real person wrote it
-- the car has been presented properly
-- the seller is honest and credible
-- the listing is stronger than a typical private advert
-- the reader would be happy to enquire
+GOAL
+A buyer should read this and think:
+“This sounds like a decent, honest car”
+NOT:
+“This sounds like a report”
 `;
 }
 
@@ -122,165 +69,74 @@ function buildPrompt({
   make,
   model,
   year,
-  tier,
   identitySection,
   motSection,
   webSection,
-  imageFindings = "No image analysis findings were provided.",
-  notes = "",
-  goal = "",
-  followup_q1 = "",
-  followup_q2 = ""
+  imageFindings = "",
+  notes = ""
 }) {
   return `
-Write a premium UK vehicle sales advert for this vehicle.
+Write a UK vehicle sales advert.
 
-This is NOT a buyer-risk report.
-This is NOT an inspection report.
-This is NOT a forensic analysis.
-It must read like a genuine, well-written advert that a real seller or specialist would publish.
+IMPORTANT:
+- This must sound human
+- Keep it concise
+- No fluff
+- No report-style language
+- No mention of “supplied” anything
 
-VEHICLE DETAILS PROVIDED BY USER
+VEHICLE DETAILS
 - Registration: ${registration || "Not provided"}
-- VIN: ${vin || "Not provided"}
 - Make: ${make || "Not provided"}
 - Model: ${model || "Not provided"}
 - Year: ${year || "Not provided"}
-- Tier: premium sales advert
 
-USER CONTEXT
-- Notes: ${notes || "None provided"}
-- Main goal: ${goal || "None provided"}
-- Follow-up answer 1: ${followup_q1 || "None provided"}
-- Follow-up answer 2: ${followup_q2 || "None provided"}
+DATA AVAILABLE
+IDENTITY:
+${identitySection || "None"}
 
-CORE RULES
-- Use only the supplied evidence below.
-- Never fabricate facts.
-- Never present assumptions as confirmed facts.
-- Do not write in a report-like tone.
-- Do not sound clinical, legalistic, or robotic.
-- Do not overuse cautionary phrases.
-- Do not keep reminding the reader about uncertainty unless it is genuinely important.
-- Do not talk to the reader like an analyst addressing a buyer.
-- Write like someone presenting the car for sale properly.
+MOT:
+${motSection || "None"}
 
-WHAT THE ADVERT SHOULD DO
-- Open strongly
-- Present the car in an appealing but believable way
-- Use natural sales language
-- Highlight what makes it worth considering
-- Mention useful condition/history points without sounding defensive
-- End in a way that encourages genuine interest
+WEB:
+${webSection || "None"}
 
-WHAT THE ADVERT MUST NOT DO
-- Read like a report
-- Read like bullet-pointed evidence
-- Sound emotionally empty
-- Use fake enthusiasm
-- Use inflated claims
-- Invent ownership history, restoration history, service history, rarity, provenance, or condition claims
-- Use phrases like "buyer confidence notes", "vehicle-specific facts", "general model context", "identity confidence", or similar report language
-
-STYLE RULES
-- Use UK terminology.
-- Write in a natural advert tone.
-- The advert should feel like something a capable seller would actually publish.
-- Let the writing flow naturally.
-- Use some personality in the phrasing, but only where it stays believable.
-- Keep it polished and premium, but not stiff.
-- Avoid sounding like AI-generated copy.
-
-GOOD TONE EXAMPLES
-- "A tidy and practical example"
-- "A smart-looking five-door hatchback"
-- "A well-presented car with sensible mileage"
-- "The interior looks clean and honest in the supplied photos"
-- "A straightforward, usable car that should suit anyone after dependable everyday motoring"
-- "The MOT history appears broadly in keeping with age and mileage"
-
-BAD TONE EXAMPLES
-- "documented mileage progression"
-- "vehicle presents as a solid example"
-- "continued roadworthiness"
-- "usage clues"
-- "identity evidence"
-- "public trace"
-- "prospective buyers should note"
-- "buyer confidence notes"
-- "reasonable inference"
-- "general model context"
-- "roadworthy condition for its age"
-
-SUPPLIED FACTUAL MATERIAL
-
-IDENTITY / DVLA EVIDENCE
-${identitySection || "No identity evidence was supplied."}
-
-MOT / CONDITION HISTORY EVIDENCE
-${motSection || "No MOT or condition-history evidence was supplied."}
-
-PUBLIC WEB / MENTION EVIDENCE
-${webSection || "No web or public-mention evidence was supplied."}
-
-IMAGE ANALYSIS EVIDENCE
-${imageFindings || "No image analysis findings were provided."}
+IMAGES:
+${imageFindings || "None"}
 
 ${getTierInstructions()}
 
-FINAL SELF-CHECK BEFORE WRITING
-Before producing the advert, silently check:
-1. Does this read like a real advert rather than a report?
-2. Does it sound like a human wrote it?
-3. Have I kept it natural without inventing facts?
-4. Have I avoided over-formal language?
-5. Does the car sound appealing in a believable way?
-6. If the evidence is thin, have I kept it concise rather than padded?
-
-OUTPUT RULES
-- Return the advert using the exact headings below.
-- Use "## " headings exactly.
-- Keep the writing natural and flowing under each heading.
-- Bullet points are allowed only where they genuinely improve readability.
-- Do not include any scoring.
-- Do not include any warnings section.
-- Do not include any buyer-advice section.
-- Do not include any confidence section.
-- Do not include any analysis language.
-- Do not mention what has not been verified unless it matters to the credibility of the advert.
-- Make it feel like a proper for-sale listing.
-
-REQUIRED OUTPUT STRUCTURE
+OUTPUT STRUCTURE
 
 ## Headline
-Write a clean, attractive sales headline for the car.
-It should feel like a real advert title.
+Short, clean, like a real advert title.
 
-## Opening Description
-Write a short opening paragraph that introduces the car naturally and makes it sound worth a closer look.
+## Opening
+1 short paragraph. Natural and engaging.
 
-## Full Description
-Write the main body of the advert in natural prose.
-This should feel like the core of a proper sale listing.
-It should be readable, human, and appealing.
+## Description
+Main body.
+Keep it tight and readable.
+No filler.
 
 ## Highlights
-Use bullet points for the strongest supported selling points only.
+Bullet points.
+Only strong, real points.
 
 ## Condition
-Summarise visible condition and presentation naturally.
-Be positive where justified, but keep it believable.
+Natural, honest description.
+No “photos show” wording.
 
 ## History
-Summarise any useful MOT, registration, or background information in a clean and natural way.
-Do not turn this into a report.
+Short and simple.
 
-## Specification
-Include supported facts such as engine size, fuel type, transmission, body style, colour, etc where supplied.
-Do not invent trim/spec details.
+## Spec
+Facts only.
 
-## Final Paragraph
-Finish with a natural closing paragraph that makes the car sound like a worthwhile example and encourages interest without sounding pushy.
+## Closing
+1 short paragraph.
+Clean, confident finish.
+No sales clichés.
 `.trim();
 }
 
