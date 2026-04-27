@@ -21,8 +21,6 @@ EVIDENCE DISCIPLINE
   - REASONABLE INFERENCE
   - GENERAL MODEL CONTEXT
   - UNKNOWN
-- Unknowns should be stated but not over-emphasised.
-- Absence of evidence is not automatically a warning.
 
 BUYER STANCE SYSTEM
 You MUST choose one:
@@ -34,61 +32,84 @@ You MUST choose one:
 5. High-risk example  
 
 RULES:
-- Do NOT default to “Proceed with caution”.
-- Normal used-car checks alone do NOT justify caution.
+- Do NOT default to “Proceed with caution”
+- Normal checks alone do NOT justify caution
 
 RISK WEIGHTING RULES (CRITICAL)
-- Repeated MOT advisories on the same system = meaningful risk
-- Safety-related systems (brakes, suspension, tyres, steering) carry higher weight
-- Multiple recurring issues across systems = cumulative risk
-- High mileage + repeated advisories = increased ownership risk
-- Cosmetic condition must never outweigh mechanical concerns
-
-IMPORTANT:
-- Cars with repeated brake, suspension, or tyre issues must NOT be described as strong or low-risk
-- Do not allow tidy presentation to override risk signals
+- Repeated advisories = meaningful risk
+- Safety systems carry higher weight
+- Multiple issues = cumulative risk
+- Cosmetic condition must NOT outweigh mechanical risk
 
 BUYER SCORE DISCIPLINE
-- Repeated mechanical issues cap score at 6/10 or below
-- Safety-related recurring issues should typically result in 5–6/10
-- Scores above 7/10 require genuinely strong evidence
+- Repeated issues cap score at 6/10
+- Safety issues usually 5–6/10 max
+- 8+ only for genuinely strong cars
 
-ANTI-HALLUCINATION RULES
-Do NOT invent or assume:
-- finance, write-off, accident, or ownership history
-- service or restoration history
-- rarity or provenance
-- exact specification without evidence
-- mechanical or structural condition beyond evidence
+TRAFFIC LIGHT SYSTEM (CRITICAL)
 
-IMAGE ACCURACY RULES (CRITICAL)
-- Images are supporting evidence only
-- Never identify gearbox type unless clearly visible and unambiguous
-- Never say something is missing, broken, modified, or aftermarket unless clearly visible
-- Do not infer trim level, spec, or originality from partial images
-- Do not assume paint mismatch, lowered suspension, or modifications without clear evidence
+Assign ONE overall colour:
 
-Use cautious phrasing:
-- “appears to show”
-- “not clear from images”
-- “cannot be confirmed”
+- GREEN = Low risk, no meaningful recurring issues, evidence broadly strong
+- AMBER = Mixed picture, some concerns or unknowns that require checks
+- RED = Clear risk signals, repeated issues, or significant uncertainty
 
-MOT RULES
-- Focus on patterns, not isolated entries
-- Repeated advisories = meaningful
-- Clean history = positive signal (not proof)
+Rules:
+- Do NOT assign GREEN if:
+  - repeated mechanical advisories exist
+  - safety systems are involved
+  - key identity gaps exist
 
-WEB DATA RULES
-- Only include if meaningful findings exist
-- If no meaningful findings exist, REMOVE the section entirely
+- AMBER should be the most common outcome
+- RED should be used when risks are meaningful, not just possible
+
+The colour must match the evidence — not the tone.
+
+DATE AND AGE ACCURACY
+- Use report date as reference
+- Calculate age properly (no guessing)
+
+MOT LOGIC
+- Latest MOT date + 12 months = likely expiry
+- If unclear, say “likely valid until [month/year]”
+
+VIN RULE
+- Missing VIN = check required, NOT major risk alone
+
+ANTI-HALLUCINATION
+Do NOT invent:
+- finance, write-off, accident, ownership
+- service history
+- exact spec
+
+If unknown, say:
+“not supplied” or “not verified”
+
+IMAGE RULES (CRITICAL)
+- Only state what is clearly visible
+- Do NOT guess gearbox, damage, rust, missing parts
+- Use cautious phrasing:
+  - “appears to show”
+  - “not clear from images”
+
+WEB DATA
+- Only include if meaningful
+- Otherwise remove entirely
 
 WRITING STYLE
-- UK English only (tyre, colour, etc.)
-- Plain English
-- Slightly conversational but professional
-- Avoid robotic phrasing
-- Avoid repeated disclaimers
-- Be concise and useful
+- UK English
+- Clear, concise, human
+- No fluff, no robotic tone
+
+ACCURACY GUARDRAILS
+Before writing, silently confirm:
+- Age correct
+- MOT logic correct
+- No invented claims
+- Image claims are safe
+- Score matches risk
+- Traffic light matches evidence
+- Verdict reflects evidence
 `;
 }
 
@@ -99,103 +120,109 @@ SECTION RULES
 ## Summary
 Start with a blunt one-line judgement.
 
-Then include:
+Then:
 - What this car is
 - What’s good
 - What’s the catch
-- What the buyer should do next
+- What to do next
 
 End with:
 Buyer stance: [chosen stance]
+
+## Buyer Snapshot
+
+Provide:
+
+- Traffic Light: [GREEN / AMBER / RED]
+- Quick Verdict: [one sentence]
+- Buyer Stance: [chosen stance]
+- Buyer Score: X/10
+- Main Reason to Proceed: [one sentence]
+- Main Reason to Pause: [one sentence]
+- Biggest Cost Risk: [one sentence]
+- First Thing I’d Check: [one sentence]
+- Would I Personally Buy This?: [Yes / Yes, with checks / Probably not / No]
+
+Rules:
+- Fast, punchy, high-value
+- Traffic light must align with risk weighting
+- No fluff
 
 ## Buyer Score & Risk Cost
 
 Provide:
 
-- Buyer Score: X/10 (short plain-English explanation)
+- Buyer Score: X/10 (short explanation)
 - Estimated Immediate Risk Cost: £X–£X
 - Likely Spend Timing: Immediate / Soon / Over time
 - Risk Cost Confidence: Low / Medium / High
 
 Rules:
-- Base only on evidence
-- Do not invent faults
-- Use realistic UK pricing
-- If unclear, say “Unable to estimate reliably”
+- No invented faults
+- Realistic UK pricing
+- If unclear: “Unable to estimate reliably”
 
 ## Identity & Production
 - What is confirmed
-- What seems consistent
+- What is consistent
 - What is missing
 - Whether it matters
 
 ## MOT & Condition Pattern Analysis
 - Focus on patterns
-- Clearly explain:
-  - reassuring signs
-  - normal wear
-  - meaningful concerns
+- Apply correct MOT date logic
 
 ## Features & Technical Context
 
 ### Vehicle-Specific Facts
-Only confirmed facts.
-Do NOT state gearbox type, trim level, or spec unless directly confirmed.
+Only confirmed facts
 
 ### General Model Context
-Helpful UK ownership context only.
+Helpful only, not assumed
 
 ## Image-Based Observations
 
 ### Directly Visible
-Only what is unmistakably visible.
+Only clear facts
 
 ### Suggested But Not Confirmed
-Soft observations only.
+Soft observations only
 
 ### Not Assessable
-Keep brief.
+Keep brief
 
 ## Risks, Inconsistencies & Open Questions
 
 Group into:
-- Major (real risk / safety / cost)
-- Moderate (worth checking)
-- Minor (normal used car items)
-
-Rules:
-- Do not inflate minor issues
-- Avoid generic filler risks
+- Major
+- Moderate
+- Minor
 
 ## Recommended Next Steps
-Make practical and useful:
-- what to check
-- what to ask
-- what could cost money
-- negotiation angles
+- What to check
+- What to ask
+- What could cost money
 
 ## Confidence & Limitations
-Keep honest and concise
+- Be honest
+- Do NOT claim checks not performed
 
 ## Final Verdict
-Write like real buying advice.
 
-CRITICAL:
-- Verdict must reflect risk weighting, not tone
-- Repeated mechanical concerns must influence the verdict
+- Must reflect risk weighting
+- No optimism bias
 
 Include:
 
 "Would I personally buy this? Yes / Yes, with checks / Probably not / No"
 
 Rules:
-- “Yes” = strong evidence only
-- “Yes, with checks” = normal used car risks
-- “Probably not” = recurring issues or moderate risk
-- “No” = high-risk or serious concerns
+- Yes = strong
+- Yes with checks = normal risks
+- Probably not = recurring issues
+- No = high risk
 
-Do not over-upgrade a car simply because it is usable.
-Usable does not equal a good buy.
+Usable ≠ good buy
 `;
 }
 
@@ -210,9 +237,7 @@ function buildPrompt({
   webSection,
   imageFindings = "No image analysis findings were provided.",
   notes = "",
-  goal = "",
-  followup_q1 = "",
-  followup_q2 = ""
+  goal = ""
 }) {
   return `
 Write a premium UK vehicle buyer report.
@@ -227,35 +252,28 @@ VEHICLE DETAILS
 USER CONTEXT
 - Notes: ${notes || "None"}
 - Goal: ${goal || "None"}
-- Follow-ups: ${followup_q1 || "None"}, ${followup_q2 || "None"}
-
-STRICT RULES
-- Do not invent facts
-- Do not overstate risk
-- Do not default to caution
-- Be useful, not defensive
 
 SUPPLIED EVIDENCE
 
-IDENTITY DATA:
+IDENTITY:
 ${identitySection || "None"}
 
-MOT DATA:
+MOT:
 ${motSection || "None"}
 
-WEB DATA:
+WEB:
 ${webSection || "None"}
 
-IMAGE DATA:
+IMAGES:
 ${imageFindings}
 
 ${getTierInstructions()}
 ${getTierSectionRules()}
 
 OUTPUT FORMAT
-Use these headings exactly:
 
 ## Summary
+## Buyer Snapshot
 ## Buyer Score & Risk Cost
 ## Identity & Production
 ## MOT & Condition Pattern Analysis
@@ -267,9 +285,9 @@ Use these headings exactly:
 ## Final Verdict
 
 IMPORTANT:
-- Only include "Notable Mentions & Public Presence" if meaningful data exists
-- Do not pad empty sections
-- Keep it sharp, useful, and buyer-focused
+- No empty sections
+- No fluff
+- Must be genuinely useful to a buyer
 `.trim();
 }
 
