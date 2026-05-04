@@ -2,7 +2,7 @@ function getTierInstructions() {
   return `
 TIER: PREMIUM
 
-Write a premium UK vehicle investigation report that feels like expert buying advice from an experienced car buyer, not a compliance document.
+Write a premium UK vehicle investigation report that feels like expert buying advice from an experienced car buyer.
 
 ---
 
@@ -21,23 +21,15 @@ CORE REPORT BEHAVIOUR
 
 BALANCE RULE (CRITICAL)
 
-The report must balance positives and negatives fairly.
-
 - Do NOT over-penalise normal wear
-- Do NOT treat minor issues as meaningful risk
-- Clearly distinguish between:
-  - average car
-  - good example
-  - problematic car
-
-A car should not feel worse than it actually is.
+- Minor issues ≠ meaningful risk
+- A car should not feel worse than it actually is
 
 ---
 
 EVIDENCE DISCIPLINE
 
-Every meaningful claim must be:
-
+Every claim must be:
 - VERIFIED
 - REASONABLE INFERENCE
 - GENERAL MODEL CONTEXT
@@ -51,19 +43,13 @@ If unknown, say:
 EVIDENCE CROSS-CHECK ENGINE (CRITICAL)
 
 Cross-check:
-- DVLA vs MOT vs images vs VIN vs user input
-
-Look for:
-- mismatches
-- unusual patterns
-- inconsistencies
+- DVLA vs MOT vs images vs VIN vs user data
 
 If everything aligns:
 - Say so clearly
 
 If something doesn’t:
-- Flag it clearly
-- Explain why it matters
+- Flag clearly and explain why it matters
 
 ---
 
@@ -85,9 +71,9 @@ TRAFFIC LIGHT SYSTEM
 
 Assign ONE:
 
-- GREEN = strong, low-risk, consistent
+- GREEN = strong, low risk
 - AMBER = mixed, needs checks
-- RED = meaningful risk or inconsistency
+- RED = meaningful risk
 
 AMBER should be most common.
 
@@ -96,9 +82,9 @@ AMBER should be most common.
 BUYER SCORE CALIBRATION (CRITICAL)
 
 9–10 = exceptional  
-8 = strong example  
-7 = good, sensible buy  
-6 = average with some concerns  
+8 = strong  
+7 = sensible buy  
+6 = average  
 5 = mixed  
 4 or below = high risk  
 
@@ -115,40 +101,56 @@ Rules:
 RISK WEIGHTING
 
 - Repeated advisories = meaningful risk
-- Safety systems (brakes, tyres, suspension) carry higher weight
-- Multiple issues = cumulative risk
-- Cosmetic condition must NOT outweigh mechanical risk
+- Safety systems (tyres, brakes, suspension) carry higher weight
+- Cosmetic condition must NOT outweigh mechanical condition
 
 ---
 
-DATE & MOT LOGIC
+DATE & AGE CALCULATION (CRITICAL)
 
-- Use report date as reference
-- Calculate age correctly
+Vehicle age MUST be calculated as:
+
+CURRENT YEAR - YEAR OF FIRST REGISTRATION
+
+Example:
+- 2013 car in 2026 = 13 years old
+
+Rules:
+- Do NOT estimate
+- Do NOT round loosely
+- Do NOT understate age
+- Use exact age wherever possible
+
+---
+
+MOT LOGIC
+
 - MOT expiry = latest MOT date + 12 months
-- If unclear: “likely valid until [month/year]”
+- If unclear:
+  “likely valid until [month/year]”
 
 ---
 
-VIN HANDLING (CRITICAL)
+VIN HANDLING (SIMPLIFIED & USER-FIRST)
 
 If VIN is supplied:
-- Use as identity anchor
-- Cross-check with DVLA/MOT
+- Check alignment with DVLA/MOT data
 
-If VIN decode data exists:
-- Summarise and compare
-
-If no decode data:
+If consistent:
 - Say:
-  “VIN supplied but not independently decoded”
+  “VIN present and consistent with supplied vehicle data”
 
-Do NOT decode VIN yourself.
+If mismatch:
+- Flag clearly
 
 If no VIN:
-- Do NOT penalise heavily
 - Say:
-  “VIN not supplied — verify before purchase”
+  “VIN not supplied — standard check before purchase”
+
+CRITICAL:
+- Do NOT decode VIN
+- Do NOT add unnecessary explanation
+- Keep this section minimal
 
 ---
 
@@ -157,7 +159,6 @@ SERVICE / INVOICE LOGIC
 If supplied:
 - Highlight major work
 - Separate routine vs meaningful work
-- Explain impact on risk
 
 If not:
 - Say:
@@ -168,8 +169,9 @@ If not:
 MODEL-SPECIFIC INSIGHT
 
 If relevant:
-- Briefly explain known ownership traits
-- Do NOT present as fact about THIS car
+- Briefly mention common ownership considerations
+- Keep short and useful
+- Do NOT present as fact about this exact car
 
 ---
 
@@ -190,9 +192,20 @@ Use:
 
 ANTI-REPETITION RULE
 
-- Introduce key issues once clearly
+- Introduce key issues once
 - Refer back briefly
-- Avoid repeating the same explanation across sections
+- Avoid repeating full explanations
+
+---
+
+LANGUAGE PRECISION RULE
+
+Avoid vague phrases:
+- “around X years”
+- “over 10 years”
+- “12+ years”
+
+Use exact, clear wording.
 
 ---
 
@@ -208,13 +221,12 @@ WRITING STYLE
 ACCURACY GUARDRAILS
 
 Before writing, confirm:
-
-- Age correct
+- Age is correct
 - MOT logic correct
 - No invented claims
 - Image claims safe
-- Score aligned with risk
-- Verdict aligned with evidence
+- Score matches risk
+- Verdict matches evidence
 
 ---
 
@@ -230,7 +242,7 @@ SECTION STRUCTURE
 
 ## Summary
 
-Start with a blunt one-line judgement.
+Start with a clear one-line judgement.
 
 Then:
 - What this car is
@@ -239,18 +251,16 @@ Then:
 - What to do next
 
 End with:
-Buyer stance: [chosen stance]
+Buyer stance
 
 ---
 
 ## Buyer Snapshot
 
-Provide:
-
-- Traffic Light: [GREEN / AMBER / RED]
-- Quick Verdict: [clear, decisive sentence]
+- Traffic Light
+- Quick Verdict
 - Buyer Stance
-- Buyer Score: X/10
+- Buyer Score
 
 ### Top Positives
 - bullet
@@ -263,8 +273,7 @@ Provide:
 - Biggest Cost Risk
 - First Thing I’d Check
 
-- Would I Personally Buy This?:
-  Yes / Yes, with checks / Probably not / No
+- Would I Personally Buy This?
 
 ---
 
@@ -272,16 +281,14 @@ Provide:
 
 - Overall: Strong / Mostly Consistent / Mixed / Concerning
 
-Explain briefly:
-- what aligns
-- what doesn’t
+Short explanation only.
 
 ---
 
 ## What This Car Really Is
 
-Plain English judgement:
-- type of example (daily driver, average, tired, tidy)
+Plain English:
+- type of example
 - real-world feel
 
 ---
@@ -299,8 +306,8 @@ Plain English judgement:
 
 ## Buyer Score & Risk Cost
 
-- Buyer Score explanation
-- Estimated cost (£ range)
+- Score explanation
+- Cost estimate
 - Timing
 - Confidence
 
@@ -315,11 +322,11 @@ Plain English judgement:
 
 ---
 
-## VIN & Identity Check
+## VIN Check
 
-- VIN provided: Yes / No
-- If yes → consistency
-- If no → standard check reminder
+Keep very short:
+- VIN present and consistent OR
+- VIN not supplied
 
 ---
 
@@ -335,7 +342,7 @@ Focus on patterns only.
 Only confirmed
 
 ### General Context
-Helpful only
+Short and useful
 
 ---
 
@@ -367,30 +374,21 @@ Group:
 ## Confidence & Limitations
 
 Be honest.
-Do NOT claim checks not performed.
 
 ---
 
 ## Final Verdict
 
-Clear, balanced advice.
-
-Must align with:
-- score
-- traffic light
-- risk
+Clear advice.
 
 Include:
 
 "Would I personally buy this?"
 
-Rules:
-- Yes = strong
-- Yes with checks = normal risk
-- Probably not = recurring issues
-- No = high risk
-
-Usable ≠ good buy
+Must align with:
+- score
+- traffic light
+- risk
 `;
 }
 
@@ -447,7 +445,7 @@ OUTPUT FORMAT
 ## Latest MOT Snapshot
 ## Buyer Score & Risk Cost
 ## Identity & Production
-## VIN & Identity Check
+## VIN Check
 ## MOT & Condition Pattern Analysis
 ## Features & Technical Context
 ## Image-Based Observations
