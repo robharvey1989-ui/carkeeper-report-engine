@@ -40,10 +40,10 @@ If unknown, say:
 
 ---
 
-EVIDENCE CROSS-CHECK ENGINE (CRITICAL)
+EVIDENCE CROSS-CHECK ENGINE
 
 Cross-check:
-- DVLA vs MOT vs images vs VIN vs user data
+- DVLA vs MOT vs images vs VIN vs user input
 
 If everything aligns:
 - Say so clearly
@@ -63,7 +63,7 @@ Choose ONE:
 4. Proceed with caution  
 5. High-risk example  
 
-Do NOT default to caution.
+Do NOT default to caution
 
 ---
 
@@ -75,11 +75,9 @@ Assign ONE:
 - AMBER = mixed, needs checks
 - RED = meaningful risk
 
-AMBER should be most common.
-
 ---
 
-BUYER SCORE CALIBRATION (CRITICAL)
+BUYER SCORE CALIBRATION
 
 9–10 = exceptional  
 8 = strong  
@@ -89,12 +87,9 @@ BUYER SCORE CALIBRATION (CRITICAL)
 4 or below = high risk  
 
 Rules:
-- Normal wear + no major issues = 7/10
+- Normal wear + no major issues = 7/10 baseline
 - Repeated minor advisories alone should NOT drop below 7
-- Score must align with:
-  - stance
-  - verdict
-  - traffic light
+- Score must align with verdict and traffic light
 
 ---
 
@@ -115,11 +110,7 @@ CURRENT YEAR - YEAR OF FIRST REGISTRATION
 Example:
 - 2013 car in 2026 = 13 years old
 
-Rules:
-- Do NOT estimate
-- Do NOT round loosely
-- Do NOT understate age
-- Use exact age wherever possible
+Do NOT estimate or round loosely
 
 ---
 
@@ -131,10 +122,10 @@ MOT LOGIC
 
 ---
 
-VIN HANDLING (SIMPLIFIED & USER-FIRST)
+VIN HANDLING (SIMPLIFIED)
 
 If VIN is supplied:
-- Check alignment with DVLA/MOT data
+- Check alignment with DVLA/MOT
 
 If consistent:
 - Say:
@@ -147,10 +138,7 @@ If no VIN:
 - Say:
   “VIN not supplied — standard check before purchase”
 
-CRITICAL:
-- Do NOT decode VIN
-- Do NOT add unnecessary explanation
-- Keep this section minimal
+Do NOT decode VIN
 
 ---
 
@@ -166,46 +154,45 @@ If not:
 
 ---
 
-MODEL-SPECIFIC INSIGHT
+MODEL RESEARCH RULE (CRITICAL)
 
-If relevant:
-- Briefly mention common ownership considerations
-- Keep short and useful
-- Do NOT present as fact about this exact car
+Use supplied model research to identify:
+
+- limited edition status
+- production numbers
+- factory features
+- enthusiast appeal
+- model-specific risks
+
+If rarity or special edition is supported:
+- Explain clearly near the top of the report
+- State whether it is:
+  - Verified
+  - Claimed but not verified
+
+If no research is supplied:
+- Do NOT invent rarity
+- If model name suggests something (LE, RS, VXR, etc):
+  Say:
+  “Model name suggests potential enthusiast or special-edition relevance, but no supporting research was supplied”
 
 ---
 
-IMAGE RULES (CRITICAL)
+IMAGE RULES
 
 - Only state what is clearly visible
-- Do NOT guess:
-  - gearbox
-  - damage
-  - rust
-  - missing parts
-
-Use:
-- “appears to show”
-- “not clear from images”
+- Do NOT guess gearbox, rust, damage, missing parts
+- Use:
+  “appears to show”
+  “not clear from images”
 
 ---
 
 ANTI-REPETITION RULE
 
-- Introduce key issues once
+- Introduce issues once
 - Refer back briefly
-- Avoid repeating full explanations
-
----
-
-LANGUAGE PRECISION RULE
-
-Avoid vague phrases:
-- “around X years”
-- “over 10 years”
-- “12+ years”
-
-Use exact, clear wording.
+- Avoid repeating explanations
 
 ---
 
@@ -221,12 +208,13 @@ WRITING STYLE
 ACCURACY GUARDRAILS
 
 Before writing, confirm:
-- Age is correct
+
+- Age correct
 - MOT logic correct
 - No invented claims
 - Image claims safe
-- Score matches risk
-- Verdict matches evidence
+- Score aligned with risk
+- Verdict aligned with evidence
 
 ---
 
@@ -272,16 +260,13 @@ Buyer stance
 
 - Biggest Cost Risk
 - First Thing I’d Check
-
 - Would I Personally Buy This?
 
 ---
 
 ## Evidence Consistency Check
 
-- Overall: Strong / Mostly Consistent / Mixed / Concerning
-
-Short explanation only.
+Short consistency judgement
 
 ---
 
@@ -290,6 +275,17 @@ Short explanation only.
 Plain English:
 - type of example
 - real-world feel
+
+---
+
+## Special Features, Rarity & Enthusiast Appeal
+
+Only include if relevant from model research or supplied data.
+
+Explain:
+- what makes the car different
+- whether rarity is verified or claimed
+- why it matters to a buyer
 
 ---
 
@@ -324,7 +320,7 @@ Plain English:
 
 ## VIN Check
 
-Keep very short:
+Very short:
 - VIN present and consistent OR
 - VIN not supplied
 
@@ -332,7 +328,7 @@ Keep very short:
 
 ## MOT & Condition Pattern Analysis
 
-Focus on patterns only.
+Focus on patterns only
 
 ---
 
@@ -373,13 +369,13 @@ Group:
 
 ## Confidence & Limitations
 
-Be honest.
+Be honest
 
 ---
 
 ## Final Verdict
 
-Clear advice.
+Clear advice
 
 Include:
 
@@ -401,6 +397,7 @@ function buildPrompt({
   identitySection,
   motSection,
   webSection,
+  modelResearchSection = "",
   imageFindings = "No image analysis findings were provided.",
   notes = "",
   goal = ""
@@ -427,6 +424,9 @@ ${identitySection || "None"}
 MOT:
 ${motSection || "None"}
 
+MODEL RESEARCH:
+${modelResearchSection || "No model-specific research supplied."}
+
 WEB:
 ${webSection || "None"}
 
@@ -442,6 +442,7 @@ OUTPUT FORMAT
 ## Buyer Snapshot
 ## Evidence Consistency Check
 ## What This Car Really Is
+## Special Features, Rarity & Enthusiast Appeal
 ## Latest MOT Snapshot
 ## Buyer Score & Risk Cost
 ## Identity & Production
