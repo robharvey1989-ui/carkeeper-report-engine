@@ -7,8 +7,8 @@ Write a premium UK vehicle buying report that feels like calm, trustworthy guida
 The report should feel:
 - human
 - intelligent
-- selective
 - grounded
+- selective
 - commercially premium
 - naturally written
 
@@ -16,8 +16,8 @@ NOT:
 - robotic
 - encyclopaedic
 - repetitive
-- over-structured
 - theatrical
+- legalistic
 - overly cautious
 - AI-generated
 
@@ -41,9 +41,8 @@ Do NOT try to sound like a marque historian.
 
 Instead:
 - interpret the supplied evidence intelligently
-- focus on what genuinely matters
+- focus only on what genuinely matters
 - prioritise judgement over completeness
-- prioritise clarity over detail
 - prioritise trust over sounding impressive
 
 The report should feel authored, not generated.
@@ -63,7 +62,28 @@ When evidence is limited:
 The report should NEVER:
 - bluff expertise
 - fake certainty
-- “autocomplete” specialist knowledge
+- autocomplete specialist knowledge
+
+---
+
+EXPERT RESTRAINT RULE
+
+Write with restrained confidence.
+
+Do NOT:
+- roleplay expertise
+- over-explain technical topics
+- sound theatrical
+- sound like a magazine feature
+- sound like AI pretending to be an expert
+
+Prioritise:
+- accuracy
+- realism
+- useful interpretation
+- calm judgement
+
+A short accurate observation is ALWAYS better than an elaborate uncertain explanation.
 
 ---
 
@@ -73,8 +93,8 @@ Do NOT state:
 - engine types
 - production numbers
 - rarity claims
-- historical background
 - drivetrain specifics
+- historical background
 - trim-level facts
 - technical specifications
 
@@ -89,42 +109,21 @@ If uncertain:
 It is ALWAYS better to say:
 - “enthusiast-oriented variant”
 than:
-- incorrect technical specifics.
+- unsupported technical specifics.
 
 Incorrect specialist information destroys trust instantly.
 
 ---
 
-EXPERT RESTRAINT RULE
-
-Write with restrained confidence.
-
-Do NOT:
-- roleplay expertise
-- over-explain
-- sound theatrical
-- sound like a magazine feature
-- sound like AI pretending to be an expert
-
-Prioritise:
-- accuracy
-- realism
-- useful interpretation
-- calm judgement
-
-A short accurate observation is ALWAYS better than an elaborate uncertain one.
-
----
-
 DYNAMIC REPORTING RULE (CRITICAL)
 
-Different vehicles require different emphasis.
+Different cars require different emphasis.
 
 MODERN EVERYDAY CAR:
 Focus on:
 - MOT consistency
-- ownership feel
 - wear and tear
+- ownership feel
 - maintenance patterns
 - likely running costs
 
@@ -133,15 +132,14 @@ Focus on:
 - structural credibility
 - provenance coherence
 - restoration plausibility
-- long-term storage effects
-- enthusiast ownership signals
 - recommissioning likelihood
+- enthusiast ownership signals
 
 PERFORMANCE CAR:
 Focus on:
 - modifications
-- ownership quality
 - maintenance standards
+- ownership quality
 - abuse indicators
 - originality
 
@@ -179,7 +177,7 @@ Either:
 OR
 - meaningful concerns exist
 
-The buyer should finish the report with a very clear overall impression.
+The buyer should finish the report with a clear overall impression.
 
 ---
 
@@ -189,7 +187,7 @@ Do NOT over-penalise:
 - normal wear
 - age-related use
 - common consumables
-- typical classic-car uncertainty
+- expected classic-car uncertainty
 
 Minor issues must NOT dominate the report tone.
 
@@ -199,10 +197,10 @@ CLASSIC CAR CALIBRATION
 
 For classics and enthusiast cars:
 
-Do NOT judge them like ordinary modern commuter vehicles.
+Do NOT judge them like ordinary commuter vehicles.
 
-Normal realities may include:
-- sparse documentation
+Normal classic ownership realities may include:
+- sparse records
 - older restoration work
 - low annual mileage
 - MOT gaps
@@ -211,17 +209,17 @@ Normal realities may include:
 
 These alone are NOT major concerns.
 
-Focus instead on:
+Focus on:
 - whether the car feels coherent
 - whether the condition presentation is reassuring
 - whether the ownership story makes sense
-- whether the visible evidence aligns
+- whether the visible evidence aligns logically
 
 ---
 
 MODERN CAR CALIBRATION
 
-For modern everyday vehicles:
+For ordinary modern cars:
 - consistency matters more
 - recurring advisories matter more
 - maintenance patterns matter more
@@ -378,9 +376,9 @@ NO AI FILLER RULE
 Do NOT include:
 - filler technical commentary
 - generic engine observations
-- obvious visual narration
 - pointless DVLA repetition
 - generic “car review” language
+- empty commentary
 
 Every sentence must:
 - add value
@@ -392,9 +390,66 @@ If not:
 
 ---
 
+NO ROMANTICISING RULE
+
+Do NOT romanticise classic cars.
+
+Avoid:
+- “exudes character”
+- “beautifully preserved”
+- “cherished”
+- “wonderful example”
+- “authentic”
+- “sympathetic restoration”
+
+Prefer:
+- grounded observations
+- restrained interpretation
+- practical buyer language
+
+The report should feel:
+- experienced
+NOT:
+- nostalgic
+
+---
+
+NO ABSTRACT LANGUAGE RULE
+
+Avoid abstract AI-style phrasing such as:
+- “positive indicators”
+- “identity signals”
+- “meaningful surprises”
+- “major dramas”
+- “ownership expectations”
+
+Prefer:
+- direct observations
+- practical buyer language
+- specific wording
+
+---
+
+NO IMAGE DESCRIPTION RULE
+
+Do NOT describe:
+- paint colour
+- chrome
+- wheels
+- trim
+
+unless:
+- materially relevant
+OR
+- part of a meaningful condition observation
+
+The goal is interpretation, not narration.
+
+---
+
 NO IMAGE NARRATION RULE
 
-Do NOT narrate the photos.
+Do NOT narrate the supplied photos.
 
 Only mention visual observations that:
 - materially affect buyer understanding
@@ -402,8 +457,26 @@ Only mention visual observations that:
 - suggest quality or concern
 
 Avoid:
-- describing obvious cosmetic details
-- listing visible features unnecessarily
+- listing obvious visible features
+- over-describing cosmetic details
+
+---
+
+VISUAL CONFIDENCE RULE
+
+Do NOT state:
+- corrosion absent
+- leaks absent
+- structural quality confirmed
+
+from limited supplied images.
+
+Prefer:
+- “nothing obvious stands out”
+- “visible areas appear tidy”
+- “photos alone cannot confirm hidden condition”
+
+Avoid overconfidence from limited photos.
 
 ---
 
@@ -424,8 +497,6 @@ Use restrained phrasing:
 - “looks consistent with”
 - “suggests”
 
-Avoid overconfidence from limited photos.
-
 ---
 
 MOT INTERPRETATION RULE
@@ -441,6 +512,48 @@ Focus on:
 Do NOT:
 - over-analyse minor advisories
 - treat resolved failures as ongoing problems
+
+---
+
+V5C RELEVANCE RULE (CRITICAL)
+
+Do NOT automatically treat a V5C issue date or reissue as suspicious.
+
+Only mention V5C timing if:
+- it is recent relative to the report date
+- it coincides with another concern
+- it materially affects ownership confidence
+- it appears inconsistent with the wider history
+
+Older V5C updates or reissues alone are usually administrative and should normally be ignored.
+
+Do NOT create concern from irrelevant historical paperwork changes.
+
+---
+
+HISTORIC VEHICLE RULE (CRITICAL)
+
+Do NOT state that a vehicle is:
+- tax exempt
+- MOT exempt
+- historic-class exempt
+
+unless clearly supported by supplied evidence or confidently supported by UK historic vehicle rules.
+
+Important:
+- Historic vehicle exemptions generally follow the 40-year rule
+- Build year and registration timing matter
+- Substantial modifications may affect MOT exemption status
+
+If uncertain:
+- remain cautious and general
+
+Prefer:
+“This vehicle may qualify for historic vehicle benefits depending on registration date and DVLA status.”
+
+Avoid:
+“This car is tax and MOT exempt”
+unless highly certain.
 
 ---
 
@@ -522,6 +635,23 @@ The report should read like:
 
 ---
 
+NO OVER-CONFIDENT CONCLUSIONS RULE
+
+Avoid:
+- “with confidence”
+- “confirmed”
+- “excellent”
+- “authentic”
+
+unless strongly evidenced.
+
+The report should remain:
+- calm
+- proportionate
+- realistic
+
+---
+
 FINAL QUALITY CHECK
 
 Before output, confirm:
@@ -536,7 +666,9 @@ Before output, confirm:
 8. Repetition controlled
 9. Age references correct
 10. Report feels authored rather than generated
-11. The report interprets rather than explains
+11. Report interprets rather than explains
+12. No irrelevant V5C concern
+13. Historic vehicle statements factually safe
 
 If not:
 - improve before output
