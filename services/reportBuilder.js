@@ -2,517 +2,412 @@ function getTierInstructions() {
   return `
 TIER: PREMIUM
 
-Write a premium UK vehicle investigation report that feels like clear, practical advice from an experienced UK car buyer.
+Write a premium UK vehicle buying report that feels like an experienced car enthusiast, trader, or specialist is giving honest buyer guidance.
 
-The report should feel:
-- trustworthy
-- balanced
+The report must feel:
 - human
-- grounded
-- useful
-- calm and confident
+- intelligent
+- selective
+- trustworthy
+- naturally written
+- useful to a real buyer
 
 NOT:
 - robotic
-- legalistic
+- templated
 - repetitive
+- legalistic
 - overly cautious
-- overly negative
-- salesy
-- AI-generated
+- padded with filler
 
-The goal is to help the buyer quickly understand:
-- whether the car feels worth pursuing
-- what genuinely matters
-- what should realistically be checked
+The goal is NOT to analyse every possible thing.
 
----
-
-CORE REPORT BEHAVIOUR
-
-- Write like a knowledgeable UK car buyer advising a friend
-- Be practical, direct, and grounded in real ownership experience
-- Be confident without overstating certainty
-- Do NOT invent facts
-- Focus on:
-  - genuine risks
-  - ownership expectations
-  - practical buyer guidance
-  - realistic interpretation
+The goal IS:
+- helping a buyer understand the car properly
+- identifying meaningful strengths
+- identifying meaningful risks
+- helping the buyer decide whether it feels worth pursuing
 
 ---
 
-PRIMARY MESSAGE RULE (CRITICAL)
+CORE REPORT PHILOSOPHY (CRITICAL)
+
+Do NOT try to complete a template.
+
+Instead:
+- write the best report for THIS specific vehicle
+- focus only on what genuinely matters
+- prioritise insight over structure
+
+The report should feel authored, not generated.
+
+---
+
+DYNAMIC REPORTING RULE (CRITICAL)
+
+Different cars require different reporting emphasis.
+
+Examples:
+
+MODERN EVERYDAY CAR:
+Focus on:
+- MOT patterns
+- wear and tear
+- ownership feel
+- likely running costs
+- practical condition
+
+CLASSIC CAR:
+Focus on:
+- structure
+- provenance
+- originality
+- restoration quality
+- enthusiast credibility
+- specialist inspection priorities
+
+ENTHUSIAST / PERFORMANCE CAR:
+Focus on:
+- modifications
+- originality
+- maintenance quality
+- specialist ownership signals
+- driving abuse risk
+- rarity relevance
+
+Do NOT force irrelevant sections onto the report.
+
+---
+
+LESS IS MORE RULE (CRITICAL)
+
+Do NOT add sections simply to fill space.
+
+If something:
+- adds no buyer value
+- repeats another point
+- feels generic
+- sounds AI-generated
+
+remove it.
+
+A shorter, sharper report is better than a longer padded one.
+
+---
+
+PRIMARY MESSAGE RULE
 
 The report must communicate ONE dominant message:
 
 Either:
-- this is fundamentally sound with normal checks required
+- fundamentally sound with normal checks required
 OR
-- this car has meaningful concerns
+- meaningful concerns exist
 
-If the car appears fundamentally sound:
-- reinforce that consistently
-- do NOT allow minor issues to dominate the tone
-
-The buyer should NOT finish the report feeling worried if the evidence does not support that.
+The buyer should finish the report with a very clear overall impression.
 
 ---
 
-BALANCE RULE (CRITICAL)
+BALANCE RULE
 
-- Do NOT over-penalise normal wear
-- Minor issues (e.g. tyres, cosmetic wear, age-related advisories) ≠ meaningful risk
-- Cars with:
-  - clean MOT histories
-  - consistent mileage
-  - coherent identity
-  - normal wear only
+Do NOT over-penalise:
+- normal wear
+- age-related use
+- common consumables
+- expected classic-car uncertainty
 
-should feel:
-- sensible
-- usable
-- straightforward
-- typical for their type and age
-
-NOT:
-- risky
-- questionable
-- concern-heavy
+Minor issues must NOT dominate the report tone.
 
 ---
 
-POSITIVE BASELINE RULE
+CLASSIC CAR CALIBRATION
 
-If the car shows:
-- no major faults
-- normal wear only
-- coherent history
-- sensible ownership signals
+For classics and enthusiast vehicles:
 
-then clearly communicate that.
+Do NOT judge them like modern commuter cars.
 
-Avoid:
-- “nothing special”
-- “just average”
-- dismissive wording
+Classic ownership realities include:
+- sparse history
+- recommissioning
+- older restorations
+- low use
+- MOT gaps
+- undocumented work
 
-Prefer:
-- “sensible”
-- “usable”
-- “straightforward”
-- “solid for its type and age”
+These alone are NOT red flags.
 
----
-
-POSITIVE REINFORCEMENT RULE
-
-If the overall evidence is reassuring:
-- reinforce that consistently across:
-  - Summary
-  - Buyer Snapshot
-  - Final Verdict
-
-The buyer should leave thinking:
-“This looks like a normal, usable car with sensible checks needed.”
-
-NOT:
-“This sounds risky.”
+Focus on:
+- structural integrity
+- coherence
+- originality
+- enthusiast plausibility
+- restoration credibility
+- visible condition quality
 
 ---
 
-VEHICLE TYPE CALIBRATION (CRITICAL)
+MODERN CAR CALIBRATION
 
-Before analysing, mentally classify the car as:
-- everyday car
-- premium modern car
-- enthusiast/performance car
-- classic/collector car
-- specialist vehicle
-
-Apply different weighting depending on category.
-
----
-
-CLASSIC & ENTHUSIAST CALIBRATION
-
-For classics, enthusiast cars, collector vehicles, and performance cars:
-
-- Do NOT judge them using normal used-car assumptions
-- Sparse history, older restorations, recommissioning work, MOT gaps, and mileage uncertainty may be normal
-- Focus more on:
-  - structural integrity
-  - provenance
-  - originality
-  - restoration quality
-  - specialist credibility
-  - enthusiast plausibility
-
-Do NOT allow normal classic-car uncertainty to dominate the tone.
-
----
-
-NORMAL VS MATERIAL RISK RULE
-
-Distinguish clearly between:
-- normal ownership realities
-and
-- meaningful warning signs
-
-Do NOT present:
-- normal consumables
-- age-related uncertainty
-- incomplete older records
-- expected wear
-
-as equivalent to serious risk.
-
-Prioritise:
-- what genuinely affects ownership quality
-- what materially affects value
-- what meaningfully affects safety
+For ordinary modern cars:
+- consistency matters more
+- MOT history matters more
+- maintenance patterns matter more
+- repeated advisories matter more
 
 ---
 
 EVIDENCE DISCIPLINE
 
 Every claim must be:
-- VERIFIED
-- REASONABLE INFERENCE
-- GENERAL MODEL CONTEXT
-- UNKNOWN
+- directly supported
+OR
+- a cautious, clearly reasonable inference
+
+Do NOT:
+- invent
+- speculate
+- over-complete missing information
 
 If unknown:
-- say so briefly
-- do NOT dramatise it
+- either omit entirely
+OR
+- mention briefly and calmly
 
 ---
 
-EVIDENCE CROSS-CHECK ENGINE
+NO OVER-DISCLAIMERING RULE
 
-Cross-check:
-- DVLA
-- MOT history
-- images
-- VIN
-- user-provided details
+Do NOT repeatedly mention:
+- unseen underside
+- unverified mechanical operation
+- missing invoices
+- absent VIN
+- unconfirmed history
 
-If everything aligns:
-- state that confidently
+unless:
+- materially relevant
+OR
+- linked to a meaningful concern
 
-If inconsistencies exist:
-- explain:
-  - what they are
-  - why they matter
-  - whether they appear serious
+Unknown information should be treated neutrally unless warning signs exist.
 
 ---
 
-BUYER STANCE SYSTEM
+BUYER SCORE CALIBRATION
 
-Choose ONE:
+9–10 = exceptional
+8 = strong example
+7 = fundamentally sound and sensible
+6 = average with meaningful compromises
+5 = mixed or concern-heavy
+4 or below = high-risk
 
-1. Strong candidate
-2. Looks reasonable
-3. Worth viewing, but check specific points
-4. Proceed with caution
-5. High-risk example
-
-Rules:
-- Do NOT default to caution
-- Use one stance only
-- Stance must align with tone
+IMPORTANT:
+- a fundamentally sound car should naturally land around 7
+- minor advisories alone must NOT heavily reduce score
+- score must emotionally match wording
 
 ---
 
 TRAFFIC LIGHT SYSTEM
 
-Assign ONE:
-
-- GREEN = strong overall picture
-- AMBER = mostly good but checks advised
-- RED = meaningful concerns
+Assign:
+- GREEN
+- AMBER
+- RED
 
 AMBER should be most common.
 
----
+GREEN requires:
+- reassuring evidence
+- no meaningful concerns
+- coherent ownership picture
 
-BUYER SCORE CALIBRATION (CRITICAL)
-
-9–10 = exceptional
-8 = strong example
-7 = good, sensible used car
-6 = average with meaningful downsides
-5 = mixed or concern-heavy
-4 or below = high risk
-
-CRITICAL RULES:
-- A car with no major faults MUST default to 7/10 baseline
-- Minor recurring advisories MUST NOT reduce score below 7
-- The score must emotionally match the wording
-
-The report must NOT:
-- sound positive while scoring harshly
-- sound harsh while concluding positively
-
-Consistency matters more than strictness.
+RED requires:
+- genuine concern signals
 
 ---
 
-ISSUE WEIGHTING RULE
-
-For minor/common issues:
-- explain properly once
-- briefly reference afterwards only if needed
-
-Do NOT:
-- repeatedly escalate minor issues
-- make tyre wear feel like a major problem through repetition
-
-Repeated mentions should feel lighter, not heavier.
-
----
-
-DATE & AGE ACCURACY (CRITICAL)
-
-Vehicle age must be calculated correctly.
-
-Formula:
-current year - vehicle year
-
-Examples:
-- 2013 car in 2026 = 13 years old
-- 2007 car in 2026 = 19 years old
-
-Rules:
-- NEVER guess age
-- NEVER estimate loosely
-- If uncertain, avoid stating exact age
-
----
-
-MOT LOGIC
-
-- MOT expiry = latest MOT date + 12 months
-- If uncertain:
-  “likely valid until [month/year]”
-
-Historic MOT failures:
-- should be contextualised
-- should NOT dominate if later resolved cleanly
-
----
-
-VIN HANDLING (MINIMAL & PRACTICAL)
-
-If VIN supplied:
-- confirm whether it aligns with supplied vehicle data
-
-If consistent:
-- keep wording brief
-
-If mismatched:
-- explain clearly
-
-Do NOT:
-- decode VIN
-- speculate from VIN
-- over-expand VIN discussion
-
----
-
-SERVICE / INVOICE LOGIC
-
-If service or invoice evidence exists:
-- highlight meaningful work
-- separate:
-  - routine servicing
-  - significant repairs/restoration
-
-If absent:
-- do NOT treat absence itself as suspicious
-
----
-
-SPECIAL MODEL AWARENESS RULE
-
-Watch for:
-- LE
-- RS
-- GTI
-- AMG
-- Type R
-- M Sport
-- Anniversary
-- Heritage
-- Final Edition
-etc.
-
-If the name suggests enthusiast or special-edition relevance:
-- acknowledge it
-- explain why it may matter
-
-BUT:
-- do NOT invent rarity
-- do NOT invent production numbers
-
----
-
-IMAGE RULES (CRITICAL)
-
-Only describe what is clearly visible.
-
-Do NOT guess:
-- gearbox
-- rust
-- accident damage
-- missing parts
-- restoration quality
-
-Use restrained phrasing:
-- “appears to show”
-- “suggests”
-- “not clear from supplied images”
-
-Avoid:
-- over-describing images
-- narrating obvious things
-
----
-
-NATURAL LANGUAGE RULE
-
-Prefer natural UK buyer language over formal report phrasing.
+HUMAN LANGUAGE RULE
 
 Write like:
 - an experienced enthusiast
-- a practical buyer
-- a knowledgeable trader
+- a knowledgeable buyer
+- a respected specialist
 
 NOT:
-- a compliance report
-- a valuation document
-- a generic AI summary
+- an insurance report
+- a compliance document
+- a generic AI output
+
+Use:
+- natural UK phrasing
+- conversational professionalism
+- grounded observations
+
+Avoid:
+- “positive signals”
+- “identity signals”
+- “meaningful surprises”
+- “ideal for”
+- “without expecting surprises”
+- “enthusiasm premiums”
+- “daily driver”
+- “wagon”
+- “sedan”
+
+---
+
+VOCABULARY VARIETY RULE
+
+Avoid repeatedly using:
+- sensible
+- practical
+- straightforward
+- usable
+
+Vary naturally:
+- tidy
+- honest-looking
+- decent example
+- appears cared for
+- normal family car
+- enthusiast-owned feel
+- ordinary in a good way
+- clean-looking
+- coherent example
 
 ---
 
 NO AI FILLER RULE
 
-Avoid filler phrases such as:
-- “ideal for everyday driving needs”
-- “showing typical components”
-- “without expecting surprises”
-- “solid used car”
-- “good condition” unless directly evidenced
-- “well maintained” unless genuinely supported
+Do NOT include:
+- generic engine descriptions
+- obvious explanations
+- filler technical observations
+- pointless DVLA repetition
 
 Every sentence must:
 - add value
 OR
 - improve buyer understanding
 
-If a sentence adds nothing useful:
-- remove it
+If not:
+- remove it.
 
 ---
 
-UK LANGUAGE AUTHENTICITY RULE
+IMAGE RULES
 
-Use natural UK automotive phrasing.
+Only describe:
+- what is clearly visible
 
-Prefer:
-- estate
-- hatchback
-- saloon
-- motorway use
-- family car
-- practical everyday use
+Do NOT guess:
+- rust
+- gearbox
+- originality
+- accident history
+- restoration quality
+
+Use:
+- “appears to show”
+- “suggests”
+- “looks consistent with”
 
 Avoid:
-- wagon
-- sedan
-- daily driver
-- generic American phrasing
+- over-describing photos
+- narrating obvious visual details
 
 ---
 
-HUMAN OBSERVATION RULE
+MOT INTERPRETATION RULE
 
-Observations should feel:
-- grounded
-- concise
-- human
+Interpret MOTs like a human would.
+
+Focus on:
+- recurring patterns
+- worsening trends
+- resolved issues
+- ownership consistency
 
 Do NOT:
-- over-explain obvious details
-- narrate generic vehicle features
-- describe generic engine components unnecessarily
+- over-analyse minor advisories
+- treat resolved historic failures as ongoing risk
 
 ---
 
-ANTI-REPETITION RULE (STRICT)
+AGE ACCURACY RULE (CRITICAL)
 
-Each issue:
-- explained properly once
-- briefly referenced later only if needed
+Only state vehicle age if absolutely certain.
 
-Avoid:
-- repeating tyre concerns
-- repeating MOT caveats
-- repeating VIN caveats
+Formula:
+current year - vehicle year
+
+Before output:
+- verify every age reference
+
+If uncertain:
+- use:
+  “for its age”
+instead of a number
+
+---
+
+SPECIAL MODEL AWARENESS RULE
+
+If the car appears:
+- rare
+- enthusiast-oriented
+- special edition
+- collector-relevant
+
+acknowledge this naturally.
+
+BUT:
+- never invent rarity
+- never invent production numbers
+- never speculate beyond supplied evidence
+
+---
+
+STRUCTURE RULE (IMPORTANT)
+
+The report structure should adapt naturally.
+
+Do NOT force sections that add little value.
+
+Some cars may need:
+- provenance discussion
+- originality discussion
+- rarity discussion
+- modification discussion
+
+Others may not.
 
 The report should feel:
-- tight
-- intentional
-- professionally written
-
----
-
-TONE CONTROL RULE
-
-The report must feel:
-- fair
-- realistic
-- human
-- experienced
+- selective
+- intelligent
+- bespoke to the car
 
 NOT:
-- overly negative
-- overly neutral
-- dismissive
-- defensive
-
----
-
-WRITING STYLE
-
-- UK English
-- Clear
-- Concise
-- Human
-- Calm
-- Professional without sounding corporate
-
-No fluff.
-No filler.
-No unnecessary warnings.
+- mechanically structured
 
 ---
 
 FINAL QUALITY CHECK
 
-Before writing, silently confirm:
+Before output, confirm:
 
-1. Age correct
-2. MOT logic correct
-3. No invented claims
-4. Minor issues not over-weighted
-5. Tone balanced and fair
-6. Score emotionally matches wording
-7. Classic/specialist cars calibrated correctly
+1. Tone feels human
+2. Report feels authored
+3. No obvious AI phrasing
+4. No filler
+5. Score matches tone
+6. Minor issues not overweighted
+7. Classic cars treated appropriately
 8. Repetition controlled
-9. Language sounds naturally British
-10. Final verdict genuinely helps buyer decide
+9. Age references correct
+10. Buyer finishes with a clear opinion
 
 If not:
 - improve before output
@@ -521,234 +416,7 @@ If not:
 
 DECISION RULE
 
-If the buyer finishes the report unsure what your overall opinion is, the report has failed.
-`;
-}
-
-function getTierSectionRules() {
-  return `
-SECTION STRUCTURE
-
-## Summary
-
-Start with a clear one-line judgement.
-
-Then explain:
-- what the car is
-- what looks good
-- what realistically needs checking
-- whether it feels worth pursuing
-
-End with:
-Buyer stance
-
----
-
-## Buyer Snapshot
-
-Include:
-- Traffic Light
-- Quick Verdict
-- Buyer Stance
-- Buyer Score
-
-### Top Positives
-- bullet
-- bullet
-
-### Main Watchpoints
-- bullet
-- bullet
-
-Then:
-- Biggest Cost Risk
-- First Thing I’d Check
-- Would I Personally Buy This?
-
-This section should feel:
-- fast
-- useful
-- decisive
-
----
-
-## What This Car Really Is
-
-Explain:
-- what type of example this is
-- how it appears to have been used
-- what ownership experience it likely represents
-
-This should feel:
-- human
-- observational
-- grounded
-
----
-
-## Special Features, Rarity & Enthusiast Appeal
-
-ONLY include if relevant.
-
-If:
-- enthusiast relevance
-- performance relevance
-- rare trim
-- collector appeal
-- specialist significance
-
-exists or is suggested:
-- explain why it matters
-
-Do NOT invent rarity.
-
----
-
-## Latest MOT Snapshot
-
-Keep:
-- concise
-- practical
-- readable
-
-Focus on:
-- latest MOT
-- advisories
-- meaningful patterns
-- whether overall direction looks stable or worsening
-
----
-
-## Buyer Score & Risk Cost
-
-Explain:
-- why the score fits
-- realistic near-term ownership costs
-
-Keep proportionate.
-
----
-
-## Identity & Production
-
-Keep concise.
-
-Focus on:
-- identity coherence
-- registration consistency
-- relevant production context only
-
-Avoid:
-- unnecessary complexity
-
----
-
-## VIN Check
-
-Very short.
-
-Only:
-- whether VIN aligns
-OR
-- practical recommendation to verify physically
-
----
-
-## MOT & Condition Pattern Analysis
-
-Focus on:
-- meaningful trends
-- recurring issues
-- resolved vs unresolved concerns
-
-Avoid:
-- over-analysing normal wear
-
----
-
-## Features & Technical Context
-
-### Vehicle-Specific Facts
-Only confirmed facts
-
-### General Context
-Useful ownership context only
-
-Keep concise.
-
----
-
-## Image-Based Observations
-
-### Directly Visible
-Only clearly visible facts
-
-### Suggested
-Careful visual inferences only
-
-### Not Assessable
-Keep brief
-
----
-
-## Risks, Inconsistencies & Open Questions
-
-Group:
-- Major
-- Moderate
-- Minor
-
-Only include genuinely relevant points.
-
-Do NOT inflate normal uncertainty into risk.
-
----
-
-## Recommended Next Steps
-
-Focus on:
-- practical inspection advice
-- useful questions to ask
-- physical checks worth doing
-- negotiation leverage if relevant
-
-Should feel:
-- genuinely useful
-- realistic
-- buyer-focused
-
----
-
-## Report Scope & Limitations
-
-Keep:
-- calm
-- short
-- professional
-
-Explain:
-- report based on supplied evidence
-- physical inspection still sensible
-- unknown items treated neutrally unless concerns identified
-
-This section should NOT feel defensive.
-
----
-
-## Final Verdict
-
-Give:
-- clear overall judgement
-- realistic ownership expectation
-- whether you would personally pursue the car
-
-The verdict must:
-- align with score
-- align with traffic light
-- align with report tone
-
-The buyer should finish with:
-- a clear understanding of whether the car feels sensible or risky
+If the report feels like a template, it has failed.
 `;
 }
 
@@ -766,9 +434,10 @@ function buildPrompt({
   goal = ""
 }) {
   return `
-Write a premium UK vehicle buyer report.
+Write a premium UK vehicle buying report.
 
 VEHICLE DETAILS
+
 - Registration: ${registration || "Not provided"}
 - VIN: ${vin || "Not provided"}
 - Make: ${make || "Not provided"}
@@ -776,50 +445,61 @@ VEHICLE DETAILS
 - Year: ${year || "Not provided"}
 
 USER CONTEXT
+
 - Notes: ${notes || "None"}
 - Goal: ${goal || "None"}
 
 SUPPLIED EVIDENCE
 
-IDENTITY:
+IDENTITY / DVLA:
 ${identitySection || "None"}
 
-MOT:
+MOT HISTORY:
 ${motSection || "None"}
 
-WEB:
+WEB / PUBLIC DATA:
 ${webSection || "None"}
 
-IMAGES:
+IMAGE ANALYSIS:
 ${imageFindings}
 
 ${getTierInstructions()}
-${getTierSectionRules()}
 
-OUTPUT FORMAT
+OUTPUT REQUIREMENTS
 
-## Summary
-## Buyer Snapshot
-## What This Car Really Is
-## Special Features, Rarity & Enthusiast Appeal
-## Latest MOT Snapshot
-## Buyer Score & Risk Cost
-## Identity & Production
-## VIN Check
-## MOT & Condition Pattern Analysis
-## Features & Technical Context
-## Image-Based Observations
-## Risks, Inconsistencies & Open Questions
-## Recommended Next Steps
-## Report Scope & Limitations
-## Final Verdict
+The report should feel:
+- premium
+- selective
+- intelligent
+- naturally written
+- genuinely useful
+
+The report should adapt to the vehicle type.
+
+Do NOT force fixed sections if they add little value.
+
+Use only sections genuinely relevant to the vehicle.
+
+Potential sections include:
+- Summary
+- Buyer Snapshot
+- What This Car Really Is
+- Rarity / Enthusiast Context
+- MOT & Ownership Pattern Analysis
+- Visual & Condition Observations
+- Key Risks & Open Questions
+- Recommended Next Steps
+- Report Scope & Limitations
+- Final Verdict
 
 IMPORTANT:
-- No empty sections
 - No fluff
+- No empty sections
 - No legalistic tone
-- No unnecessary negativity
-- Must feel trustworthy, useful, human, and naturally British
+- No filler technical descriptions
+- No robotic repetition
+- No forced structure
+- Must feel like a real expert wrote it
 `.trim();
 }
 
