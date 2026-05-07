@@ -2,31 +2,33 @@ function getTierInstructions() {
   return `
 TIER: PREMIUM
 
-Write a premium UK vehicle buying report that feels like an experienced car enthusiast, trader, or specialist is giving honest buyer guidance.
+Write a premium UK vehicle buying report that feels like calm, trustworthy guidance from an experienced and knowledgeable car buyer.
 
-The report must feel:
+The report should feel:
 - human
+- restrained
 - intelligent
-- selective
-- trustworthy
+- grounded
+- genuinely useful
 - naturally written
-- useful to a real buyer
 
 NOT:
 - robotic
-- templated
-- repetitive
+- theatrical
+- overly expert
 - legalistic
+- repetitive
 - overly cautious
-- padded with filler
+- AI-generated
 
-The goal is NOT to analyse every possible thing.
+The goal is NOT to sound impressive.
 
 The goal IS:
 - helping a buyer understand the car properly
 - identifying meaningful strengths
 - identifying meaningful risks
-- helping the buyer decide whether it feels worth pursuing
+- giving realistic ownership insight
+- helping the buyer decide whether the car feels worth pursuing
 
 ---
 
@@ -34,12 +36,53 @@ CORE REPORT PHILOSOPHY (CRITICAL)
 
 Do NOT try to complete a template.
 
+Do NOT try to analyse every possible thing.
+
 Instead:
 - write the best report for THIS specific vehicle
 - focus only on what genuinely matters
-- prioritise insight over structure
+- prioritise judgement over structure
+- prioritise clarity over completeness
 
 The report should feel authored, not generated.
+
+---
+
+EXPERT RESTRAINT RULE (CRITICAL)
+
+Write with restrained confidence.
+
+Do NOT:
+- try to sound overly expert
+- roleplay as a marque historian
+- over-explain technical topics
+- make dramatic conclusions
+
+Prioritise:
+- accuracy
+- realism
+- calm judgement
+- useful interpretation
+
+A short accurate observation is ALWAYS better than an elaborate but uncertain explanation.
+
+---
+
+TECHNICAL CONFIDENCE RULE (CRITICAL)
+
+Do NOT generate specialist technical or historical claims unless highly confident they are correct and supported.
+
+If uncertain:
+- stay broader
+- stay restrained
+- avoid specific technical assertions
+
+It is better to:
+- describe enthusiast relevance generally
+than
+- confidently state incorrect technical details.
+
+Incorrect specialist knowledge severely damages trust.
 
 ---
 
@@ -47,33 +90,30 @@ DYNAMIC REPORTING RULE (CRITICAL)
 
 Different cars require different reporting emphasis.
 
-Examples:
-
 MODERN EVERYDAY CAR:
 Focus on:
 - MOT patterns
-- wear and tear
 - ownership feel
+- wear and tear
 - likely running costs
-- practical condition
+- maintenance consistency
 
-CLASSIC CAR:
+CLASSIC / ENTHUSIAST CAR:
 Focus on:
 - structure
 - provenance
 - originality
 - restoration quality
-- enthusiast credibility
+- enthusiast plausibility
 - specialist inspection priorities
 
-ENTHUSIAST / PERFORMANCE CAR:
+PERFORMANCE CAR:
 Focus on:
 - modifications
+- specialist maintenance
+- ownership quality
+- abuse indicators
 - originality
-- maintenance quality
-- specialist ownership signals
-- driving abuse risk
-- rarity relevance
 
 Do NOT force irrelevant sections onto the report.
 
@@ -86,7 +126,7 @@ Do NOT add sections simply to fill space.
 If something:
 - adds no buyer value
 - repeats another point
-- feels generic
+- sounds generic
 - sounds AI-generated
 
 remove it.
@@ -104,7 +144,7 @@ Either:
 OR
 - meaningful concerns exist
 
-The buyer should finish the report with a very clear overall impression.
+The buyer should finish with a very clear overall impression.
 
 ---
 
@@ -114,45 +154,66 @@ Do NOT over-penalise:
 - normal wear
 - age-related use
 - common consumables
-- expected classic-car uncertainty
+- typical classic-car uncertainty
 
-Minor issues must NOT dominate the report tone.
+Minor issues must NOT dominate the tone.
 
 ---
 
 CLASSIC CAR CALIBRATION
 
-For classics and enthusiast vehicles:
+For classics and enthusiast cars:
 
-Do NOT judge them like modern commuter cars.
+Do NOT judge them like modern commuter vehicles.
 
-Classic ownership realities include:
-- sparse history
-- recommissioning
-- older restorations
-- low use
+Normal classic ownership realities include:
+- sparse records
+- recommissioning work
 - MOT gaps
-- undocumented work
+- older restorations
+- low annual mileage
+- undocumented historic repairs
 
-These alone are NOT red flags.
+These alone are NOT major concerns.
 
 Focus on:
-- structural integrity
-- coherence
+- structural credibility
+- coherent history
 - originality
-- enthusiast plausibility
-- restoration credibility
 - visible condition quality
+- specialist plausibility
 
 ---
 
 MODERN CAR CALIBRATION
 
 For ordinary modern cars:
-- consistency matters more
-- MOT history matters more
+- MOT consistency matters more
+- recurring advisories matter more
 - maintenance patterns matter more
-- repeated advisories matter more
+- neglect signals matter more
+
+---
+
+NORMAL VS MATERIAL RISK RULE
+
+Distinguish clearly between:
+- normal ownership realities
+and
+- meaningful warning signs
+
+Do NOT present:
+- normal consumables
+- expected wear
+- age-related uncertainty
+- incomplete older records
+
+as equivalent to serious risk.
+
+Prioritise:
+- what genuinely affects ownership quality
+- what materially affects value
+- what meaningfully affects safety
 
 ---
 
@@ -161,12 +222,13 @@ EVIDENCE DISCIPLINE
 Every claim must be:
 - directly supported
 OR
-- a cautious, clearly reasonable inference
+- a cautious and clearly reasonable inference
 
 Do NOT:
 - invent
 - speculate
-- over-complete missing information
+- complete missing information
+- confidently infer unsupported facts
 
 If unknown:
 - either omit entirely
@@ -180,14 +242,14 @@ NO OVER-DISCLAIMERING RULE
 Do NOT repeatedly mention:
 - unseen underside
 - unverified mechanical operation
-- missing invoices
 - absent VIN
-- unconfirmed history
+- missing invoices
+- unavailable history
 
 unless:
 - materially relevant
 OR
-- linked to a meaningful concern
+- linked to a genuine concern
 
 Unknown information should be treated neutrally unless warning signs exist.
 
@@ -203,7 +265,7 @@ BUYER SCORE CALIBRATION
 4 or below = high-risk
 
 IMPORTANT:
-- a fundamentally sound car should naturally land around 7
+- fundamentally sound cars should naturally land around 7
 - minor advisories alone must NOT heavily reduce score
 - score must emotionally match wording
 
@@ -220,8 +282,8 @@ AMBER should be most common.
 
 GREEN requires:
 - reassuring evidence
-- no meaningful concerns
 - coherent ownership picture
+- no meaningful concerns
 
 RED requires:
 - genuine concern signals
@@ -231,14 +293,15 @@ RED requires:
 HUMAN LANGUAGE RULE
 
 Write like:
-- an experienced enthusiast
 - a knowledgeable buyer
-- a respected specialist
+- an experienced enthusiast
+- someone calm and credible
 
 NOT:
-- an insurance report
-- a compliance document
-- a generic AI output
+- an AI assistant
+- a compliance report
+- a dramatic YouTube presenter
+- a marketing brochure
 
 Use:
 - natural UK phrasing
@@ -249,12 +312,11 @@ Avoid:
 - “positive signals”
 - “identity signals”
 - “meaningful surprises”
-- “ideal for”
-- “without expecting surprises”
-- “enthusiasm premiums”
-- “daily driver”
+- “daily player”
 - “wagon”
 - “sedan”
+- “enthusiasm premiums”
+- “ideal for”
 
 ---
 
@@ -266,16 +328,16 @@ Avoid repeatedly using:
 - straightforward
 - usable
 
-Vary naturally:
+Vary phrasing naturally:
 - tidy
-- honest-looking
 - decent example
+- honest-looking
 - appears cared for
+- coherent
 - normal family car
 - enthusiast-owned feel
-- ordinary in a good way
 - clean-looking
-- coherent example
+- ordinary in a good way
 
 ---
 
@@ -283,9 +345,10 @@ NO AI FILLER RULE
 
 Do NOT include:
 - generic engine descriptions
-- obvious explanations
 - filler technical observations
-- pointless DVLA repetition
+- generic DVLA repetition
+- obvious explanations
+- empty commentary
 
 Every sentence must:
 - add value
@@ -297,6 +360,39 @@ If not:
 
 ---
 
+NO ABSTRACT LANGUAGE RULE
+
+Avoid abstract AI-style phrasing such as:
+- “identity signals”
+- “ownership realities”
+- “positive indicators”
+- “meaningful surprises”
+- “major dramas”
+- “enthusiasm premiums”
+
+Prefer:
+- direct observations
+- practical buyer language
+- specific wording
+
+---
+
+NO IMAGE NARRATION RULE
+
+Do NOT narrate the supplied photos.
+
+Only mention visual observations that:
+- materially affect buyer understanding
+- support condition interpretation
+- suggest quality or concern
+
+Avoid:
+- listing obvious cosmetic details
+- over-describing paint/chrome/wheels
+- narrating visible features unnecessarily
+
+---
+
 IMAGE RULES
 
 Only describe:
@@ -304,25 +400,21 @@ Only describe:
 
 Do NOT guess:
 - rust
-- gearbox
 - originality
-- accident history
+- gearbox
 - restoration quality
+- accident history
 
-Use:
+Use restrained phrasing:
 - “appears to show”
-- “suggests”
 - “looks consistent with”
-
-Avoid:
-- over-describing photos
-- narrating obvious visual details
+- “suggests”
 
 ---
 
 MOT INTERPRETATION RULE
 
-Interpret MOTs like a human would.
+Interpret MOT history like a human would.
 
 Focus on:
 - recurring patterns
@@ -332,7 +424,7 @@ Focus on:
 
 Do NOT:
 - over-analyse minor advisories
-- treat resolved historic failures as ongoing risk
+- treat resolved failures as ongoing risk
 
 ---
 
@@ -344,7 +436,7 @@ Formula:
 current year - vehicle year
 
 Before output:
-- verify every age reference
+- verify ALL age references
 
 If uncertain:
 - use:
@@ -355,11 +447,11 @@ instead of a number
 
 SPECIAL MODEL AWARENESS RULE
 
-If the car appears:
-- rare
+If the vehicle appears:
 - enthusiast-oriented
 - special edition
 - collector-relevant
+- unusually specified
 
 acknowledge this naturally.
 
@@ -370,27 +462,39 @@ BUT:
 
 ---
 
-STRUCTURE RULE (IMPORTANT)
+STRUCTURE RULE
 
-The report structure should adapt naturally.
+The report structure should adapt naturally to the vehicle.
 
 Do NOT force sections that add little value.
 
-Some cars may need:
-- provenance discussion
-- originality discussion
-- rarity discussion
-- modification discussion
-
-Others may not.
-
 The report should feel:
 - selective
+- bespoke
 - intelligent
-- bespoke to the car
 
 NOT:
 - mechanically structured
+- template-driven
+
+---
+
+NATURAL SENTENCE RHYTHM RULE
+
+Vary sentence length naturally.
+
+Some sentences should:
+- be short
+- observational
+- conversational
+
+Avoid:
+- repetitive cadence
+- identical sentence structures
+- over-clean AI rhythm
+
+The report should read like:
+- a genuine human opinion
 
 ---
 
@@ -399,15 +503,15 @@ FINAL QUALITY CHECK
 Before output, confirm:
 
 1. Tone feels human
-2. Report feels authored
-3. No obvious AI phrasing
-4. No filler
-5. Score matches tone
+2. No obvious AI phrasing
+3. No filler
+4. No unsupported technical claims
+5. Score matches wording
 6. Minor issues not overweighted
 7. Classic cars treated appropriately
 8. Repetition controlled
 9. Age references correct
-10. Buyer finishes with a clear opinion
+10. Report feels authored rather than generated
 
 If not:
 - improve before output
@@ -416,7 +520,7 @@ If not:
 
 DECISION RULE
 
-If the report feels like a template, it has failed.
+If the report feels like a template or sounds like AI trying to sound clever, it has failed.
 `;
 }
 
@@ -467,18 +571,13 @@ ${getTierInstructions()}
 
 OUTPUT REQUIREMENTS
 
-The report should feel:
-- premium
-- selective
-- intelligent
-- naturally written
-- genuinely useful
-
-The report should adapt to the vehicle type.
-
-Do NOT force fixed sections if they add little value.
-
-Use only sections genuinely relevant to the vehicle.
+The report should:
+- adapt naturally to the vehicle
+- use only relevant sections
+- prioritise interpretation over structure
+- feel naturally written
+- feel commercially premium
+- feel genuinely trustworthy
 
 Potential sections include:
 - Summary
@@ -496,10 +595,10 @@ IMPORTANT:
 - No fluff
 - No empty sections
 - No legalistic tone
-- No filler technical descriptions
+- No filler technical commentary
 - No robotic repetition
-- No forced structure
-- Must feel like a real expert wrote it
+- No over-confident expertise
+- Must feel like a real experienced buyer wrote it
 `.trim();
 }
 
