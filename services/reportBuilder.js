@@ -25,15 +25,10 @@ The buyer should finish the report with:
 - an understanding of what genuinely matters
 - a better decision than emotion alone would make
 
----
-
-CORE PHILOSOPHY (CRITICAL)
-
-Do NOT try to analyse every possible thing.
-
-Do NOT try to complete a template.
-
-Do NOT try to sound impressive.
+CORE PHILOSOPHY:
+Do not try to analyse every possible thing.
+Do not try to complete a template.
+Do not try to sound impressive.
 
 Instead:
 - interpret the supplied evidence intelligently
@@ -42,158 +37,20 @@ Instead:
 - prioritise clarity over completeness
 - prioritise trust over sounding clever
 
-The report should feel:
-- selective
-- authored
-- grounded
-- commercially premium
-
----
-
-THE MOST IMPORTANT RULE
-
-The report must answer this question:
-
-“Does this actually feel like a sensible car to spend time and money pursuing?”
-
-Everything in the report should support answering that question.
-
----
-
-BUYER DECISION ENGINE
-
-The report should actively help the buyer decide:
-
-- Does this feel reassuring or concerning?
-- Does this feel like honest ownership or deferred maintenance?
-- Does this feel cheap for a reason?
-- Does this feel enthusiast-owned?
-- Does this feel like a normal used car?
-- Does this feel like an emotional purchase?
-- Does this feel like a future headache?
-
-Interpretation matters more than raw data.
-
----
-
-CONFIDENT WHEN CERTAIN / RESTRAINED WHEN UNCERTAIN
-
-When evidence is strong:
-- speak clearly
-
-When evidence is limited:
-- stay restrained
-- avoid over-committing
-- avoid fake certainty
-
-Never bluff expertise.
-Never autocomplete missing information.
-Never pretend to know more than the supplied evidence supports.
-
----
-
-NO UNSUPPORTED MODEL KNOWLEDGE RULE (CRITICAL)
-
-Do NOT state:
-- engine types
-- production numbers
-- rarity claims
-- trim specifics
-- historical facts
-- drivetrain details
-- collector significance
-
-unless:
-- directly supplied
-OR
-- extremely well-known and highly certain.
-
-Incorrect enthusiast information destroys trust instantly.
-
-If uncertain:
-- stay broader and calmer.
-
----
-
-LESS IS MORE RULE
-
-Do NOT:
-- pad sections
-- repeat points
-- explain obvious things
-- narrate photos
-- force commentary
-
-Every sentence must:
-- improve buyer understanding
-OR
-- materially affect the buying decision
-
-If not:
-- remove it.
-
-A shorter, sharper report is better than a long AI-generated one.
-
----
-
-MODERN CAR CALIBRATION
-
-For ordinary modern cars:
-focus more on:
-- maintenance consistency
-- MOT patterns
-- ownership feel
-- signs of neglect
-- whether it feels cheap for a reason
-
-Repeated advisories matter more here.
-
----
-
-CLASSIC / ENTHUSIAST CAR CALIBRATION
-
-For classics and enthusiast vehicles:
-focus more on:
-- structural plausibility
-- ownership story
-- restoration credibility
-- enthusiast signals
-- recommissioning likelihood
-- originality clues
-
-Do NOT judge classics like commuter cars.
-
-Sparse records, low mileage, MOT gaps, and occasional use are NOT automatically suspicious.
-
----
-
-PERFORMANCE CAR CALIBRATION
-
-For performance cars:
-focus more on:
-- modification quality
-- ownership behaviour
-- specialist maintenance
-- abuse indicators
-- whether deferred costs may be hiding underneath a cheap price
-
----
-
-SELLER LISTING RULE (CRITICAL)
-
+SELLER LISTING RULE:
 Seller advert wording is extremely important evidence.
 
 If the listing includes:
-- “spares or repairs”
-- “sold as seen”
-- “easy fix”
-- “needs work”
-- “warning light”
-- “injector”
-- “head gasket”
-- “trade sale”
-- “project”
-- “non-runner”
+- spares or repairs
+- sold as seen
+- easy fix
+- needs work
+- warning light
+- injector
+- head gasket
+- trade sale
+- project
+- non-runner
 
 then this MUST strongly affect:
 - overall tone
@@ -203,88 +60,12 @@ then this MUST strongly affect:
 
 Seller-declared faults are stronger evidence than tidy photos.
 
-Do NOT soften known faults.
+PRICE REALITY RULE:
+If asking price is supplied, interpret risk relative to price.
+Do not provide hard valuations unless supported.
+Explain whether known risks feel proportionate to the asking price.
 
----
-
-SELLER PSYCHOLOGY INTERPRETATION
-
-Interpret seller wording like an experienced buyer would.
-
-Examples:
-- vague wording
-- emotional wording
-- defensive wording
-- suspiciously casual wording
-- unrealistic optimism
-
-can all matter.
-
-But:
-- stay calm
-- stay fair
-- avoid sounding cynical or dramatic
-
----
-
-PRICE REALITY RULE
-
-If asking price supplied:
-- interpret risk relative to price
-
-Examples:
-- cheap premium cars
-- cheap projects
-- suspicious bargains
-- emotionally overpriced cars
-
-can all change the buying decision.
-
-Do NOT provide hard valuations unless clearly supported.
-
-Instead:
-explain:
-- whether the risks feel proportionate to the asking price
-- whether the car could quickly become expensive
-
----
-
-EMOTIONAL BUYER PROTECTION RULE
-
-Sometimes buyers emotionally convince themselves a car is fine because:
-- it is cheap
-- it is rare
-- it is nostalgic
-- it looks tidy
-- they want it badly
-
-The report should sometimes gently challenge emotional bias when justified.
-
-Examples:
-- “This feels more like a project gamble than straightforward cheap transport.”
-- “The purchase price may end up being the least expensive part of ownership.”
-- “The cosmetic presentation matters less here than the underlying mechanical condition.”
-
-This is a major part of the product value.
-
----
-
-NO OVER-DISCLAIMERING RULE
-
-Do NOT repeatedly mention:
-- unseen underside
-- missing invoices
-- absent VIN
-- unverified mechanical operation
-
-unless directly relevant.
-
-Unknown information should be treated neutrally unless warning signs exist.
-
----
-
-BUYER SCORE CALIBRATION
-
+BUYER SCORE CALIBRATION:
 9–10 = exceptional
 8 = strong example
 7 = fundamentally reassuring
@@ -292,177 +73,114 @@ BUYER SCORE CALIBRATION
 5 = mixed picture
 4 or below = high-risk
 
-IMPORTANT:
-- fundamentally sound cars should naturally land around 7
-- minor advisories alone should NOT heavily reduce score
-- score MUST emotionally match wording
+TRAFFIC LIGHT:
+GREEN = reassuring evidence and no major concerns
+AMBER = some checks or normal uncertainty
+RED = meaningful unresolved risks, known faults, or serious concerns
 
----
+NO UNSUPPORTED MODEL KNOWLEDGE:
+Do not state engine types, rarity, production numbers, trim facts or historical details unless directly supplied or highly certain.
 
-TRAFFIC LIGHT SYSTEM
+CLASSIC / ENTHUSIAST CALIBRATION:
+Do not judge classics like ordinary commuter cars. Focus on structure, provenance, recommissioning likelihood, originality clues and whether the ownership story makes sense.
 
-Assign:
-- GREEN
-- AMBER
-- RED
+V5C RULE:
+Do not treat old V5C updates as suspicious. Only mention recent or materially relevant V5C changes.
 
-AMBER should be most common.
+HISTORIC VEHICLE RULE:
+Do not confidently state tax/MOT exemption unless supported and factually safe.
 
-GREEN requires:
-- coherent ownership picture
-- reassuring evidence
-- no major concerns
+VISUAL CONFIDENCE:
+Do not claim corrosion, leaks or structural issues are absent from photos. Say “nothing obvious stands out” if appropriate.
 
-RED requires:
-- meaningful unresolved risks
-- known faults
-- major inconsistencies
-- serious ownership concerns
+WRITING STYLE:
+Use natural UK buyer language. No filler. No legalistic tone. No AI phrasing. No needless repetition.
 
----
-
-NO ROMANTICISING RULE
-
-Do NOT romanticise cars.
-
-Avoid:
-- “beautifully preserved”
-- “cherished”
-- “wonderful example”
-- “authentic”
-- “exudes character”
-
-Prefer:
-- grounded observations
-- practical buyer language
-- restrained interpretation
-
----
-
-NO IMAGE NARRATION RULE
-
-Do NOT describe photos unnecessarily.
-
-Only mention visual observations that:
-- materially affect buyer understanding
-- support condition interpretation
-- change risk perception
-
-Avoid:
-- narrating cosmetic details
-- describing obvious features
-- listing paint/chrome/wheels unless genuinely relevant
-
----
-
-VISUAL CONFIDENCE RULE
-
-Do NOT confidently state:
-- corrosion absent
-- leaks absent
-- structural quality confirmed
-
-from limited supplied photos.
-
-Prefer:
-- “nothing obvious stands out”
-- “visible areas appear tidy”
-- “photos alone cannot confirm hidden condition”
-
----
-
-V5C RELEVANCE RULE
-
-Do NOT automatically treat V5C updates as suspicious.
-
-Only mention:
-- recent reissues
-- timing inconsistencies
-- ownership-confidence relevance
-
-Old V5C updates are usually meaningless admin history.
-
----
-
-HISTORIC VEHICLE RULE
-
-Do NOT confidently state:
-- tax exemption
-- MOT exemption
-- historic-class status
-
-unless clearly supported and factually safe.
-
-Historic exemption rules are nuanced.
-
-If uncertain:
-stay broader and cautious.
-
----
-
-AGE ACCURACY RULE
-
-Only state age if absolutely certain.
-
-If uncertain:
-say:
-“for its age”
-instead of giving a number.
-
----
-
-NO AI LANGUAGE RULE
-
-Avoid:
-- “positive signals”
-- “meaningful surprises”
-- “ownership expectations”
-- “identity signals”
-- “major dramas”
-- “daily player”
-- “wagon”
-- “sedan”
-
-Use:
-- calm UK buyer language
-- restrained observations
-- natural phrasing
-
----
-
-THE REPORT SHOULD FEEL LIKE:
-
-A smart, experienced buyer quietly telling a friend:
-
-“This is what actually matters here.”
-
-NOT:
-“Here is every possible thing I can analyse.”
-
----
-
-FINAL QUALITY CHECK
-
-Before output confirm:
-
-1. Does this feel human?
-2. Does this feel commercially premium?
-3. Does this help the buyer decide?
-4. Does this avoid filler?
-5. Does the score match the tone?
-6. Are risks proportionate?
-7. Are classics handled properly?
-8. Are seller-declared faults weighted properly?
-9. Does this interpret rather than explain?
-10. Would a real buyer actually find this useful?
-
-If not:
-improve before output.
-
----
-
-DECISION RULE
-
-If the report feels like AI trying to sound clever or comprehensive, it has failed.
+FINAL CHECK:
+Before output, confirm the report:
+- helps the buyer decide
+- weighs seller-declared faults properly
+- avoids filler
+- avoids unsupported technical claims
+- scores proportionately
+- feels human and useful
 `;
 }
+
+function buildPrompt({
+  registration,
+  vin,
+  make,
+  model,
+  year,
+  identitySection,
+  motSection,
+  webSection,
+  listingSection = "",
+  askingPrice = "",
+  imageFindings = "No image analysis findings were provided.",
+  notes = "",
+  goal = ""
+}) {
+  return `
+Write a premium UK vehicle buying report.
+
+VEHICLE DETAILS
+- Registration: ${registration || "Not provided"}
+- VIN: ${vin || "Not provided"}
+- Make: ${make || "Not provided"}
+- Model: ${model || "Not provided"}
+- Year: ${year || "Not provided"}
+- Asking price: ${askingPrice || "Not provided"}
+
+USER CONTEXT
+- Notes: ${notes || "None"}
+- Goal: ${goal || "None"}
+
+SUPPLIED EVIDENCE
+
+IDENTITY / DVLA:
+${identitySection || "None"}
+
+MOT HISTORY:
+${motSection || "None"}
+
+SELLER LISTING / ADVERT TEXT:
+${listingSection || "No seller advert or listing text supplied."}
+
+WEB / PUBLIC DATA:
+${webSection || "None"}
+
+IMAGE ANALYSIS:
+${imageFindings}
+
+${getTierInstructions()}
+
+OUTPUT REQUIREMENTS
+
+The report should adapt naturally to the vehicle.
+
+Use only sections that genuinely add value.
+
+Useful sections may include:
+- Summary
+- Buyer Snapshot
+- What This Car Really Is
+- Seller Advert Reality Check
+- MOT & Ownership Pattern Analysis
+- Visual & Condition Observations
+- Key Risks & Open Questions
+- Recommended Next Steps
+- Final Verdict
+
+IMPORTANT:
+- No empty sections
+- No filler
+- No forced template
+- No unsupported technical claims
+- Seller-declared faults must strongly influence the conclusion
+- Must feel like a real experienced buyer wrote it
+`.trim();
+}
+
+module.exports = { buildPrompt };
