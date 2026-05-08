@@ -129,14 +129,15 @@ async function analyseSingleImage(image, detail = "low") {
             {
               type: "input_text",
               text: `
-You are analysing a vehicle image for a UK vehicle investigation report.
+You are analysing a vehicle image for a UK vehicle buying report.
 
 Rules:
 - Only describe what is visually supportable from the image.
 - Do not guess hidden mechanical condition.
-- Do not invent provenance or restoration history.
+- Do not invent provenance, restoration history, trim, engine, gearbox, or originality.
+- Do not state rust, leaks, corrosion, accident damage, or structural issues are absent unless clearly visible.
 - Be cautious and specific.
-- Mention if image quality/angle/lighting limits certainty.
+- Mention if image quality, angle, or lighting limits certainty.
 
 Return short structured findings:
 ## Visible Condition
@@ -191,6 +192,13 @@ app.post("/generate-report", async (req, res) => {
     const year = cleanString(body.year);
     const tier = normaliseTier(body.tier);
 
+    // NEW: fields sent from WordPress/functions.php
+    const listingText = cleanString(body.listing_text || body.listingSection || body.listing || "");
+    const askingPrice = cleanString(body.asking_price || body.askingPrice || body.price || "");
+    const sourceType = cleanString(body.source_type || body.sourceType || body.source || "");
+    const reportDate = cleanString(body.report_date || body.reportDate || "");
+    const calculatedAge = cleanString(body.calculated_age || body.calculatedAge || "");
+
     if (!registration && !vin && !(make && model)) {
       return res.status(400).json({
         success: false,
@@ -198,11 +206,33 @@ app.post("/generate-report", async (req, res) => {
       });
     }
 
-    const provided = { registration, vin, make, model, year, tier };
+    const provided = {
+      registration,
+      vin,
+      make,
+      model,
+      year,
+      tier,
+      asking_price: askingPrice,
+      source_type: sourceType,
+      report_date: reportDate,
+      calculated_age: calculatedAge,
+    };
+
     const forwardedDvlaKey = req.headers["x-dvla-api-key"] || "";
     const images = getImagesFromBody(body);
 
-    console.log("REQ:", { registration, tier, imagesCount: images.length });
+    console.log("REQ:", {
+      registration,
+      tier,
+      imagesCount: images.length,
+      asking_price: askingPrice,
+      source_type: sourceType,
+      has_listing_text: Boolean(listingText),
+      listing_text_preview: listingText ? listingText.slice(0, 120) : "",
+      report_date: reportDate,
+      calculated_age: calculatedAge,
+    });
 
     const [dvlaData, motData, searchSummary, imageFindings] = await Promise.all([
       fetchDvlaData(registration, forwardedDvlaKey),
@@ -225,29 +255,37 @@ app.post("/generate-report", async (req, res) => {
       identitySection,
       motSection,
       webSection,
+
+      // NEW: correctly mapped into the prompt
+      listingSection: listingText,
+      askingPrice,
+      sourceType,
+      reportDate,
+      calculatedAge,
+
       imageFindings,
-      notes: "",
-      goal: "",
-      followup_q1: "",
-      followup_q2: "",
+      notes: cleanString(body.notes || ""),
+      goal: cleanString(body.goal || ""),
     });
 
     const response = await client.responses.create({
       model: OPENAI_MODEL,
-   instructions: `
-You are CarKeeper, a UK-focused vehicle investigation system.
+      instructions: `
+You are CarKeeper, a UK-focused vehicle buying decision system.
 
 Rules:
-- Never fabricate facts
-- Use only supplied and retrieved data
-- Clearly distinguish confirmed facts, reasonable inferences, and unknowns
-- Unknowns must be stated clearly
-- Use UK terminology and buyer context
-- Be precise, practical, and investigative
-- Output MUST use multiple "##" headings exactly
-- Follow the requested tier behaviour strictly
+- Never fabricate facts.
+- Use only supplied and retrieved data.
+- Seller advert text is high-priority evidence.
+- Seller-declared faults outweigh tidy photos and historic MOT data.
+- If seller wording says spares/repairs, sold as seen, needs work, non-runner, warning light, injector, gearbox, head gasket, project, or trade sale, treat it as a major buyer-decision factor.
+- Do not invent technical facts, rarity, engine details, production numbers, or VIN decoding.
+- Do not overstate image evidence.
+- Do not treat old V5C updates as suspicious unless recent or linked to another concern.
+- Use UK terminology and buyer context.
+- Be selective, practical, human, and decision-focused.
+- Output MUST use multiple "##" headings.
 `.trim(),
-
       input: prompt,
     });
 
@@ -269,7 +307,15 @@ Rules:
       report: reportText,
       sections,
       meta: provided,
-      debug: { durationMs: Date.now() - startedAt, imagesCount: images.length },
+      debug: {
+        durationMs: Date.now() - startedAt,
+        imagesCount: images.length,
+        hasListingText: Boolean(listingText),
+        askingPrice,
+        sourceType,
+        reportDate,
+        calculatedAge,
+      },
     });
   } catch (err) {
     console.error("ROUTE ERROR:", err);
