@@ -278,17 +278,30 @@ Explain the MOT/mileage/ownership story in plain buyer language.
 Only mention visual observations that affect buyer confidence.
 
 ## Key Risks & Open Questions
-Short bullet list. Focus only on things that matter.
+Use 3-6 concise bullet points, each starting with a short plain-text label.
 
 ## Recommended Next Steps
-Practical, specific checks. No generic waffle.
+Use a numbered list of practical, specific checks. No generic waffle.
 
 ## Final Verdict
-Give a clear answer. Include:
+Give a clear answer in 1-2 short paragraphs. Include:
 - whether it is worth pursuing
 - what type of buyer it suits
 - what would change your mind
 - the final Buyer Score and Traffic Light again
+
+---
+
+BASIC COPY-AND-PASTE FORMAT (IMPORTANT)
+
+Write in basic copy-and-paste form with clean plain text:
+- Keep sentences punchy and readable.
+- Prefer short paragraphs (1-3 sentences).
+- Use simple headings and compact phrasing.
+- For Buyer Snapshot fields, keep each answer to one concise sentence.
+- Avoid markdown styling tricks, rich formatting, or decorative symbols.
+- Avoid long walls of text.
+- Make the report feel premium, confident, and easy to scan.
 
 ---
 
