@@ -32,6 +32,7 @@ The report must feel:
 - evidence-led
 - easy to scan
 - premium enough to justify a paid report
+- more like an experienced buyer's judgement than a data dump
 
 Avoid:
 - generic AI phrasing
@@ -41,6 +42,8 @@ Avoid:
 - dramatic warnings
 - vague “proceed with caution” language
 - repeating the same point in different sections
+- sounding like a compliance document
+- summarising without interpreting
 
 The buyer should finish thinking:
 “I understand what this car really is, what matters, and what I should do next.”
@@ -64,6 +67,9 @@ VEHICLE DETAILS:
 
 USER CONTEXT:
 ${notes || "None"}
+
+REPORT GOAL:
+${goal || "Help the buyer decide whether this specific car is worth pursuing, negotiating on, or avoiding."}
 
 IDENTITY / DVLA:
 ${identitySection || "None"}
@@ -93,6 +99,8 @@ ABSOLUTE RULES
 - Do not make the report feel defensive.
 - Do not mention V5C updates unless recent and genuinely relevant.
 - Use supplied calculated age exactly. Do not calculate age yourself.
+- Be proportionate. Normal used-car uncertainty is normal.
+- If evidence is mixed, explain what changes the buying decision.
 
 ---
 
@@ -102,14 +110,14 @@ The report must include a clear Buyer Snapshot section using this exact structur
 
 ## Buyer Snapshot
 
-Traffic Light: GREEN / AMBER / RED  
-Buyer Score: X/10  
-Buyer Stance: Strong candidate / Looks reasonable / Worth viewing with checks / Repair project / Proceed carefully / High-risk example  
-Quick Verdict: One clear sentence.  
-Main Reason to Proceed: One sentence.  
-Main Reason to Pause: One sentence.  
-Biggest Cost Risk: One sentence.  
-First Thing I’d Check: One sentence.  
+Traffic Light: GREEN / AMBER / RED
+Buyer Score: X/10
+Buyer Stance: Strong candidate / Looks reasonable / Worth viewing with checks / Repair project / Proceed carefully / High-risk example
+Quick Verdict: One clear sentence.
+Main Reason to Proceed: One sentence.
+Main Reason to Pause: One sentence.
+Biggest Cost Risk: One sentence.
+First Thing I’d Check: One sentence.
 Would I Personally Buy This?: Yes / Yes, with checks / Maybe, at the right price / Probably not / No
 
 Scoring guide:
@@ -125,6 +133,7 @@ Important:
 - A normal used car with normal checks is usually 6.5-7.5, not automatically 6.
 - Seller-declared faults, repeated mechanical issues, serious MOT concerns or inconsistent identity should reduce the score.
 - The score must emotionally match the verdict.
+- Keep every Buyer Snapshot answer concise and punchy.
 
 ---
 
@@ -206,6 +215,8 @@ Good:
 Bad:
 “The paint is black and the seats are cloth.”
 
+When photos help, explain what they do and do not add to confidence.
+
 ---
 
 CLASSIC / ENTHUSIAST RULE
@@ -253,14 +264,17 @@ Prefer:
 - “unusual pattern”
 - “normal used-car uncertainty”
 
+Write with strong judgement and clean structure.
+Make each section feel worth reading.
+
 ---
 
 OUTPUT STRUCTURE
 
-Use these sections, in this order:
+Use these sections, in this exact order:
 
 ## Summary
-A short, useful overview. No more than 2 paragraphs.
+A short, useful overview. No more than 2 paragraphs. The first paragraph should immediately frame the buying proposition.
 
 ## Buyer Snapshot
 Use the exact Buyer Snapshot format given above.
@@ -299,6 +313,7 @@ Write in basic copy-and-paste form with clean plain text:
 - Prefer short paragraphs (1-3 sentences).
 - Use simple headings and compact phrasing.
 - For Buyer Snapshot fields, keep each answer to one concise sentence.
+- For risks and next steps, keep bullets short and practical.
 - Avoid markdown styling tricks, rich formatting, or decorative symbols.
 - Avoid long walls of text.
 - Make the report feel premium, confident, and easy to scan.
