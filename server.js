@@ -240,7 +240,7 @@ app.post("/generate-report", async (req, res) => {
       searchVehicleWebPresence({ registration, make, model, year }),
       analyseVehicleImages(images, tier),
     ]);
-
+console.log("DVLA DATA RETURNED:", dvlaData);
     const identitySection = buildDvlaSection(dvlaData, provided);
     const motSection = buildMotSection(motData);
     const webSection = buildWebSection(searchSummary, tier);
