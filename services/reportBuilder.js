@@ -250,6 +250,24 @@ Explain whether the supplied vehicle identity appears consistent and reassuring.
 Do not overstate DVLA data as proof of ownership quality or mechanical condition.
 
 ━━━━━━━━━━━━━━━━━━
+TAX STATUS RULE
+━━━━━━━━━━━━━━━━━━
+
+Interpret UK vehicle tax correctly.
+
+Vehicle tax does not transfer to a new keeper when a vehicle is sold.
+
+If a car is shown as taxed, do not treat that as a major buying advantage because the buyer will still need to tax it after purchase.
+
+If a car is SORN, mention it only where relevant:
+- it may indicate the vehicle is not currently in regular road use
+- it will need to be taxed before road use
+- it may make a proper test drive harder unless the seller arranges legal road use
+
+Do not overstate SORN as a fault.
+
+Do not treat current tax status as evidence of mechanical condition, ownership quality or roadworthiness.
+━━━━━━━━━━━━━━━━━━
 KNOWN MODEL WEAKNESS RULE
 ━━━━━━━━━━━━━━━━━━
 
@@ -279,6 +297,33 @@ IMPORTANT:
 - Present them as ownership considerations worth verifying.
 - Only mention genuinely relevant known issues.
 
+━━━━━━━━━━━━━━━━━━
+CATEGORY-SPECIFIC RISK RULE
+━━━━━━━━━━━━━━━━━━
+
+Prioritise risks that genuinely matter for the specific vehicle category.
+
+For performance, prestige and luxury vehicles, focus on:
+- major servicing
+- suspension systems
+- gearbox maintenance
+- known model weaknesses
+- ownership quality
+- evidence of specialist care
+- high-cost deferred maintenance
+
+Do not over-emphasise normal consumables such as tyres, brake pads or routine servicing unless evidence suggests neglect, unsafe condition or imminent meaningful cost.
+
+For ordinary family cars, focus on:
+- safety-critical wear
+- service history
+- MOT consistency
+- timing belt/chain risk
+- diesel suitability
+- clutch/gearbox condition
+- value for money
+
+For classics, enthusiast cars and utility vehicles, interpret age-related wear in context.
 ━━━━━━━━━━━━━━━━━━
 OLDER VEHICLE NORMALISATION RULE
 ━━━━━━━━━━━━━━━━━━
