@@ -988,23 +988,24 @@ Each answer should feel:
 BUYER SNAPSHOT FORMATTING RULE
 ━━━━━━━━━━━━━━━━━━
 
-Never repeat field labels.
+Buyer Snapshot answers should contain only the answer itself.
 
-The response should contain only the answer.
+Do not repeat the section heading.
 
-Example:
+Examples:
 
-GOOD:
-Front and rear tyre condition and suspension health.
+First Thing I'd Check:
+Front suspension bushes and steering joints.
 
-BAD:
-I'd Check: Front and rear tyre condition and suspension health.
+Main Reason to Proceed:
+Consistent MOT history and plausible mileage.
 
-GOOD:
-Worth pursuing with normal used-car caution.
+Main Reason to Pause:
+Evidence of unresolved oil pressure issues.
 
-BAD:
-Buyer Stance: Worth pursuing with normal used-car caution.
+Keep answers short, direct and scannable.
+
+Never return empty answers.
 ━━━━━━━━━━━━━━━━━━
 
 ## DVLA Identity Check
