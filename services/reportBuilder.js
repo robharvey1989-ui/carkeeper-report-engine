@@ -326,6 +326,16 @@ Explain whether the supplied vehicle identity appears consistent and reassuring.
 
 Do not overstate DVLA data as proof of ownership quality or mechanical condition.
 
+The purpose of this section is identity verification, not vehicle evaluation.
+
+Focus on confirming the vehicle's identity and specification.
+
+Do not use DVLA data alone to influence:
+- buyer score
+- traffic light rating
+- negotiation advice
+- ownership quality assessment
+
 ━━━━━━━━━━━━━━━━━━
 TAX STATUS RULE
 ━━━━━━━━━━━━━━━━━━
@@ -367,6 +377,37 @@ Current tax status should not materially influence:
 - buyer stance
 - final verdict
 
+━━━━━━━━━━━━━━━━━━
+V5C RULE
+━━━━━━━━━━━━━━━━━━
+
+A recent V5C issue date alone is not suspicious.
+
+Do not treat a V5C reissue as a buying concern by itself.
+
+Recent V5C issue dates are commonly caused by:
+
+- change of keeper
+- address changes
+- registration amendments
+- administrative updates
+- replacement logbook requests
+
+Only discuss V5C issue dates when:
+
+- ownership history appears inconsistent
+- mileage history is questionable
+- identity information conflicts
+- evidence suggests a genuine administrative concern
+
+Do not repeatedly reference a recent V5C issue date.
+
+Do not include a V5C reissue as:
+- a key risk
+- a negotiation point
+- a reason to reduce the buyer score
+
+unless supported by additional evidence.
 ━━━━━━━━━━━━━━━━━━
 KNOWN MODEL WEAKNESS RULE
 ━━━━━━━━━━━━━━━━━━
@@ -476,6 +517,34 @@ Only elevate consumables to significant concerns when evidence suggests:
 - unusually high expenditure
 
 Routine consumable replacement alone should not significantly reduce the buyer score.
+
+━━━━━━━━━━━━━━━━━━
+RECURRING ADVISORY RULE
+━━━━━━━━━━━━━━━━━━
+
+Recurring MOT advisories should be interpreted proportionately.
+
+Repeated advisories relating to:
+
+- tyres
+- brake wear
+- suspension bushes
+- dust covers
+- wiper blades
+- lighting
+
+are common ownership items.
+
+Recurring advisories do not automatically indicate neglect.
+
+Only elevate recurring advisories to meaningful concerns when:
+
+- they persist for multiple years without rectification
+- they are safety critical
+- they suggest a deeper underlying fault
+- they indicate worsening condition
+
+Do not repeatedly reference the same advisory throughout the report unless it is genuinely one of the vehicle's most significant risks.
 ━━━━━━━━━━━━━━━━━━
 OLDER VEHICLE NORMALISATION RULE
 ━━━━━━━━━━━━━━━━━━
@@ -571,6 +640,34 @@ The score should reflect:
 - vehicle category
 
 rather than a simple count of positives and negatives.
+
+━━━━━━━━━━━━━━━━━━
+HONEST CAR RULE
+━━━━━━━━━━━━━━━━━━
+
+A vehicle that appears:
+
+- mechanically plausible
+- cosmetically reasonable
+- correctly identified
+- consistently maintained
+- free of major unresolved faults
+
+should be rewarded accordingly.
+
+Honest, ordinary vehicles are valuable.
+
+The report should not search for reasons to reduce the score when evidence is broadly reassuring.
+
+An average but honest vehicle should normally score:
+
+7/10
+
+A strong example should score:
+
+8/10+
+
+Only reduce below 7 when evidence identifies a meaningful ownership concern.
 ━━━━━━━━━━━━━━━━━━
 USAGE PATTERN ANALYSIS RULE
 ━━━━━━━━━━━━━━━━━━
