@@ -246,6 +246,20 @@ GOOD:
 
 BAD:
 "The vehicle has specialist servicing."
+
+━━━━━━━━━━━━━━━━━━
+MISSING INFORMATION RULE
+━━━━━━━━━━━━━━━━━━
+
+Treat missing information proportionately.
+
+Missing advert text means fewer seller claims are available to verify, but it is not a fault.
+
+Do not write as though missing advert text makes the car suspicious.
+
+If other evidence is reassuring, say the missing advert limits context, then continue judging from DVLA, MOT, images, price and vehicle type.
+
+Never make missing optional information the main reason for a low score.
 ━━━━━━━━━━━━━━━━━━
 AUTHORITY RULE
 ━━━━━━━━━━━━━━━━━━
@@ -745,6 +759,37 @@ Score according to:
 not simply mileage or MOT advisories.
 
 ━━━━━━━━━━━━━━━━━━
+SCORING CALIBRATION OVERRIDE
+━━━━━━━━━━━━━━━━━━
+
+Score the vehicle based on the actual evidence, not on missing optional information.
+
+Missing seller advert text, missing service history, missing VIN, or limited photos should reduce confidence only slightly unless there are other warning signs.
+
+Do NOT lower the score simply because advert text was not supplied.
+
+If the MOT history is clean or broadly normal, DVLA identity is consistent, mileage is plausible, images show no major concerns, and no serious faults are declared, the vehicle should usually score at least 7/10.
+
+Use this guide:
+
+8-9:
+Strong evidence, clean history, good condition, no meaningful concerns.
+
+7-7.5:
+Solid used vehicle with normal wear, plausible mileage, no major unresolved issues, and manageable near-term maintenance.
+
+6-6.5:
+Average vehicle with several concerns, weak evidence, repeated advisories, or uncertain maintenance history that meaningfully affects confidence.
+
+5 or below:
+Clear risk, unresolved faults, inconsistent identity, serious MOT issues, major mechanical concerns, or poor value.
+
+A vehicle should not receive 6/10 merely for being ordinary.
+
+Ordinary but honest cars with normal wear should usually be 7/10, not 6/10.
+
+Only score 6/10 when there is a specific reason the buyer should be notably cautious.
+━━━━━━━━━━━━━━━━━━
 WRITING STYLE
 ━━━━━━━━━━━━━━━━━━
 
@@ -900,6 +945,7 @@ Buyer Score: X/10
 Traffic Light: GREEN / AMBER / RED
 
 Nothing should appear after this.
+The final Buyer Score must match the tone of the report. If the written report describes the vehicle as honest, sound, broadly reassuring, and worth pursuing, the score should normally be 7/10 or higher unless a clear unresolved risk is identified.
 
 ━━━━━━━━━━━━━━━━━━
 FORMATTING RULES
