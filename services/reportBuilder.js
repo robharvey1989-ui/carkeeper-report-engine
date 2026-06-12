@@ -984,28 +984,23 @@ Each answer should feel:
 - emotionally clear
 - instantly scannable
 
-━━━━━━━━━━━━━━━━━━
-BUYER SNAPSHOT FORMATTING RULE
-━━━━━━━━━━━━━━━━━━
+BUYER SNAPSHOT FORMAT RULE
 
-Buyer Snapshot answers should contain only the answer itself.
+Use this exact format:
 
-Do not repeat the section heading.
+Traffic Light: [value]
+Buyer Score: [value]
+Buyer Stance: [value]
+Quick Verdict: [value]
+Main Reason to Proceed: [value]
+Main Reason to Pause: [value]
+Biggest Cost Risk: [value]
+First Thing I'd Check: [value]
+Would I Personally Buy This?: [value]
 
-Examples:
-
-First Thing I'd Check:
-Front suspension bushes and steering joints.
-
-Main Reason to Proceed:
-Consistent MOT history and plausible mileage.
-
-Main Reason to Pause:
-Evidence of unresolved oil pressure issues.
-
-Keep answers short, direct and scannable.
-
-Never return empty answers.
+Do not alter these labels.
+Do not remove colons.
+Do not change formatting.
 ━━━━━━━━━━━━━━━━━━
 
 ## DVLA Identity Check
