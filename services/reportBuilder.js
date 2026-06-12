@@ -498,25 +498,34 @@ Only discuss them where genuinely relevant to the specific vehicle.
 CONSUMABLES RULE
 ━━━━━━━━━━━━━━━━━━
 
-Do not over-emphasise routine consumables.
+Do not treat routine consumables as major risks.
 
-Items such as:
+Examples:
+
 - tyres
 - brake pads
 - brake discs
+- wiper blades
 - batteries
 - servicing
 
 are normal ownership costs.
 
-Only elevate consumables to significant concerns when evidence suggests:
+Routine consumable replacement alone should not:
 
-- neglect
-- unsafe condition
-- immediate replacement
-- unusually high expenditure
+- become a deal breaker
+- become the main reason to pause
+- significantly reduce the buyer score
+- dominate the report narrative
 
-Routine consumable replacement alone should not significantly reduce the buyer score.
+Only elevate consumables when:
+
+- immediate replacement is required
+- safety is affected
+- costs are unusually high
+- repeated evidence suggests deeper underlying faults
+
+Consumables should normally be discussed once and then referenced briefly if necessary.
 
 ━━━━━━━━━━━━━━━━━━
 RECURRING ADVISORY RULE
@@ -668,6 +677,26 @@ A strong example should score:
 8/10+
 
 Only reduce below 7 when evidence identifies a meaningful ownership concern.
+
+━━━━━━━━━━━━━━━━━━
+ORDINARY CAR RULE
+━━━━━━━━━━━━━━━━━━
+
+Do not search for reasons to downgrade a vehicle simply because it is ordinary.
+
+An honest, average family car with:
+
+- plausible mileage
+- consistent MOT history
+- no major unresolved faults
+- no identity concerns
+- reasonable condition
+
+is a positive outcome.
+
+Ordinary vehicles can still be good buys.
+
+The report should reward honesty and consistency.
 ━━━━━━━━━━━━━━━━━━
 USAGE PATTERN ANALYSIS RULE
 ━━━━━━━━━━━━━━━━━━
@@ -959,19 +988,23 @@ Each answer should feel:
 BUYER SNAPSHOT FORMATTING RULE
 ━━━━━━━━━━━━━━━━━━
 
-Keep Buyer Snapshot entries concise.
+Never repeat field labels.
 
-Do not repeat field labels within responses.
+The response should contain only the answer.
 
 Example:
 
 GOOD:
-"Front suspension bushes and steering joints."
+Front and rear tyre condition and suspension health.
 
 BAD:
-"I'd Check: Front suspension bushes and steering joints."
+I'd Check: Front and rear tyre condition and suspension health.
 
-The Buyer Snapshot should feel fast, sharp and instantly scannable.
+GOOD:
+Worth pursuing with normal used-car caution.
+
+BAD:
+Buyer Stance: Worth pursuing with normal used-car caution.
 ━━━━━━━━━━━━━━━━━━
 
 ## DVLA Identity Check
