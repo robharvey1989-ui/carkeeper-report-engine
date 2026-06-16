@@ -250,6 +250,21 @@ BAD:
 "The vehicle has specialist servicing."
 
 ━━━━━━━━━━━━━━━━━━
+SELLER MOTIVE RULE
+━━━━━━━━━━━━━━━━━━
+
+Do not infer seller intentions, honesty or motives unless explicitly stated.
+
+Avoid assumptions such as:
+
+- seller is upgrading
+- seller is losing interest
+- seller is enthusiastic
+- seller is concealing faults
+- seller is trustworthy
+
+Assess only the claims and evidence supplied.
+━━━━━━━━━━━━━━━━━━
 MISSING INFORMATION RULE
 ━━━━━━━━━━━━━━━━━━
 
@@ -498,32 +513,35 @@ Only discuss them where genuinely relevant to the specific vehicle.
 CLASSIC CAR MILEAGE RULE
 ━━━━━━━━━━━━━━━━━━
 
-For classic vehicles, especially those built before widespread use of six-digit odometers:
+For classic vehicles built before 1990:
 
-Do not automatically assume recorded mileage represents genuine lifetime mileage.
+Never assume recorded mileage represents genuine lifetime mileage.
 
-Mileage readings may be affected by:
+Recorded mileage may be affected by:
 
 - odometer rollover
 - replacement instruments
 - restoration work
 - incomplete historic records
 
-When evidence is insufficient:
+Unless explicit evidence exists:
 
-Use wording such as:
+Do not describe a classic vehicle as:
+
+- low mileage
+- very low mileage
+- exceptionally low mileage
+- genuine low mileage
+- low-use example
+
+Instead use wording such as:
 
 "The recorded mileage is low, although true lifetime mileage cannot be verified."
 
-Avoid describing classic vehicles as:
+Mileage should not be used as a major positive factor in scoring classic vehicles unless supported by documentation or provenance.
 
-- genuine low-mileage examples
-- exceptionally low-mileage survivors
-- confirmed low-mileage cars
+Condition, maintenance evidence, restoration quality and ownership history are more important than recorded mileage.
 
-unless strong supporting evidence exists.
-
-For classic vehicles, condition, maintenance history, restoration quality and ownership evidence should be weighted more heavily than mileage alone.
 ━━━━━━━━━━━━━━━━━━
 CONSUMABLES RULE
 ━━━━━━━━━━━━━━━━━━
