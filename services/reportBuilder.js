@@ -338,26 +338,60 @@ Do not use DVLA data alone to influence:
 - negotiation advice
 - ownership quality assessment
 
+The purpose of the DVLA Identity Check section is to confirm identity and specification only.
+
+Focus on:
+
+- registration
+- make
+- model
+- colour
+- fuel type
+- engine size
+- year
+
+Do not discuss:
+
+- tax status
+- MOT status
+- ownership quality
+- maintenance quality
+- buyer suitability
+
+These belong elsewhere in the report.
+
 ━━━━━━━━━━━━━━━━━━
 TAX STATUS RULE
 ━━━━━━━━━━━━━━━━━━
 
-Do not mention vehicle tax status unless the vehicle is SORN.
+Ignore vehicle tax status completely.
 
-Vehicle tax does not transfer to a new keeper and is not a buying advantage.
+Do not mention:
 
-Do not discuss:
-- taxed status
-- untaxed status
-- tax expiry dates
+- taxed
+- untaxed
 - tax due dates
+- tax expiry dates
 
-Do not use tax status to influence:
-- buyer score
-- traffic light rating
-- buyer stance
-- final verdict
+Do not include tax information in:
 
+- DVLA Identity Check
+- Summary
+- Ownership Expectations
+- Negotiation Position
+- Risks
+- Final Verdict
+- Buyer Snapshot
+
+Tax does not transfer to a new keeper and is not relevant to assessing condition, value or ownership quality.
+
+The only exception is where the vehicle is SORN.
+
+If the vehicle is SORN:
+
+Briefly explain that the vehicle is not currently taxed for road use.
+
+In all other cases, omit tax information entirely.
 ━━━━━━━━━━━━━━━━━━
 V5C RULE
 ━━━━━━━━━━━━━━━━━━
@@ -459,6 +493,37 @@ Focus on:
 Do not present known model issues as confirmed faults.
 
 Only discuss them where genuinely relevant to the specific vehicle.
+
+━━━━━━━━━━━━━━━━━━
+CLASSIC CAR MILEAGE RULE
+━━━━━━━━━━━━━━━━━━
+
+For classic vehicles, especially those built before widespread use of six-digit odometers:
+
+Do not automatically assume recorded mileage represents genuine lifetime mileage.
+
+Mileage readings may be affected by:
+
+- odometer rollover
+- replacement instruments
+- restoration work
+- incomplete historic records
+
+When evidence is insufficient:
+
+Use wording such as:
+
+"The recorded mileage is low, although true lifetime mileage cannot be verified."
+
+Avoid describing classic vehicles as:
+
+- genuine low-mileage examples
+- exceptionally low-mileage survivors
+- confirmed low-mileage cars
+
+unless strong supporting evidence exists.
+
+For classic vehicles, condition, maintenance history, restoration quality and ownership evidence should be weighted more heavily than mileage alone.
 ━━━━━━━━━━━━━━━━━━
 CONSUMABLES RULE
 ━━━━━━━━━━━━━━━━━━
