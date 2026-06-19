@@ -32,6 +32,36 @@ app.use(
 
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
+/* -------------------- vehicle history check -------------------- */
+
+async function fetchVehicleHistoryCheck(registration) {
+  const apiKey = process.env.CHECKCARDETAILS_API_KEY;
+
+  if (!apiKey || !registration) {
+    return null;
+  }
+
+  const vrm = String(registration).replace(/\s+/g, "").toUpperCase();
+
+  const url =
+    `https://api.checkcardetails.co.uk/vehicledata/carhistorycheck?apikey=${encodeURIComponent(apiKey)}&vrm=${encodeURIComponent(vrm)}`;
+
+  try {
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error("Vehicle History Check failed:", response.status, errorText);
+      return null;
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Vehicle History Check error:", error);
+    return null;
+  }
+}
+
 app.get("/", (_req, res) => {
   res.json({ ok: true, service: "carkeeper-report-engine" });
 });
@@ -234,16 +264,23 @@ app.post("/generate-report", async (req, res) => {
       calculated_age: calculatedAge,
     });
 
-    const [dvlaData, motData, searchSummary, imageFindings] = await Promise.all([
+    const [dvlaData, motData, vehicleHistoryData, searchSummary, imageFindings] = await Promise.all([
       fetchDvlaData(registration, forwardedDvlaKey),
       fetchMotData(registration),
+      fetchVehicleHistoryCheck(registration),
       searchVehicleWebPresence({ registration, make, model, year }),
       analyseVehicleImages(images, tier),
     ]);
-console.log("DVLA DATA RETURNED:", dvlaData);
+
+    console.log("DVLA DATA RETURNED:", dvlaData);
+
     const identitySection = buildDvlaSection(dvlaData, provided);
     const motSection = buildMotSection(motData);
     const webSection = buildWebSection(searchSummary, tier);
+
+    const vehicleHistorySection = vehicleHistoryData
+      ? JSON.stringify(vehicleHistoryData, null, 2)
+      : "No vehicle history check data supplied.";
 
     const prompt = buildPrompt({
       registration,
@@ -255,6 +292,7 @@ console.log("DVLA DATA RETURNED:", dvlaData);
       identitySection,
       motSection,
       webSection,
+      vehicleHistorySection,
 
       // NEW: correctly mapped into the prompt
       listingSection: listingText,
@@ -306,34 +344,35 @@ Rules:
       tier,
       report: reportText,
       sections,
-    meta: {
-  registration,
-  vin: vin || "",
-  make: dvlaData?.make || make || "",
-  model: dvlaData?.model || model || "",
-  year,
+      meta: {
+        registration,
+        vin: vin || "",
+        make: dvlaData?.make || make || "",
+        model: dvlaData?.model || model || "",
+        year,
 
-  colour: dvlaData?.colour || "",
-  fuelType: dvlaData?.fuelType || "",
-  engineCapacity: dvlaData?.engineCapacity || "",
-  firstRegistered: dvlaData?.monthOfFirstRegistration || "",
-  motStatus: dvlaData?.motStatus || "",
-  taxStatus: dvlaData?.taxStatus || "",
-  taxDueDate: dvlaData?.taxDueDate || "",
-  yearOfManufacture: dvlaData?.yearOfManufacture || "",
-  co2Emissions: dvlaData?.co2Emissions || "",
-  euroStatus: dvlaData?.euroStatus || "",
+        colour: dvlaData?.colour || "",
+        fuelType: dvlaData?.fuelType || "",
+        engineCapacity: dvlaData?.engineCapacity || "",
+        firstRegistered: dvlaData?.monthOfFirstRegistration || "",
+        motStatus: dvlaData?.motStatus || "",
+        taxStatus: dvlaData?.taxStatus || "",
+        taxDueDate: dvlaData?.taxDueDate || "",
+        yearOfManufacture: dvlaData?.yearOfManufacture || "",
+        co2Emissions: dvlaData?.co2Emissions || "",
+        euroStatus: dvlaData?.euroStatus || "",
 
-  tier,
-  asking_price: askingPrice,
-  source_type: sourceType,
-  report_date: reportDate,
-  calculated_age: calculatedAge,
-},
+        tier,
+        asking_price: askingPrice,
+        source_type: sourceType,
+        report_date: reportDate,
+        calculated_age: calculatedAge,
+      },
       debug: {
         durationMs: Date.now() - startedAt,
         imagesCount: images.length,
         hasListingText: Boolean(listingText),
+        hasVehicleHistoryCheck: Boolean(vehicleHistoryData),
         askingPrice,
         sourceType,
         reportDate,
