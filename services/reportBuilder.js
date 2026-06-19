@@ -411,6 +411,16 @@ Do not invent history check results.
 
 Only discuss history items that are actually supplied in the vehicle history data.
 
+A clean vehicle history check is a major positive buying factor.
+
+If the vehicle history check confirms no finance, no stolen marker, no insurance write-off/category marker, no plate-change concern and no mileage discrepancy, this should materially improve buyer confidence.
+
+Clean provenance should normally carry more weight than routine MOT advisories for tyres, wipers, bulbs, brake wear or other consumables.
+
+If adverse history is present, it should heavily influence the report.
+
+If history is clean, state it clearly once, then use it to inform the overall confidence, score and final verdict.
+
 ━━━━━━━━━━━━━━━━━━
 TAX STATUS RULE
 ━━━━━━━━━━━━━━━━━━
@@ -447,17 +457,20 @@ In all other cases, omit tax information entirely.
 V5C RULE
 ━━━━━━━━━━━━━━━━━━
 
-Do not mention V5C issue dates unless there is a clear supporting concern.
+Do not mention V5C issue dates in the report unless there is a clear identity, mileage or ownership inconsistency.
 
-A recent V5C issue date alone is routine DVLA administration.
+If a V5C issue date is routine or unremarkable, omit it entirely.
 
-Only discuss V5C dates when:
-- identity information conflicts
-- mileage history is questionable
-- ownership history appears inconsistent
-- evidence suggests a genuine administrative concern
+Do not say that a V5C issue date is "unremarkable", "routine", "not suspicious" or "worth checking" unless there is a genuine supporting concern.
 
-Never include a V5C date as a key risk, negotiation point or scoring factor by itself.
+Never include a V5C date as:
+- a key risk
+- an open question
+- a negotiation point
+- a recommended next step
+- a scoring factor
+
+Only discuss V5C issue dates when they materially affect the buying decision.
 ━━━━━━━━━━━━━━━━━━
 KNOWN MODEL WEAKNESS RULE
 ━━━━━━━━━━━━━━━━━━
@@ -636,6 +649,53 @@ Only elevate recurring advisories to meaningful concerns when:
 - they indicate worsening condition
 
 Do not repeatedly reference the same advisory throughout the report unless it is genuinely one of the vehicle's most significant risks.
+
+━━━━━━━━━━━━━━━━━━
+HISTORICAL ADVISORY STATUS RULE
+━━━━━━━━━━━━━━━━━━
+
+Do not assume historical MOT advisories are still present.
+
+An advisory from a previous MOT may have been repaired, replaced or resolved.
+
+When discussing older advisories, use cautious wording such as:
+
+- "previously noted"
+- "worth checking"
+- "should be confirmed"
+- "may have been resolved"
+
+Only treat an advisory as a current concern when:
+
+- it appears on the latest MOT
+- it has repeated across multiple recent MOTs
+- image evidence supports it
+- seller information confirms it
+- the issue appears unresolved
+
+Do not use historical advisories alone as strong negotiation leverage.
+
+Do not significantly reduce the buyer score based only on old advisories that may no longer apply.
+
+━━━━━━━━━━━━━━━━━━
+ADVISORY WEIGHTING RULE
+━━━━━━━━━━━━━━━━━━
+
+Recurring advisories must not become the primary story of the vehicle unless they represent:
+
+- a safety-critical issue
+- an unresolved major defect
+- repeated failures over multiple years
+- evidence of neglect
+- significant likely cost
+
+Tyres, brake wear, wiper blades, bulbs, suspension bushes and similar wear items should normally be discussed once.
+
+Do not repeat the same advisory across multiple sections.
+
+The report should focus on the biggest buying decision factors rather than the most frequently occurring MOT advisory.
+
+A clean vehicle history check, consistent mileage history, clean identity verification and absence of finance/write-off/stolen markers are generally more important than routine consumable advisories.
 
 ━━━━━━━━━━━━━━━━━━
 PRIMARY STORY RULE
@@ -931,6 +991,20 @@ Focus on:
 - cosmetic condition
 - likely upcoming spend
 
+Only present a negotiation point strongly when evidence suggests the issue is current.
+
+Use softer language for historical or uncertain issues.
+
+GOOD:
+"Previous brake advisories make it worth confirming whether the brakes have since been replaced."
+
+BAD:
+"Use the brake advisories to negotiate."
+
+If an issue may have been resolved, frame it as a question to ask rather than a reason to reduce the offer.
+
+Do not use a clean vehicle history check as a negotiation concern. It should improve confidence, not reduce it.
+
 ━━━━━━━━━━━━━━━━━━
 UPCOMING OWNERSHIP COSTS RULE
 ━━━━━━━━━━━━━━━━━━
@@ -1023,6 +1097,8 @@ A vehicle should not receive 6/10 merely for being ordinary.
 Ordinary but honest cars with normal wear should usually be 7/10, not 6/10.
 
 Only score 6/10 when there is a specific reason the buyer should be notably cautious.
+
+A clean vehicle history check with no finance, no stolen marker and no write-off/category marker should normally lift buyer confidence and may justify a higher score where the remaining concerns are routine maintenance only.
 ━━━━━━━━━━━━━━━━━━
 WRITING STYLE
 ━━━━━━━━━━━━━━━━━━
@@ -1109,6 +1185,22 @@ Would I Personally Buy This?: [value]
 Do not alter these labels.
 Do not remove colons.
 Do not change formatting.
+
+Buyer Snapshot should prioritise the strongest decision-making factors.
+
+For Top Positives, prioritise:
+- clean vehicle history check
+- no finance
+- no write-off/category marker
+- no stolen marker
+- clean identity
+- consistent mileage
+- strong service evidence
+- reassuring seller evidence
+
+For Potential Deal Breakers, do not list routine consumables unless they are severe, current or safety-critical.
+
+Do not describe minor tyre wear, wiper blades, bulbs or routine wear items as "deal breakers" unless evidence suggests immediate safety risk.
 ━━━━━━━━━━━━━━━━━━
 
 ## DVLA Identity Check
