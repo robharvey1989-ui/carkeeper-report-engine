@@ -7,6 +7,7 @@ function buildPrompt({
   identitySection,
   motSection,
   webSection,
+  vehicleHistorySection = "",
   listingSection = "",
   askingPrice = "",
   sourceType = "",
@@ -113,6 +114,9 @@ ${identitySection || "None"}
 
 MOT HISTORY:
 ${motSection || "None"}
+
+VEHICLE HISTORY CHECK:
+${vehicleHistorySection || "No vehicle history check data supplied."}
 
 SELLER ADVERT / LISTING:
 ${listingSection || "No seller advert text supplied."}
@@ -374,6 +378,38 @@ Do not discuss:
 - buyer suitability
 
 These belong elsewhere in the report.
+
+━━━━━━━━━━━━━━━━━━
+VEHICLE HISTORY CHECK RULE
+━━━━━━━━━━━━━━━━━━
+
+If vehicle history check data is supplied, treat it as high-priority evidence.
+
+Clearly identify:
+
+- outstanding finance
+- insurance write-off/category markers
+- stolen markers
+- mileage discrepancies
+- keeper history concerns
+- plate changes
+
+If no adverse markers are present:
+
+State this clearly.
+
+Vehicle history data should strongly influence:
+
+- Buyer Score
+- Traffic Light
+- Negotiation Position
+- Final Verdict
+
+Outstanding finance, theft markers and insurance write-off status should be considered major decision-making factors.
+
+Do not invent history check results.
+
+Only discuss history items that are actually supplied in the vehicle history data.
 
 ━━━━━━━━━━━━━━━━━━
 TAX STATUS RULE
@@ -1076,6 +1112,8 @@ Do not change formatting.
 ━━━━━━━━━━━━━━━━━━
 
 ## DVLA Identity Check
+
+## Vehicle History Check
 
 ## What This Car Really Is
 
