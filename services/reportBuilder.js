@@ -6,9 +6,11 @@ function buildPrompt({
   year,
   identitySection,
   motSection,
-  webSection,
-  vehicleHistorySection = "",
-  listingSection = "",
+   webSection,
+ vehicleHistorySection = "",
+ vehicleValuationSection = "",
+ latestMotMileage = "",
+ listingSection = "",
   askingPrice = "",
   sourceType = "",
   reportDate = "",
@@ -118,8 +120,13 @@ ${motSection || "None"}
 VEHICLE HISTORY CHECK:
 ${vehicleHistorySection || "No vehicle history check data supplied."}
 
+VEHICLE VALUATION:
+${vehicleValuationSection || "No vehicle valuation data supplied."}
+
+LATEST MOT MILEAGE USED FOR VALUATION:
+${latestMotMileage || "Not supplied"}
+
 SELLER ADVERT / LISTING:
-${listingSection || "No seller advert text supplied."}
 
 WEB / PUBLIC DATA:
 ${webSection || "None"}
@@ -421,6 +428,34 @@ If adverse history is present, it should heavily influence the report.
 
 If history is clean, state it clearly once, then use it to inform the overall confidence, score and final verdict.
 
+━━━━━━━━━━━━━━━━━━
+VEHICLE VALUATION RULE
+━━━━━━━━━━━━━━━━━━
+
+If vehicle valuation data is supplied, treat it as important buying evidence.
+
+Use valuation data to assess whether the asking price appears:
+
+- excellent value
+- fairly priced
+- slightly expensive
+- significantly overpriced
+
+Compare the asking price against the most appropriate valuation figure:
+
+- For dealer/forecourt sales, compare mainly against DealerForecourt.
+- For private sales, compare mainly against PrivateClean and PrivateAverage.
+- For part-exchange/trade context, use PartExchange, TradeAverage and Auction only as background context.
+
+Explain the difference in plain English.
+
+Do not treat valuation data as absolute truth.
+
+Condition, mileage, service history, specification, vehicle history and seller evidence should still influence the value judgement.
+
+If valuation data appears old, missing, incomplete or unsuitable, say this briefly and do not over-rely on it.
+
+Do not invent valuations.
 ━━━━━━━━━━━━━━━━━━
 TAX STATUS RULE
 ━━━━━━━━━━━━━━━━━━
@@ -1303,6 +1338,8 @@ Do not describe minor tyre wear, wiper blades, bulbs or routine wear items as "d
 ## DVLA Identity Check
 
 ## Vehicle History Check
+
+## Vehicle Valuation
 
 ## What This Car Really Is
 
