@@ -65,9 +65,71 @@ async function fetchVehicleHistoryCheck(registration) {
 app.get("/", (_req, res) => {
   res.json({ ok: true, service: "carkeeper-report-engine" });
 });
+async function fetchVehicleValuation(registration, mileage) {
+  const apiKey = process.env.CHECKCARDETAILS_API_KEY;
+
+  if (!apiKey || !registration || !mileage) {
+    return null;
+  }
+
+  const vrm = String(registration).replace(/\s+/g, "").toUpperCase();
+  const cleanMileage = String(mileage).replace(/[^\d]/g, "");
+
+  if (!cleanMileage) {
+    return null;
+  }
+
+  const url =
+    `https://api.checkcardetails.co.uk/vehicledata/vehiclevaluation?apikey=${encodeURIComponent(apiKey)}&vrm=${encodeURIComponent(vrm)}&mileage=${encodeURIComponent(cleanMileage)}`;
+
+  try {
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error("Vehicle Valuation failed:", response.status, errorText);
+      return null;
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Vehicle Valuation error:", error);
+    return null;
+  }
+}
 
 /* -------------------- helpers -------------------- */
 
+function extractLatestMotMileage(motData) {
+  const records =
+    motData?.motTests ||
+    motData?.mot_tests ||
+    motData?.tests ||
+    motData?.MOTTests ||
+    [];
+
+  if (!Array.isArray(records) || !records.length) {
+    return "";
+  }
+
+  const sorted = records
+    .filter((test) => test)
+    .sort((a, b) => {
+      const dateA = new Date(a.completedDate || a.testDate || a.date || 0).getTime();
+      const dateB = new Date(b.completedDate || b.testDate || b.date || 0).getTime();
+      return dateB - dateA;
+    });
+
+  const latest = sorted[0] || {};
+  const mileage =
+    latest.odometerValue ||
+    latest.odometer_value ||
+    latest.mileage ||
+    latest.OdometerValue ||
+    "";
+
+  return String(mileage).replace(/[^\d]/g, "");
+}
 function extractOutputText(resp) {
   if (!resp) return "";
   if (typeof resp.output_text === "string" && resp.output_text.trim()) return resp.output_text.trim();
@@ -271,6 +333,9 @@ app.post("/generate-report", async (req, res) => {
       searchVehicleWebPresence({ registration, make, model, year }),
       analyseVehicleImages(images, tier),
     ]);
+    
+    const latestMotMileage = extractLatestMotMileage(motData);
+const vehicleValuationData = await fetchVehicleValuation(registration, latestMotMileage);
 
     console.log("DVLA DATA RETURNED:", dvlaData);
 
@@ -282,6 +347,9 @@ app.post("/generate-report", async (req, res) => {
       ? JSON.stringify(vehicleHistoryData, null, 2)
       : "No vehicle history check data supplied.";
 
+    const vehicleValuationSection = vehicleValuationData
+  ? JSON.stringify(vehicleValuationData, null, 2)
+  : "No vehicle valuation data supplied.";
     const prompt = buildPrompt({
       registration,
       vin,
@@ -293,6 +361,8 @@ app.post("/generate-report", async (req, res) => {
       motSection,
       webSection,
       vehicleHistorySection,
+      vehicleValuationSection,
+      latestMotMileage,
 
       // NEW: correctly mapped into the prompt
       listingSection: listingText,
