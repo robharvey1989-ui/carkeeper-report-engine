@@ -343,9 +343,14 @@ const vehicleValuationData = await fetchVehicleValuation(registration, latestMot
     const motSection = buildMotSection(motData);
     const webSection = buildWebSection(searchSummary, tier);
 
-    const vehicleHistorySection = vehicleHistoryData
-      ? JSON.stringify(vehicleHistoryData, null, 2)
-      : "No vehicle history check data supplied.";
+   const vehicleHistorySection = vehicleHistoryData
+  ? JSON.stringify(vehicleHistoryData, null, 2)
+  : "No vehicle history check data supplied.";
+
+console.log("======================================");
+console.log("RAW VEHICLE HISTORY DATA:");
+console.log(JSON.stringify(vehicleHistoryData, null, 2));
+console.log("======================================");
 
     const vehicleValuationSection = vehicleValuationData
   ? JSON.stringify(vehicleValuationData, null, 2)
