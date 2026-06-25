@@ -1548,7 +1548,7 @@ Keep this section balanced and helpful rather than negative.
 
 ## Recommended Next Steps
 
-## Final Verdict
+## Final Verdict - Would I Buy This Vehicle?
 
 The report MUST end after Final Verdict.
 
