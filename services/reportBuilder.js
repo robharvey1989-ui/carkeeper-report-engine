@@ -1155,6 +1155,26 @@ The Quick Verdict MUST be a genuine concise verdict sentence.
 Never write “See report”.
 
 ━━━━━━━━━━━━━━━━━━
+REPETITION RULE
+━━━━━━━━━━━━━━━━━━
+
+Avoid repeating the same advice, concern or recommendation across multiple sections.
+
+Each section should add new value and new insight.
+
+If a point has already been explained fully in an earlier section, later sections should briefly reference it rather than repeating it.
+
+For example:
+
+- Buyer Snapshot should summarise the key decision factors.
+- MOT Analysis should explain MOT trends only.
+- Negotiation Position should focus only on negotiation opportunities.
+- Key Risks & Open Questions should list only unresolved concerns.
+- Final Verdict should summarise the buying decision without repeating the full report.
+
+If two sections would contain substantially the same information, rewrite one so that it contributes something different.
+
+━━━━━━━━━━━━━━━━━━
 BUYER SNAPSHOT RULE
 ━━━━━━━━━━━━━━━━━━
 
