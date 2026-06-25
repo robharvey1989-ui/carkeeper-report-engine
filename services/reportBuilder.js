@@ -127,6 +127,7 @@ LATEST MOT MILEAGE USED FOR VALUATION:
 ${latestMotMileage || "Not supplied"}
 
 SELLER ADVERT / LISTING:
+${listingSection || "No seller advert text supplied."}
 
 WEB / PUBLIC DATA:
 ${webSection || "None"}
@@ -1550,7 +1551,7 @@ Keep this section balanced and helpful rather than negative.
 
 ## Final Verdict - Would I Buy This Vehicle?
 
-The report MUST end after Final Verdict.
+The report MUST end after the About This Report section.
 
 DO NOT:
 - add disclaimers afterwards
