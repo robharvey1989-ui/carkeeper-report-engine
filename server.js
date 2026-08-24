@@ -271,7 +271,7 @@ async function analyseVehicleImages(images, tier) {
 
 /* -------------------- main route -------------------- */
 
-app.post("/generate-report", async (req, res) => {
+async function generateReportHandler(req, res) {
   const startedAt = Date.now();
 
   try {
@@ -461,7 +461,26 @@ Rules:
       error: err?.message || "Report generation failed",
     });
   }
-});
+}
+
+function requirePluginToken(req, res, next) {
+  const expected = process.env.CARKEEPER_PLUGIN_TOKEN || "";
+  if (!expected) {
+    return res.status(503).json({ success: false, error: "Plugin access is not configured." });
+  }
+  const auth = String(req.headers.authorization || "");
+  const supplied = auth.startsWith("Bearer ") ? auth.slice(7).trim() : "";
+  if (!supplied || supplied !== expected) {
+    return res.status(401).json({ success: false, error: "Unauthorised." });
+  }
+  next();
+}
+
+// Existing website endpoint. Kept unchanged for backwards compatibility.
+app.post("/generate-report", generateReportHandler);
+
+// Protected endpoint for the ChatGPT/MCP integration.
+app.post("/plugin/generate-report", requirePluginToken, generateReportHandler);
 
 /* -------------------- ALWAYS JSON on unhandled errors -------------------- */
 
