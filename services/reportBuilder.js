@@ -37,8 +37,10 @@ MOT, MILEAGE AND CONDITION
 - Compare advertised mileage with the latest MOT reading and date. Calculate the exact difference. A later higher reading may be normal driving since the MOT; do not call a material difference rounding. A decrease needs a factual dated comparison, not an invented legal correction or database explanation.
 - A consistent sequence of recorded mileages is not proof that mileage is genuine. Say the available readings are consistent, identify gaps and compare the advert reading; never certify mileage authenticity.
 - Historic advisories alone do not establish deferred maintenance, present faults or imminent replacement. Describe recurrence factually and ask for repair evidence or inspection.
-- Average annual mileage does not establish urban, motorway, balanced, enthusiast or previous-owner usage. If calculating an average, use the supplied dates/age and arithmetic accurately. Otherwise omit it.
+- Do not calculate or quote annual mileage averages. Use dated recorded readings and their exact differences; do not infer driving patterns.
 - For pre-1990 classics, do not equate low recorded mileage with lifetime mileage; discuss rollover/instrument replacement as possibilities only.
+- Do not infer tint legality from photos or raise it as a routine concern. Only discuss a specifically supported relevant defect.
+- Do not certify legal ownership/title from marker checks or call the vehicle well-maintained/reasonably maintained from its appearance or MOT history.
 - Report only photographed areas. No whole-vehicle conclusions about absence of rust, corrosion, leaks or accident damage. If photos were absent or analysis failed, do not invent visual findings.
 - Model-specific maintenance guidance requires supplied evidence identifying the relevant variant and supporting the guidance. Present it as a check, not a confirmed defect. Do not invent model-specific weaknesses from the badge alone.
 - Age, modifications and enthusiast/classic status are not defects by themselves. Evaluate documented condition and relevant maintenance in context.
@@ -49,6 +51,7 @@ VALUE AND NEGOTIATION
 - The advert platform does not establish seller type: AutoTrader and similar platforms host both dealers and private sellers. Use an explicit seller statement in the supplied evidence; if none exists, make the pricing verdict conditional on seller type.
 - Compare a confirmed dealer offering primarily with Dealer Forecourt; a confirmed private offering with the relevant private benchmark. If seller type is unknown, show available comparisons without assuming a dealer.
 - Valuations are estimates, not evidence of condition. State the valuation mileage/date when supplied, and flag that latest MOT mileage may be older/lower than current advertised mileage.
+- If seller type is unconfirmed, Pricing Verdict must be Not Available; give conditional dealer/private comparisons without choosing a definitive pricing category.
 - Pricing Verdict is Not Available if asking price or reliable benchmark data is missing. Never invent a market valuation, repair quotation or discount.
 - Link negotiation to verified current issues or request repair evidence first for historic advisories. Suggest monetary negotiation only if grounded in supplied valuation differences or sourced repair estimates; do not invent a £300–500 discount.
 
