@@ -9,6 +9,7 @@ const { fetchDvlaData, buildDvlaSection } = require("./services/dvla");
 const { fetchMotData, buildMotSection } = require("./services/dvsa");
 const { searchVehicleWebPresence, buildWebSection } = require("./services/search");
 const { buildPrompt } = require("./services/reportBuilder");
+const { latestMotContext, normaliseRecommendation } = require("./services/reportQuality");
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -335,6 +336,7 @@ async function generateReportHandler(req, res) {
     ]);
     
     const latestMotMileage = extractLatestMotMileage(motData);
+    const motContext = latestMotContext(motData);
 const vehicleValuationData = await fetchVehicleValuation(registration, latestMotMileage);
 
     console.log("DVLA DATA RETURNED:", dvlaData);
@@ -368,6 +370,8 @@ console.log("======================================");
       vehicleHistorySection,
       vehicleValuationSection,
       latestMotMileage,
+      latestMotDate: motContext.date,
+      latestMotUnit: motContext.unit,
 
       // NEW: correctly mapped into the prompt
       listingSection: listingText,
@@ -389,7 +393,10 @@ You are CarKeeper, a UK-focused vehicle buying decision system.
 Rules:
 - Never fabricate facts.
 - Use only supplied and retrieved data.
-- Seller advert text is high-priority evidence.
+- Seller advert text is high-priority evidence of seller claims, not independently verified facts.
+- Clean history markers never outweigh unresolved mechanical or safety concerns.
+- Never guarantee current safety, reliability or absence of major future repair costs.
+- Keep the traffic light consistent with Buyer Stance: Proceed is Green; Proceed with Caution and Cautious Interest are Amber; High Risk and Walk Away are Red.
 - Seller-declared faults outweigh tidy photos and historic MOT data.
 - If seller wording says spares/repairs, sold as seen, needs work, non-runner, warning light, injector, gearbox, head gasket, project, or trade sale, treat it as a major buyer-decision factor.
 - Do not invent technical facts, rarity, engine details, production numbers, or VIN decoding.
@@ -402,7 +409,7 @@ Rules:
       input: prompt,
     });
 
-    const reportText = extractOutputText(response);
+    const reportText = normaliseRecommendation(extractOutputText(response));
 
     if (!reportText || reportText.trim().length < 80) {
       return res.status(502).json({
