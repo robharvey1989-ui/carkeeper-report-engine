@@ -1,5 +1,3 @@
-const axios = require("axios");
-
 async function fetchDvlaData(registration, forwardedApiKey = "") {
   const DVLA_API_KEY = forwardedApiKey || process.env.DVLA_API_KEY || "";
 
@@ -14,6 +12,7 @@ async function fetchDvlaData(registration, forwardedApiKey = "") {
   }
 
   try {
+    const axios = require("axios");
     const response = await axios.post(
       "https://driver-vehicle-licensing.api.gov.uk/vehicle-enquiry/v1/vehicles",
       { registrationNumber: registration },
@@ -99,47 +98,13 @@ function buildIdentityChecks(dvlaData, provided) {
     notes.push("- VIN: no VIN-level confirmation is available from this DVLA enquiry response.");
   }
 
-  if (clean(dvlaData.dateOfLastV5CIssued) !== "Unknown") {
-    notes.push("- V5C signal: the last V5C issue date can be useful context and may justify asking why a replacement or updated V5C was issued if recent.");
-  }
-
-  if (clean(dvlaData.monthOfFirstRegistration) !== "Unknown" && clean(dvlaData.yearOfManufacture) !== "Unknown") {
-    notes.push("- Registration timing: compare first registration timing with the claimed age/specification to ensure the story makes sense.");
-  }
-
   return notes.length ? notes.join("\n") : "- No additional identity checks could be derived.";
 }
 
 function buildAdministrativeSignals(dvlaData) {
   const notes = [];
-
-  const taxStatus = clean(dvlaData.taxStatus);
-  const taxDueDate = clean(dvlaData.taxDueDate);
-  const motStatus = clean(dvlaData.motStatus);
-  const v5cDate = clean(dvlaData.dateOfLastV5CIssued);
-
-  if (taxStatus !== "Unknown") {
-    notes.push(`- Tax status: ${taxStatus}.`);
-  }
-
-  if (taxDueDate !== "Unknown") {
-    notes.push(`- Tax due date: ${taxDueDate}.`);
-  }
-
-  if (motStatus !== "Unknown") {
-    notes.push(`- MOT status from DVLA: ${motStatus}.`);
-  }
-
-  if (v5cDate !== "Unknown") {
-    notes.push(`- Date of last V5C issued: ${v5cDate}. A recent V5C issue is not automatically negative, but it is worth understanding why it was reissued.`);
-  }
-
-  const colour = clean(dvlaData.colour);
-  if (colour !== "Unknown") {
-    notes.push(`- DVLA recorded colour: ${colour}. This should broadly match the vehicle as seen in person and in photos.`);
-  }
-
-  return notes.length ? notes.join("\n") : "- No additional administrative signals were available.";
+  if (clean(dvlaData.motStatus) !== "Unknown") notes.push(`- MOT status recorded by DVLA: ${clean(dvlaData.motStatus)}. This is not a current condition guarantee.`);
+  return notes.join("\n") || "- No additional relevant administrative records available.";
 }
 
 function buildSpecContext(dvlaData) {
@@ -173,7 +138,7 @@ function buildDvlaSection(dvlaData, provided) {
 
   if (!dvlaData || dvlaData.error) {
     return `## 2) Identity & Production
-### Verified / Confirmed
+### Supplied details — externally unverified
 - Registration supplied by user: ${suppliedRegistration}
 - VIN supplied by user: ${suppliedVin}
 - Make supplied by user: ${suppliedMake}
@@ -192,10 +157,10 @@ function buildDvlaSection(dvlaData, provided) {
 - No DVLA-backed confirmation of make, year, tax status, MOT status, colour, or V5C issue timing was available in this lookup.`;
   }
 
-  const registrationNumber = clean(dvlaData.registrationNumber || provided.registration);
-  const make = clean(dvlaData.make || provided.make);
+  const registrationNumber = clean(dvlaData.registrationNumber);
+  const make = clean(dvlaData.make);
   const model = clean(provided.model);
-  const yearOfManufacture = clean(dvlaData.yearOfManufacture || provided.year);
+  const yearOfManufacture = clean(dvlaData.yearOfManufacture);
   const monthOfFirstRegistration = clean(dvlaData.monthOfFirstRegistration);
   const fuelType = clean(dvlaData.fuelType);
   const engineCapacity = clean(dvlaData.engineCapacity);
@@ -212,22 +177,23 @@ function buildDvlaSection(dvlaData, provided) {
   return `## 2) Identity & Production
 ### Verified / Confirmed
 - Registration: ${registrationNumber}
-- VIN supplied by user: ${suppliedVin}
 - Make: ${make}
-- Model supplied by user: ${model}
 - Year of manufacture: ${yearOfManufacture}
 - Month of first registration: ${monthOfFirstRegistration}
 - Fuel type: ${fuelType}
 - Engine capacity: ${engineCapacity !== "Unknown" ? `${engineCapacity} cc` : "Unknown"}
 - Colour: ${colour}
-- Tax status: ${taxStatus}
-- Tax due date: ${taxDueDate}
 - MOT status: ${motStatus}
-- Date of last V5C issued: ${dateOfLastV5CIssued}
 - Wheelplan: ${wheelplan}
 - Revenue weight: ${revenueWeight}
 - Euro status: ${euroStatus}
 - CO2 emissions: ${co2Emissions}
+
+### Supplied details — not confirmed by this DVLA response
+- VIN supplied by user: ${suppliedVin}
+- Model supplied by user: ${model}
+- Make supplied by user: ${suppliedMake}
+- Year supplied by user: ${suppliedYear}
 
 ### Identity Checks & Match Strength
 ${buildIdentityChecks(dvlaData, provided)}
